@@ -12,4 +12,5 @@ Requirements
  -App to have server status indicator (go-nogo light)  
  -App to have version currency indicator (shows if an update is required)  
  -App to have options for always (automatic) updating or allow the client to selectively update  
+ -The Source server/git/drop shall have files adeed and those files are automatically added to the update list without the authors interaction  
  -more to add.  
