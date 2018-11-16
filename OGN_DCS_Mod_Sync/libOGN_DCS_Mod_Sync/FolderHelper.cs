@@ -13,9 +13,9 @@ namespace libOGN_DCS_Mod_Sync
             var folderLocations = new List<string>()
             {
                 @"C:\Users\[Username]\Saved Games\DCS",
-                @"C:\Users\[Username]\Saved Games\DCS Openbeta",
+                @"C:\Users\[Username]\Saved Games\DCS.openbeta",
                 @"C:\Users\[Username]\Saved Games\DCS World",
-                @"C:\Users\[Username]\Saved Games\DCS Openalpha"
+                @"C:\Users\[Username]\Saved Games\DCS.openalpha"
             };
 
             foreach (string folder in folderLocations)
