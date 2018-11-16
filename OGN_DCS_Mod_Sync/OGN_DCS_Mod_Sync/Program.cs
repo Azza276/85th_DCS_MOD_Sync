@@ -14,14 +14,11 @@ namespace OGN_DCS_Mod_Sync
             string userName = (Environment.UserName);
             string partialName = "Liveries";
             DirectoryInfo driveToSearch = new DirectoryInfo(@"c:\\Users\\" + userName + "\\");
-            FileInfo[] filesInDir = driveToSearch.GetFiles("*" + partialName);
+            Console.WriteLine(driveToSearch);
+            FileInfo[] dir = driveToSearch.GetFiles(searchPattern: partialName);
 
-            foreach (FileInfo foundFile in filesInDir)
-            {
-                string userPath = foundFile.FullName;
-                Console.WriteLine(userPath);
-            }
 
+            Console.WriteLine(dir);
 
             // Console.WriteLine("Hello World!");
             Console.ReadKey();
