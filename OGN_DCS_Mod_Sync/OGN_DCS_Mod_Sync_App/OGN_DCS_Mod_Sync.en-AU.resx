@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,22 +118,95 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="xmas_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\xmas_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="updateStatus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="red_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\red_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="serverStatus.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="green_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\green_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="85th SQN 2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\85th SQN 2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="titlePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>700, 100</value>
   </data>
-  <data name="xmas_17" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\xmas_17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="verifyButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="Hornet 8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Hornet 8.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="verifyButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>601, 5</value>
+  </data>
+  <data name="downloadButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="downloadButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>601, 37</value>
+  </data>
+  <data name="exitButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="exitButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>601, 69</value>
+  </data>
+  <data name="currentActionText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>586, 19</value>
+  </data>
+  <data name="progressBar1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>586, 22</value>
+  </data>
+  <data name="lowerTablePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 377</value>
+  </data>
+  <data name="lowerTablePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>700, 98</value>
+  </data>
+  <data name="mainImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="mainImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="mainImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>700, 277</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>700, 475</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AB4fHykWCyp2PkE5my8rOZ0EABBoBwINIhYEMncbCDqcFAA4ngAA
+        EWMjJh1eCwsMPQMDAwApHzowGBMfdgAAAABwcm+ZtKnE/6mro8q1sMDRhoiH/i0WTshlIcT/XCijx3ZB
+        xdJuYIX/hIp6/zY1OKIAAAAAtrDB+IWAiv8AAAAdWVZhTYF+hv4JDAkAQDdJAGpRkKhVP3ryQCBx1QYD
+        CABDNlIAmp6Tkol/me4pITWaVlhTdsPGwPd3eHblAgICTykgSg6AdJL/AAAAbAAAAAtIOF+haFp+/040
+        dfwAAABXAAAADBMSFA9qZnBhmZaf/ZWWlP9BQUE0np6fxxgYGZZtbXAAloqow4V4lv9xb3TvsbOq/1BM
+        VrV6boi8mZeY/3+AfPFwbHbsUFFOx8vMyv9TU1OnAAAAAKurqsFBQUHHcnVtAGhedjqRh52Jn6Gcj5OS
+        lYQpLCUtY2RiL6Kcp4ycnZqPoZ2lkz4+PW1fXl9mEREQIAUFBQBpaWlLMjIyVv///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP///wD///8A////AP//
+        /wD///8A//8AAP//AAD//wAA//8AAP//AADOfwAAAAkAALGJAACx5AAAgAQAAMY/AAD//wAA//8AAP//
+        AAD//wAA//8AAA==
+</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>700, 475</value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>700, 475</value>
   </data>
 </root>
