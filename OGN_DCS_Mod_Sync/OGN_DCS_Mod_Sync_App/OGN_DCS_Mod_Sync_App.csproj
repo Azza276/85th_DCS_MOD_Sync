@@ -53,6 +53,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="OGN_DCS_Mod_Sync.en-AU.resx">
+      <DependentUpon>OGN_DCS_Mod_Sync.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OGN_DCS_Mod_Sync.resx">
       <DependentUpon>OGN_DCS_Mod_Sync.cs</DependentUpon>
     </EmbeddedResource>
@@ -64,6 +67,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -77,6 +81,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xmas_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xmas_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\85th SQN 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hornet 8.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
