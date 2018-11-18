@@ -32,12 +32,17 @@ namespace OGN_DCS_Mod_Sync_App
             MessageBox.Show("Thanks!");
         }
 
-        private void helloWorldLabel_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
 
-        private void debugInstructionsLabel_Click(object sender, EventArgs e)
+        private void CurrentAction_change(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void DownloadButton_Click(object sender, EventArgs e)
         {
 
         }
@@ -48,11 +53,6 @@ namespace OGN_DCS_Mod_Sync_App
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -69,12 +69,7 @@ namespace OGN_DCS_Mod_Sync_App
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
+            
         }
     }
 }
