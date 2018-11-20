@@ -110,6 +110,21 @@
     <None Include="Resources\Hornet 8.JPG" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\85th SQN 1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\85th SQN 32.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\85th SQN 256.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\85th SQN 128.ico.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\85th SQN 64.ico.JPG" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="3d_splash_text_effect_16.ico" />
   </ItemGroup>
   <ItemGroup>
