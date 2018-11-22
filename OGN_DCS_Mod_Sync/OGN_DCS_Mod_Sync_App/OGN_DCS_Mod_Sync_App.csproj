@@ -126,6 +126,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="3d_splash_text_effect_16.ico" />
+    <None Include="Resources\Verify.png" />
+    <None Include="Resources\Download.png" />
+    <None Include="Resources\Exit.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\libOGN_DCS_Mod_app\libOGN_DCS_Mod_app.csproj">

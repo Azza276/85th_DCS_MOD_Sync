@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 
@@ -11,6 +12,7 @@ namespace libOGN_DCS_Mod_app
         public readonly string LocalFilename;
         private readonly string PathToDisplay;
         public readonly string DcsFolder;
+        public WebFileInfo WebFileInfo;
 
         public FilePair(string dcsFolder, string url, string localFilename)
         {
@@ -27,14 +29,11 @@ namespace libOGN_DCS_Mod_app
             var downloader = new Downloader();
 
             var localFileInfo = new FileInfo(LocalFilename);
-            var webFileInfo = downloader.GetUrlInfo(URL);
-
-            Console.WriteLine("Checking {0}", PathToDisplay);
+            WebFileInfo = downloader.GetUrlInfo(URL);
 
             if (!File.Exists(LocalFilename)) result = true;
-            if (File.Exists(LocalFilename) && (webFileInfo.ModifiedDate > localFileInfo.LastWriteTime)) result = true;
-            if (File.Exists(LocalFilename) && (webFileInfo.Length != localFileInfo.Length)) result = true;
-
+            if (File.Exists(LocalFilename) && (WebFileInfo.ModifiedDate > localFileInfo.LastWriteTime)) result = true;
+            if (File.Exists(LocalFilename) && (WebFileInfo.Length != localFileInfo.Length)) result = true;
 
             return result;
         }

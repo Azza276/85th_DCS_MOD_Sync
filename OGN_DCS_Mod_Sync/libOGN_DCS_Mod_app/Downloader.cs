@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace libOGN_DCS_Mod_app
 {
@@ -33,8 +35,6 @@ namespace libOGN_DCS_Mod_app
 
             try
             {
-
-
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(URL);
                 request.Method = "HEAD"; // Important - Not interested in file contents
 
@@ -46,7 +46,11 @@ namespace libOGN_DCS_Mod_app
                     ModifiedDate = resp.LastModified,
                     Length = resp.ContentLength
                 };
-            } catch
+
+                //try to not set off BitNinja
+                Thread.Sleep(500);
+            }
+            catch
             {
                 Console.WriteLine("Could not get information for URL: " + URL);
             }

@@ -12,8 +12,4 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\libOGN_DCS_Mod_Sync\libOGN_DCS_Mod_Sync.csproj" />
-  </ItemGroup>
-
 </Project>

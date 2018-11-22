@@ -34,24 +34,24 @@ namespace OGN_DCS_Mod_Sync_App
             this.fileSyncStatusText = new System.Windows.Forms.Label();
             this.squadTitle = new System.Windows.Forms.Label();
             this.ozGamingTitle = new System.Windows.Forms.Label();
-            this.updateStatus = new System.Windows.Forms.PictureBox();
-            this.serverStatus = new System.Windows.Forms.PictureBox();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.lowerTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.verifyButton = new System.Windows.Forms.Button();
-            this.downloadButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
             this.currentAction = new System.Windows.Forms.TextBox();
-            this.mainImage = new System.Windows.Forms.PictureBox();
             this.linkSite = new System.Windows.Forms.LinkLabel();
+            this.exitButton = new System.Windows.Forms.Button();
+            this.verifyButton = new System.Windows.Forms.Button();
+            this.downloadButton = new System.Windows.Forms.Button();
+            this.mainImage = new System.Windows.Forms.PictureBox();
+            this.updateStatus = new System.Windows.Forms.PictureBox();
+            this.serverStatus = new System.Windows.Forms.PictureBox();
+            this.logo = new System.Windows.Forms.PictureBox();
             this.titlePanel.SuspendLayout();
+            this.lowerTablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
-            this.lowerTablePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainImage)).BeginInit();
             this.SuspendLayout();
             // 
             // titlePanel
@@ -95,6 +95,7 @@ namespace OGN_DCS_Mod_Sync_App
             // squadTitle
             // 
             this.squadTitle.AutoSize = true;
+            this.squadTitle.BackColor = System.Drawing.Color.SteelBlue;
             this.squadTitle.Font = new System.Drawing.Font("Corbel", 30F, System.Drawing.FontStyle.Bold);
             this.squadTitle.ForeColor = System.Drawing.Color.White;
             this.squadTitle.Location = new System.Drawing.Point(95, 44);
@@ -113,6 +114,172 @@ namespace OGN_DCS_Mod_Sync_App
             this.ozGamingTitle.Size = new System.Drawing.Size(220, 29);
             this.ozGamingTitle.TabIndex = 7;
             this.ozGamingTitle.Text = "Oz Gaming Network";
+            // 
+            // lowerTablePanel
+            // 
+            this.lowerTablePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.lowerTablePanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.lowerTablePanel.ColumnCount = 3;
+            this.lowerTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.lowerTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.lowerTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.lowerTablePanel.Controls.Add(this.verifyButton, 2, 0);
+            this.lowerTablePanel.Controls.Add(this.downloadButton, 2, 1);
+            this.lowerTablePanel.Controls.Add(this.exitButton, 2, 2);
+            this.lowerTablePanel.Controls.Add(this.progressBar1, 0, 1);
+            this.lowerTablePanel.Controls.Add(this.statusLabel, 0, 0);
+            this.lowerTablePanel.Controls.Add(this.currentAction, 1, 0);
+            this.lowerTablePanel.Controls.Add(this.linkSite, 0, 2);
+            this.lowerTablePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lowerTablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.lowerTablePanel.Location = new System.Drawing.Point(0, 377);
+            this.lowerTablePanel.Name = "lowerTablePanel";
+            this.lowerTablePanel.RowCount = 3;
+            this.lowerTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.lowerTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.lowerTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.lowerTablePanel.Size = new System.Drawing.Size(700, 98);
+            this.lowerTablePanel.TabIndex = 5;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lowerTablePanel.SetColumnSpan(this.progressBar1, 2);
+            this.progressBar1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.progressBar1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.progressBar1.Location = new System.Drawing.Point(5, 44);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(5);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(590, 10);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 4;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Font = new System.Drawing.Font("Corbel", 11.25F);
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Location = new System.Drawing.Point(5, 7);
+            this.statusLabel.Margin = new System.Windows.Forms.Padding(5, 4, 0, 5);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(51, 18);
+            this.statusLabel.TabIndex = 5;
+            this.statusLabel.Text = "Status:";
+            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // currentAction
+            // 
+            this.currentAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.currentAction.BackColor = System.Drawing.Color.SteelBlue;
+            this.currentAction.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.currentAction.CausesValidation = false;
+            this.currentAction.Font = new System.Drawing.Font("Corbel", 11.25F);
+            this.currentAction.ForeColor = System.Drawing.Color.White;
+            this.currentAction.Location = new System.Drawing.Point(59, 7);
+            this.currentAction.Name = "currentAction";
+            this.currentAction.ReadOnly = true;
+            this.currentAction.Size = new System.Drawing.Size(538, 19);
+            this.currentAction.TabIndex = 6;
+            this.currentAction.WordWrap = false;
+            // 
+            // linkSite
+            // 
+            this.linkSite.ActiveLinkColor = System.Drawing.Color.PaleTurquoise;
+            this.linkSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.linkSite.AutoSize = true;
+            this.lowerTablePanel.SetColumnSpan(this.linkSite, 2);
+            this.linkSite.LinkColor = System.Drawing.Color.White;
+            this.linkSite.Location = new System.Drawing.Point(3, 75);
+            this.linkSite.Name = "linkSite";
+            this.linkSite.Size = new System.Drawing.Size(594, 15);
+            this.linkSite.TabIndex = 7;
+            this.linkSite.TabStop = true;
+            this.linkSite.Text = "www.ozgamingnetwork.com.au/forums";
+            this.linkSite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // exitButton
+            // 
+            this.exitButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.exitButton.FlatAppearance.BorderSize = 0;
+            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold);
+            this.exitButton.ForeColor = System.Drawing.Color.Transparent;
+            this.exitButton.Image = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Exit;
+            this.exitButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.exitButton.Location = new System.Drawing.Point(605, 71);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(5);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(90, 23);
+            this.exitButton.TabIndex = 2;
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // verifyButton
+            // 
+            this.verifyButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.verifyButton.BackColor = System.Drawing.Color.Transparent;
+            this.verifyButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.verifyButton.FlatAppearance.BorderSize = 0;
+            this.verifyButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.verifyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.verifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.verifyButton.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold);
+            this.verifyButton.ForeColor = System.Drawing.Color.Transparent;
+            this.verifyButton.Image = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Verify;
+            this.verifyButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.verifyButton.Location = new System.Drawing.Point(605, 5);
+            this.verifyButton.Margin = new System.Windows.Forms.Padding(5);
+            this.verifyButton.Name = "verifyButton";
+            this.verifyButton.Size = new System.Drawing.Size(90, 22);
+            this.verifyButton.TabIndex = 0;
+            this.verifyButton.UseVisualStyleBackColor = false;
+            this.verifyButton.Click += new System.EventHandler(this.verifyButton_Click);
+            // 
+            // downloadButton
+            // 
+            this.downloadButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.downloadButton.BackColor = System.Drawing.Color.Transparent;
+            this.downloadButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.downloadButton.FlatAppearance.BorderSize = 0;
+            this.downloadButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.downloadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.downloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.downloadButton.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold);
+            this.downloadButton.ForeColor = System.Drawing.Color.Transparent;
+            this.downloadButton.Image = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Download;
+            this.downloadButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.downloadButton.Location = new System.Drawing.Point(605, 38);
+            this.downloadButton.Margin = new System.Windows.Forms.Padding(5);
+            this.downloadButton.Name = "downloadButton";
+            this.downloadButton.Size = new System.Drawing.Size(90, 22);
+            this.downloadButton.TabIndex = 1;
+            this.downloadButton.UseVisualStyleBackColor = false;
+            this.downloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
+            // 
+            // mainImage
+            // 
+            this.mainImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mainImage.BackColor = System.Drawing.Color.SteelBlue;
+            this.mainImage.BackgroundImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Hornet_8;
+            this.mainImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.mainImage.ErrorImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Hornet_8;
+            this.mainImage.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.mainImage.Location = new System.Drawing.Point(0, 100);
+            this.mainImage.Margin = new System.Windows.Forms.Padding(0);
+            this.mainImage.Name = "mainImage";
+            this.mainImage.Size = new System.Drawing.Size(700, 277);
+            this.mainImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.mainImage.TabIndex = 4;
+            this.mainImage.TabStop = false;
             // 
             // updateStatus
             // 
@@ -166,156 +333,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.logo.TabStop = false;
             this.logo.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
-            // lowerTablePanel
-            // 
-            this.lowerTablePanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.lowerTablePanel.BackColor = System.Drawing.Color.SteelBlue;
-            this.lowerTablePanel.ColumnCount = 3;
-            this.lowerTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.lowerTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.lowerTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.lowerTablePanel.Controls.Add(this.verifyButton, 2, 0);
-            this.lowerTablePanel.Controls.Add(this.downloadButton, 2, 1);
-            this.lowerTablePanel.Controls.Add(this.exitButton, 2, 2);
-            this.lowerTablePanel.Controls.Add(this.progressBar1, 0, 1);
-            this.lowerTablePanel.Controls.Add(this.statusLabel, 0, 0);
-            this.lowerTablePanel.Controls.Add(this.currentAction, 1, 0);
-            this.lowerTablePanel.Controls.Add(this.linkSite, 0, 2);
-            this.lowerTablePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lowerTablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.lowerTablePanel.Location = new System.Drawing.Point(0, 377);
-            this.lowerTablePanel.Name = "lowerTablePanel";
-            this.lowerTablePanel.RowCount = 3;
-            this.lowerTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.lowerTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.lowerTablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.lowerTablePanel.Size = new System.Drawing.Size(700, 98);
-            this.lowerTablePanel.TabIndex = 5;
-            this.lowerTablePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // verifyButton
-            // 
-            this.verifyButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.verifyButton.BackColor = System.Drawing.Color.White;
-            this.verifyButton.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold);
-            this.verifyButton.ForeColor = System.Drawing.Color.Black;
-            this.verifyButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.verifyButton.Location = new System.Drawing.Point(605, 5);
-            this.verifyButton.Margin = new System.Windows.Forms.Padding(5);
-            this.verifyButton.Name = "verifyButton";
-            this.verifyButton.Size = new System.Drawing.Size(90, 22);
-            this.verifyButton.TabIndex = 0;
-            this.verifyButton.Text = "Verify";
-            this.verifyButton.UseVisualStyleBackColor = false;
-            this.verifyButton.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // downloadButton
-            // 
-            this.downloadButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.downloadButton.BackColor = System.Drawing.Color.White;
-            this.downloadButton.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold);
-            this.downloadButton.ForeColor = System.Drawing.Color.Black;
-            this.downloadButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.downloadButton.Location = new System.Drawing.Point(605, 38);
-            this.downloadButton.Margin = new System.Windows.Forms.Padding(5);
-            this.downloadButton.Name = "downloadButton";
-            this.downloadButton.Size = new System.Drawing.Size(90, 22);
-            this.downloadButton.TabIndex = 1;
-            this.downloadButton.Text = "Download";
-            this.downloadButton.UseVisualStyleBackColor = false;
-            this.downloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
-            // 
-            // exitButton
-            // 
-            this.exitButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.exitButton.BackColor = System.Drawing.Color.White;
-            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold);
-            this.exitButton.ForeColor = System.Drawing.Color.Black;
-            this.exitButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.exitButton.Location = new System.Drawing.Point(605, 71);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(5);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(90, 23);
-            this.exitButton.TabIndex = 2;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lowerTablePanel.SetColumnSpan(this.progressBar1, 2);
-            this.progressBar1.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.progressBar1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.progressBar1.Location = new System.Drawing.Point(5, 44);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(5);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(590, 10);
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progressBar1.TabIndex = 4;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Font = new System.Drawing.Font("Corbel", 11.25F);
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Location = new System.Drawing.Point(5, 7);
-            this.statusLabel.Margin = new System.Windows.Forms.Padding(5, 4, 0, 5);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(51, 18);
-            this.statusLabel.TabIndex = 5;
-            this.statusLabel.Text = "Status:";
-            this.statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // currentAction
-            // 
-            this.currentAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.currentAction.BackColor = System.Drawing.Color.SteelBlue;
-            this.currentAction.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.currentAction.CausesValidation = false;
-            this.currentAction.Font = new System.Drawing.Font("Corbel", 11.25F);
-            this.currentAction.Location = new System.Drawing.Point(59, 7);
-            this.currentAction.Name = "currentAction";
-            this.currentAction.ReadOnly = true;
-            this.currentAction.Size = new System.Drawing.Size(538, 19);
-            this.currentAction.TabIndex = 6;
-            this.currentAction.WordWrap = false;
-            // 
-            // mainImage
-            // 
-            this.mainImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mainImage.BackColor = System.Drawing.Color.SteelBlue;
-            this.mainImage.BackgroundImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Hornet_8;
-            this.mainImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.mainImage.ErrorImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Hornet_8;
-            this.mainImage.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.mainImage.Location = new System.Drawing.Point(0, 100);
-            this.mainImage.Margin = new System.Windows.Forms.Padding(0);
-            this.mainImage.Name = "mainImage";
-            this.mainImage.Size = new System.Drawing.Size(700, 277);
-            this.mainImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.mainImage.TabIndex = 4;
-            this.mainImage.TabStop = false;
-            // 
-            // linkSite
-            // 
-            this.linkSite.ActiveLinkColor = System.Drawing.Color.PaleTurquoise;
-            this.linkSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkSite.AutoSize = true;
-            this.lowerTablePanel.SetColumnSpan(this.linkSite, 2);
-            this.linkSite.LinkColor = System.Drawing.Color.White;
-            this.linkSite.Location = new System.Drawing.Point(3, 75);
-            this.linkSite.Name = "linkSite";
-            this.linkSite.Size = new System.Drawing.Size(594, 15);
-            this.linkSite.TabIndex = 7;
-            this.linkSite.TabStop = true;
-            this.linkSite.Text = "www.ozgamingnetwork.com.au/forums";
-            this.linkSite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // OGN_DCS_Mod_Sync
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -340,15 +357,17 @@ namespace OGN_DCS_Mod_Sync_App
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OGN DCS Mod Sync";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OGN_DCS_Mod_Sync_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.OGN_DCS_Mod_Sync_Shown);
             this.titlePanel.ResumeLayout(false);
             this.titlePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.lowerTablePanel.ResumeLayout(false);
             this.lowerTablePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -371,8 +390,6 @@ namespace OGN_DCS_Mod_Sync_App
         private System.Windows.Forms.Label statusLabel;
         public System.Windows.Forms.TextBox currentAction;
         private System.Windows.Forms.LinkLabel linkSite;
-
-
     }
 }
 
