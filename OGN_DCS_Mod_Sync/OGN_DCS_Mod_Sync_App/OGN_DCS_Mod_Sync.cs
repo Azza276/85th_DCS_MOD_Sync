@@ -125,6 +125,7 @@ namespace OGN_DCS_Mod_Sync_App
                 //Reset the progress bar
                 Invoke(new MethodInvoker(() =>
                 {
+                    progressBar1.Visible = false;
                     progressBar1.Value = 0;
                     progressBar1.Maximum = 1;
                 }));
@@ -146,12 +147,12 @@ namespace OGN_DCS_Mod_Sync_App
                     Directory.CreateDirectory(liveriesFolder);
                 }
 
-                string dcsModsURL = "https://www.ozgamingnetwork.com.au/DCS_Mods/";
+                string dcsModsURL = "ftp://www.ozgamingnetwork.com.au/DCS_Mods/";
 
                 SetCurrentAction("Getting file list from web server...");
 
-                var downloader = new Downloader();
-                var allFilesOnWebserver = downloader.GetFilesFromDirectoryListing(dcsModsURL, liveriesFolder);
+                var FtpDownloader = new FtpDownloader();
+                var allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL, liveriesFolder);
 
                 var pairs = allFilesOnWebserver.Select(url =>
                 {
@@ -170,6 +171,7 @@ namespace OGN_DCS_Mod_Sync_App
 
                 Invoke(new MethodInvoker(() =>
                 {
+                    progressBar1.Visible = true;
                     progressBar1.Maximum = pairs.Count();
                 }));
 
