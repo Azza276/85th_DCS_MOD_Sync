@@ -26,7 +26,7 @@ namespace libOGN_DCS_Mod_app
         {
             bool result = false;
 
-            var downloader = new Downloader();
+            var downloader = new FtpDownloader();
 
             var localFileInfo = new FileInfo(LocalFilename);
             WebFileInfo = downloader.GetUrlInfo(URL);

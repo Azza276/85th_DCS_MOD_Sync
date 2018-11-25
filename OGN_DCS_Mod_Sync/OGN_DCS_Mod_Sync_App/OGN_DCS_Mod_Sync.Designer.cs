@@ -28,6 +28,7 @@ namespace OGN_DCS_Mod_Sync_App
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OGN_DCS_Mod_Sync));
             this.titlePanel = new System.Windows.Forms.Panel();
             this.dcsServerText = new System.Windows.Forms.Label();
@@ -38,14 +39,16 @@ namespace OGN_DCS_Mod_Sync_App
             this.serverStatus = new System.Windows.Forms.PictureBox();
             this.logo = new System.Windows.Forms.PictureBox();
             this.lowerTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.verifyButton = new System.Windows.Forms.Button();
+            this.VerifyButton = new System.Windows.Forms.Button();
             this.downloadButton = new System.Windows.Forms.Button();
             this.exitButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
             this.currentAction = new System.Windows.Forms.TextBox();
-            this.linkSite = new System.Windows.Forms.LinkLabel();
+            this.LinkSite = new System.Windows.Forms.LinkLabel();
             this.mainImage = new System.Windows.Forms.PictureBox();
+            this.toolTipFileSync = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipDcsServer = new System.Windows.Forms.ToolTip(this.components);
             this.titlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).BeginInit();
@@ -80,6 +83,8 @@ namespace OGN_DCS_Mod_Sync_App
             this.dcsServerText.Size = new System.Drawing.Size(180, 15);
             this.dcsServerText.TabIndex = 10;
             this.dcsServerText.Text = "Oz Gaming Network DCS Server";
+            this.toolTipDcsServer.SetToolTip(this.dcsServerText, "Red - DCS Server is currently Offline or you\r\nhave Internet Connection Issues\r\n\r\n" +
+        "Green - DCS Server is online and ready to join.");
             // 
             // fileSyncStatusText
             // 
@@ -91,6 +96,9 @@ namespace OGN_DCS_Mod_Sync_App
             this.fileSyncStatusText.Size = new System.Drawing.Size(154, 15);
             this.fileSyncStatusText.TabIndex = 9;
             this.fileSyncStatusText.Text = "File Synchronisation Status";
+            this.toolTipFileSync.SetToolTip(this.fileSyncStatusText, "Red - Files are not Synchronised or Synchronisation\r\nStatus Unknown, Click the Ve" +
+        "rify Button to Check the files.\r\n\r\nGreen - Files have been recently Synchronised" +
+        ".");
             // 
             // squadTitle
             // 
@@ -132,7 +140,9 @@ namespace OGN_DCS_Mod_Sync_App
             this.updateStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.updateStatus.TabIndex = 0;
             this.updateStatus.TabStop = false;
-            this.updateStatus.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.toolTipFileSync.SetToolTip(this.updateStatus, "Red - Files are not Synchronised or Synchronisation\r\nStatus Unknown, Click the Ve" +
+        "rify Button to Check the files.\r\n\r\nGreen - Files have been recently Synchronised" +
+        ".");
             // 
             // serverStatus
             // 
@@ -151,6 +161,8 @@ namespace OGN_DCS_Mod_Sync_App
             this.serverStatus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.serverStatus.TabIndex = 1;
             this.serverStatus.TabStop = false;
+            this.toolTipDcsServer.SetToolTip(this.serverStatus, "Red - DCS Server is currently Offline or you\r\nhave Internet Connection Issues\r\n\r\n" +
+        "Green - DCS Server is online and ready to join.");
             // 
             // logo
             // 
@@ -165,7 +177,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.logo.TabIndex = 4;
             this.logo.TabStop = false;
-            this.logo.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // lowerTablePanel
             // 
@@ -175,13 +186,13 @@ namespace OGN_DCS_Mod_Sync_App
             this.lowerTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.lowerTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.lowerTablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.lowerTablePanel.Controls.Add(this.verifyButton, 2, 0);
+            this.lowerTablePanel.Controls.Add(this.VerifyButton, 2, 0);
             this.lowerTablePanel.Controls.Add(this.downloadButton, 2, 1);
             this.lowerTablePanel.Controls.Add(this.exitButton, 2, 2);
             this.lowerTablePanel.Controls.Add(this.progressBar1, 0, 1);
             this.lowerTablePanel.Controls.Add(this.statusLabel, 0, 0);
             this.lowerTablePanel.Controls.Add(this.currentAction, 1, 0);
-            this.lowerTablePanel.Controls.Add(this.linkSite, 0, 2);
+            this.lowerTablePanel.Controls.Add(this.LinkSite, 0, 2);
             this.lowerTablePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lowerTablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.lowerTablePanel.Location = new System.Drawing.Point(0, 377);
@@ -193,26 +204,26 @@ namespace OGN_DCS_Mod_Sync_App
             this.lowerTablePanel.Size = new System.Drawing.Size(700, 98);
             this.lowerTablePanel.TabIndex = 5;
             // 
-            // verifyButton
+            // VerifyButton
             // 
-            this.verifyButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.verifyButton.BackColor = System.Drawing.Color.Transparent;
-            this.verifyButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.verifyButton.FlatAppearance.BorderSize = 0;
-            this.verifyButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.verifyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.verifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.verifyButton.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold);
-            this.verifyButton.ForeColor = System.Drawing.Color.Transparent;
-            this.verifyButton.Image = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Verify;
-            this.verifyButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.verifyButton.Location = new System.Drawing.Point(605, 5);
-            this.verifyButton.Margin = new System.Windows.Forms.Padding(5);
-            this.verifyButton.Name = "verifyButton";
-            this.verifyButton.Size = new System.Drawing.Size(90, 22);
-            this.verifyButton.TabIndex = 0;
-            this.verifyButton.UseVisualStyleBackColor = false;
-            this.verifyButton.Click += new System.EventHandler(this.verifyButton_Click);
+            this.VerifyButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.VerifyButton.BackColor = System.Drawing.Color.Transparent;
+            this.VerifyButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.VerifyButton.FlatAppearance.BorderSize = 0;
+            this.VerifyButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.VerifyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.VerifyButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VerifyButton.Font = new System.Drawing.Font("Corbel", 9.75F, System.Drawing.FontStyle.Bold);
+            this.VerifyButton.ForeColor = System.Drawing.Color.Transparent;
+            this.VerifyButton.Image = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Verify;
+            this.VerifyButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.VerifyButton.Location = new System.Drawing.Point(605, 5);
+            this.VerifyButton.Margin = new System.Windows.Forms.Padding(5);
+            this.VerifyButton.Name = "VerifyButton";
+            this.VerifyButton.Size = new System.Drawing.Size(90, 22);
+            this.VerifyButton.TabIndex = 0;
+            this.VerifyButton.UseVisualStyleBackColor = false;
+            this.VerifyButton.Click += new System.EventHandler(this.VerifyButton_Click);
             // 
             // downloadButton
             // 
@@ -301,20 +312,21 @@ namespace OGN_DCS_Mod_Sync_App
             this.currentAction.TabIndex = 6;
             this.currentAction.WordWrap = false;
             // 
-            // linkSite
+            // LinkSite
             // 
-            this.linkSite.ActiveLinkColor = System.Drawing.Color.PaleTurquoise;
-            this.linkSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.linkSite.AutoSize = true;
-            this.lowerTablePanel.SetColumnSpan(this.linkSite, 2);
-            this.linkSite.LinkColor = System.Drawing.Color.White;
-            this.linkSite.Location = new System.Drawing.Point(3, 75);
-            this.linkSite.Name = "linkSite";
-            this.linkSite.Size = new System.Drawing.Size(594, 15);
-            this.linkSite.TabIndex = 7;
-            this.linkSite.TabStop = true;
-            this.linkSite.Text = "www.ozgamingnetwork.com.au/forums";
-            this.linkSite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LinkSite.ActiveLinkColor = System.Drawing.Color.PaleTurquoise;
+            this.LinkSite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.LinkSite.AutoSize = true;
+            this.lowerTablePanel.SetColumnSpan(this.LinkSite, 2);
+            this.LinkSite.LinkColor = System.Drawing.Color.White;
+            this.LinkSite.Location = new System.Drawing.Point(3, 75);
+            this.LinkSite.Name = "LinkSite";
+            this.LinkSite.Size = new System.Drawing.Size(594, 15);
+            this.LinkSite.TabIndex = 7;
+            this.LinkSite.TabStop = true;
+            this.LinkSite.Text = "www.ozgamingnetwork.com.au/forums";
+            this.LinkSite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LinkSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkSite_LinkClicked_1);
             // 
             // mainImage
             // 
@@ -333,6 +345,16 @@ namespace OGN_DCS_Mod_Sync_App
             this.mainImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.mainImage.TabIndex = 4;
             this.mainImage.TabStop = false;
+            // 
+            // toolTipFileSync
+            // 
+            this.toolTipFileSync.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipFileSync.ToolTipTitle = "File Synchronisation Status";
+            // 
+            // toolTipDcsServer
+            // 
+            this.toolTipDcsServer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipDcsServer.ToolTipTitle = "Oz Gaming Network DCS Server";
             // 
             // OGN_DCS_Mod_Sync
             // 
@@ -380,7 +402,7 @@ namespace OGN_DCS_Mod_Sync_App
         public System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.PictureBox mainImage;
         private System.Windows.Forms.TableLayoutPanel lowerTablePanel;
-        private System.Windows.Forms.Button verifyButton;
+        private System.Windows.Forms.Button VerifyButton;
         private System.Windows.Forms.Button downloadButton;
         public System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.ProgressBar progressBar1;
@@ -390,7 +412,9 @@ namespace OGN_DCS_Mod_Sync_App
         private System.Windows.Forms.Label ozGamingTitle;
         private System.Windows.Forms.Label statusLabel;
         public System.Windows.Forms.TextBox currentAction;
-        private System.Windows.Forms.LinkLabel linkSite;
+        private System.Windows.Forms.LinkLabel LinkSite;
+        private System.Windows.Forms.ToolTip toolTipFileSync;
+        private System.Windows.Forms.ToolTip toolTipDcsServer;
     }
 }
 

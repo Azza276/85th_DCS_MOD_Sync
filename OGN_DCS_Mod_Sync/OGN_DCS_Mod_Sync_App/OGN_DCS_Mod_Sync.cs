@@ -23,16 +23,11 @@ namespace OGN_DCS_Mod_Sync_App
             InitializeComponent();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LinkSite_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // Click on the link below to continue learning how to build a desktop app using WinForms!
-            System.Diagnostics.Process.Start("http://aka.ms/dotnet-get-started-desktop");
 
-        }
+        System.Diagnostics.Process.Start("www.ozgamingnetwork.com.au/forums");
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Thanks!");
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -50,15 +45,7 @@ namespace OGN_DCS_Mod_Sync_App
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
 
         ServerCheck serverCheck = new ServerCheck();
         Task serverCheckTask;
@@ -113,7 +100,7 @@ namespace OGN_DCS_Mod_Sync_App
             }));
         }
 
-        private void verifyButton_Click(object sender, EventArgs e)
+        private void VerifyButton_Click(object sender, EventArgs e)
         {
             if (verifyTask != null && !verifyTask.IsCompleted)
             {
@@ -129,6 +116,9 @@ namespace OGN_DCS_Mod_Sync_App
                     progressBar1.Value = 0;
                     progressBar1.Maximum = 1;
                 }));
+
+                //Reset the Update Status Light
+                updateStatus.BackgroundImage = Properties.Resources.red_light;
 
                 //Determine DCS Users Directory
                 var folderHelper = new FolderHelper();
@@ -147,20 +137,33 @@ namespace OGN_DCS_Mod_Sync_App
                     Directory.CreateDirectory(liveriesFolder);
                 }
 
-                string dcsModsURL = "ftp://www.ozgamingnetwork.com.au/DCS_Mods/";
+                //Create OGN Mod and Liveries Folder if it doesn't exist
+                string ognModFolder = Path.Combine(dcsFolder, "OGN_Mods");
+                if (!Directory.Exists(ognModFolder))
+                {
+                    Directory.CreateDirectory(ognModFolder);
+                }
 
-                SetCurrentAction("Getting file list from web server...");
+                string ognLivFolder = Path.Combine(ognModFolder, "Liveries");
+                if (!Directory.Exists(ognLivFolder))
+                {
+                    Directory.CreateDirectory(ognLivFolder);
+                }
+
+                string dcsModsURL = "ftp://www.ozgamingnetwork.com.au/";
+
+                SetCurrentAction("Getting file list from server...");
 
                 var FtpDownloader = new FtpDownloader();
-                var allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL, liveriesFolder);
+                var allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL);
 
                 var pairs = allFilesOnWebserver.Select(url =>
                 {
                     string relativeURL = url.Replace(dcsModsURL, string.Empty);
-                    string decodedRelativeURL = System.Net.WebUtility.UrlDecode(relativeURL);
-                    string localFilename = Path.Combine(dcsFolder, decodedRelativeURL);
+                    //string decodedRelativeURL = System.Net.WebUtility.UrlDecode(relativeURL);
+                    string localFilename = Path.Combine(dcsFolder, "OGN_Mods");
 
-                    var pair = new FilePair(dcsFolder, url, localFilename);
+                    var pair = new FilePair(ognModFolder, url, localFilename);
 
                     return pair;
                 })
@@ -192,6 +195,7 @@ namespace OGN_DCS_Mod_Sync_App
                 if (filesThatRequireUpdate.Count == 0)
                 {
                     SetCurrentAction("All files are up to date. No downloads required.");
+                    updateStatus.BackgroundImage = Properties.Resources.green_light;
                 }
                 else
                 {
