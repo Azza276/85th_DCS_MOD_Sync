@@ -21,7 +21,17 @@ namespace libOGN_DCS_Mod_app
         {
             bool result = false;
 
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(URL + " -a");
+            using (FtpClient dlFile = new FtpClient("ftp://www.ozgamingnetwork.com.au"))
+            {
+                dlFile.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
+                dlFile.Host = "ftp://www.ozgamingnetwork.com.au";
+                dlFile.Connect();
+                dlFile.RetryAttempts = 3;
+                dlFile.DownloadFile(destinationFilename, URL, true, FtpVerify.Retry);
+            }
+
+
+            /*FtpWebRequest request = (FtpWebRequest)WebRequest.Create(URL + " -a");
             request.KeepAlive = true;
             request.UsePassive = true;
             request.UseBinary = true;
@@ -32,12 +42,9 @@ namespace libOGN_DCS_Mod_app
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.ASCII);
             var remoteFile = reader.ReadLine();
-            remoteFile.Substring(62);
-
-
-
-
-            /*using (var client = new WebClient())
+            remoteFile.Substring(62);*/
+                                 
+            using (var client = new WebClient())
             {
                 client.DownloadFile(URL, destinationFilename);
 
@@ -45,7 +52,7 @@ namespace libOGN_DCS_Mod_app
                 {
                     result = true;
                 }
-            }*/
+            }
 
             return result;
         }
@@ -54,51 +61,20 @@ namespace libOGN_DCS_Mod_app
         {
             WebFileInfo result = null;
 
-            using (FtpClient ileInfo = new FtpClient("ftp://www.ozgamingnetwork.com.au"))
+            using (FtpClient webInfo = new FtpClient("ftp://www.ozgamingnetwork.com.au"))
             {
-                ileInfo.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
-                ileInfo.Host = "ftp://www.ozgamingnetwork.com.au";
-                ileInfo.Connect();
-                ileInfo.GetObjectInfo(URL);
+                webInfo.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
+                webInfo.Host = "ftp://www.ozgamingnetwork.com.au";
+                webInfo.Connect();
+                webInfo.GetObjectInfo(URL);
 
 
                 result = new WebFileInfo()
                 {
                     URL = URL,
-                    ModifiedDate = ileInfo.GetModifiedTime(URL),
-                    Length = ileInfo.GetFileSize(URL),
-                    };
-
-
-
-
-
-
-
-
-
-
-                /*using (Stream ftpStream = request.GetResponse().GetResponseStream())
-                using (Stream fileStream = File.Create(localFilename + "dcs_file_list.txt"))
-                {
-                    byte[] buffer = new byte[10240];
-                    int read;
-                    while ((read = ftpStream.Read(buffer, 0, buffer.Length)) > 0)
-                    {
-                        fileStream.Write(buffer, 0, read);
-                        Console.WriteLine("Downloaded {0} bytes", fileStream.Position);
-                    }
-                }*/
-
-
-
-                //try to not set off BitNinja
-                //Thread.Sleep(500);
-
-
-
-                
-
+                    ModifiedDate = webInfo.GetModifiedTime(URL),
+                    Length = webInfo.GetFileSize(URL),
+                };
             }
             return result;
         }
@@ -125,16 +101,6 @@ namespace libOGN_DCS_Mod_app
                 //    e.Accept = true;
                 //}
 
-                /* Save for now
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(URL + " -a");
-                request.KeepAlive = true;
-                request.UsePassive = true;
-                request.UseBinary = false;
-                request.EnableSsl = true;
-                ServicePointManager.ServerCertificateValidationCallback = AcceptAllCertifications;
-                request.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
-
-                request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;*/
                 conn.SetWorkingDirectory("DCS_Mods");
                 foreach (FtpListItem item in conn.GetListing(conn.GetWorkingDirectory(),
                 FtpListOption.Modify | FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList))
@@ -162,67 +128,7 @@ namespace libOGN_DCS_Mod_app
                 return result;
             }
         }
-    
-
-
-
-
-
-            /*
-            using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
-            {
-                using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.ASCII))
-                {
-
-                    while (reader.EndOfStream == false)
-                    {
-                        streamToLines.Add(reader.ReadLine());
-                    }
-                    //var lines = ftpResponse.Split(new string [] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
-
-                    List<string> trLines = new List<string>();
-                    if (streamToLines[0].StartsWith("d"))
-                    {
-                        trLines = streamToLines.Skip(2).ToList();
-                    }
-                    else if (streamToLines[0].StartsWith("-"))
-                    {
-                        trLines = streamToLines.Skip(2).ToList();
-                    }
-                    else
-                    {
-                        trLines = streamToLines.Skip(6).ToList();
-                    }
-
-                    foreach (var trLine in trLines)
-                    {
-
-                        string relativeURL = trLine.Substring(62);
-                        string fullURL = Path.Combine(URL, relativeURL);
-
-                        if (trLine.StartsWith("d"))
-                        {
-                            //this is a folder. Recursively get its contents
-                            var subfolderContents = GetFilesFromDirectoryListing(fullURL, liveriesFolder);
-                            result.AddRange(subfolderContents);
-                        }
-                        else
-                        {
-                            result.Add(fullURL);
-                        }
-
-                    }
-
-                    // reader.Close();
-                }
-
-                //response.Close();    
-            }
-
-
-            return result;
-        }*/
-            public bool AcceptAllCertifications(object sender, X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
+                public bool AcceptAllCertifications(object sender, X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
             { return true; }
     }
 }
