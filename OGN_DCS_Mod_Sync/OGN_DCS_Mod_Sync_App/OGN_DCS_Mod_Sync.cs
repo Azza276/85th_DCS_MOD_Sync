@@ -46,7 +46,7 @@ namespace OGN_DCS_Mod_Sync_App
         }
 
 
-
+        //Povides visual indication that the client has connection to the OGN DCS server
         ServerCheck serverCheck = new ServerCheck();
         Task serverCheckTask;
         private void SetupServerCheckTimer()
