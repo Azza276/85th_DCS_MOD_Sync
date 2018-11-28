@@ -104,7 +104,7 @@ namespace libOGN_DCS_Mod_app
                 //    e.Accept = true;
                 //}
 
-                conn.SetWorkingDirectory("DCS_Mods");
+                conn.SetWorkingDirectory("OGN_Mods");
                 foreach (FtpListItem item in conn.GetListing(conn.GetWorkingDirectory(),
                 FtpListOption.Modify | FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList))
                 {

@@ -35,9 +35,86 @@ namespace OGN_DCS_Mod_Sync_App
             Application.Exit();
         }
 
+        Task downloadTask;
+        public bool update_status = false;
+        public object update_pairs = null;
+
         private void DownloadButton_Click(object sender, EventArgs e)
         {
+            if (verifyTask != null && !verifyTask.IsCompleted)
+            {
+                return;
+            }
 
+            if (downloadTask != null && !downloadTask.IsCompleted)
+            {
+                return;
+            }
+
+            if (update_status == true)
+            {
+                return;
+            }
+
+            downloadTask = Task.Factory.StartNew(() =>
+            {
+                {
+                    //Reset the progress bar
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        progressBar1.Visible = false;
+                        progressBar1.Value = 0;
+                        progressBar1.Maximum = 1;
+                    }));
+
+                    //Determine DCS Users Directory
+                    var folderHelper = new FolderHelper();
+                    string dcsFolder = folderHelper.DetectDCSFolder();
+
+                    if (dcsFolder == null)
+                    {
+                        SetCurrentAction("Could not find DCS folder");
+                        return;
+                    }
+
+                    //Create the Liveries folder if it doesn't exist
+                    string liveriesFolder = Path.Combine(dcsFolder, "Liveries");
+                    if (!Directory.Exists(liveriesFolder))
+                    {
+                        Directory.CreateDirectory(liveriesFolder);
+                    }
+
+                    //Create OGN Mod and Liveries Folder if it doesn't exist
+                    string ognModFolder = Path.Combine(dcsFolder, "OGN_Mods");
+                    if (!Directory.Exists(ognModFolder))
+                    {
+                        Directory.CreateDirectory(ognModFolder);
+                    }
+
+                    string ognLivFolder = Path.Combine(ognModFolder, "Liveries");
+                    if (!Directory.Exists(ognLivFolder))
+                    {
+                        Directory.CreateDirectory(ognLivFolder);
+                    }
+
+                    string dcsModsURL = "ftp://www.ozgamingnetwork.com.au/";
+
+                    SetCurrentAction("Updating Local files (deleting files removed from server)");
+                    FilePair.DeleteOld
+
+
+                    var FtpDownloader = new FtpDownloader();
+
+
+
+
+
+
+
+
+
+                }
+            });
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -107,6 +184,11 @@ namespace OGN_DCS_Mod_Sync_App
                 return;
             }
 
+            if (downloadTask != null && !downloadTask.IsCompleted)
+            {
+                return;
+            }
+
             verifyTask = Task.Factory.StartNew(() =>
             {
                 //Reset the progress bar
@@ -118,6 +200,7 @@ namespace OGN_DCS_Mod_Sync_App
                 }));
 
                 //Reset the Update Status Light
+                update_status = false;
                 updateStatus.BackgroundImage = Properties.Resources.red_light;
 
                 //Determine DCS Users Directory
@@ -152,16 +235,15 @@ namespace OGN_DCS_Mod_Sync_App
 
                 string dcsModsURL = "ftp://www.ozgamingnetwork.com.au/";
 
-                SetCurrentAction("Getting file list from server...");
+                SetCurrentAction("Getting current list of files from the server...");
 
                 var FtpDownloader = new FtpDownloader();
                 var allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL);
 
                 var pairs = allFilesOnWebserver.Select(url =>
                 {
-                    string relativeURL = url.Replace(dcsModsURL, string.Empty);
-                    //string decodedRelativeURL = System.Net.WebUtility.UrlDecode(relativeURL);
-                    string localFilename = Path.Combine(dcsFolder, "OGN_Mods");
+                    string relativeURL = url; //url.Replace(dcsModsURL, string.Empty);
+                    string localFilename = Path.Combine(dcsFolder, relativeURL);
 
                     var pair = new FilePair(ognModFolder, url, localFilename);
 
@@ -178,9 +260,9 @@ namespace OGN_DCS_Mod_Sync_App
                     progressBar1.Maximum = pairs.Count();
                 }));
 
-                pairs.ForEach(pair =>
-                {
-                    SetCurrentAction("Checking " + Path.GetFileName(pair.LocalFilename));
+            pairs.ForEach(pair =>
+            {
+            SetCurrentAction("Checking " + Path.GetDirectoryName(pair.LocalFilename) + @"\" + Path.GetFileNameWithoutExtension(pair.LocalFilename));
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Increment(1);
@@ -194,7 +276,8 @@ namespace OGN_DCS_Mod_Sync_App
 
                 if (filesThatRequireUpdate.Count == 0)
                 {
-                    SetCurrentAction("All files are up to date. No downloads required.");
+                    SetCurrentAction("All files are up to date. No downloads are required.");
+                    update_status = true;
                     updateStatus.BackgroundImage = Properties.Resources.green_light;
                 }
                 else
@@ -205,21 +288,21 @@ namespace OGN_DCS_Mod_Sync_App
                     string sizeString = $"{filesThatRequireUpdate.Count} files, totalling {totalBytesToDownloadAsString} require an update.";
                     SetCurrentAction(sizeString);
 
-                    /*
-
-                        foreach (var pair in filesThatRequireUpdate)
-                        {
-                            bool downloaded = pair.Download();
-                            if (downloaded)
-                            {
-                                downloadCount++;
-                            }
-                        }
-
-                        Console.WriteLine("Finished. Downloaded {0} files.", downloadCount);
-                    }
-                    */
                 }
+
+                update_pairs = pairs;
+
+                //Reset the progress bar
+                Invoke(new MethodInvoker(() =>
+                {
+                    progressBar1.Visible = false;
+                    progressBar1.Value = 0;
+                    progressBar1.Maximum = 1;
+                }));
+
+
+
+
             });
         }
     }

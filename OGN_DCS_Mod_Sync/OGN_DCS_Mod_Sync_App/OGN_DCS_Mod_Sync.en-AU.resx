@@ -120,12 +120,6 @@
   <data name="dcsServerText.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="dcsServerText.ToolTip1" xml:space="preserve">
-    <value>Red - DCS Server is currently Offline or you
-have Internet Connection Issues
-
-Green - DCS Server is online and ready to join.</value>
-  </data>
   <data name="fileSyncStatusText.ToolTip1" xml:space="preserve">
     <value />
   </data>
@@ -3003,12 +2997,6 @@ Green - DCS Server is online and ready to join.</value>
   </data>
   <data name="serverStatus.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="serverStatus.ToolTip1" xml:space="preserve">
-    <value>Red - DCS Server is currently Offline or you
-have Internet Connection Issues
-
-Green - DCS Server is online and ready to join.</value>
   </data>
   <data name="logo.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
