@@ -31,6 +31,7 @@ namespace libOGN_DCS_Mod_app
             var localFileInfo = new FileInfo(LocalFilename);
             WebFileInfo = downloader.GetUrlInfo(URL);
 
+            if (File.Exists(LocalFilename) && (!WebFileInfo.FtpExists == true)) File.Delete(LocalFilename);
             if (!File.Exists(LocalFilename)) result = true;
             if (File.Exists(LocalFilename) && (WebFileInfo.ModifiedDate > localFileInfo.LastWriteTime)) result = true;
             if (File.Exists(LocalFilename) && (WebFileInfo.Length != localFileInfo.Length)) result = true;

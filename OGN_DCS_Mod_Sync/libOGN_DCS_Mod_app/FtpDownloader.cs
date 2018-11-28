@@ -16,7 +16,7 @@ namespace libOGN_DCS_Mod_app
 {
     public class FtpDownloader
     {
-
+        //Downloads the files that require update.
         public bool DownloadFile(string URL, string destinationFilename)
         {
             bool result = false;
@@ -56,7 +56,7 @@ namespace libOGN_DCS_Mod_app
 
             return result;
         }
-
+        //Gets the file last modified date and size for change comparison
         public WebFileInfo GetUrlInfo(string URL)
         {
             WebFileInfo result = null;
@@ -72,6 +72,7 @@ namespace libOGN_DCS_Mod_app
                 result = new WebFileInfo()
                 {
                     URL = URL,
+                    FtpExists = webInfo.FileExists(URL),
                     ModifiedDate = webInfo.GetModifiedTime(URL),
                     Length = webInfo.GetFileSize(URL),
                 };
@@ -80,6 +81,7 @@ namespace libOGN_DCS_Mod_app
         }
         public List<string> GetFilesFromDirectoryListing(string URL)
         {
+            //gets the list of file names on the server
             List<string> result = new List<string>();
             var streamToLines = new List<string>();
 
@@ -88,6 +90,7 @@ namespace libOGN_DCS_Mod_app
             {
 
                 conn.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
+                //Seems to not be needed at this stage.
                 //conn.EncryptionMode = FtpEncryptionMode.Implicit;
                 //conn.SslProtocols = SslProtocols.Tls;
                 //conn.SocketKeepAlive = true;
@@ -128,7 +131,7 @@ namespace libOGN_DCS_Mod_app
                 return result;
             }
         }
-                public bool AcceptAllCertifications(object sender, X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
-            { return true; }
+             //   public bool AcceptAllCertifications(object sender, X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
+            //{ return true; }
     }
 }
