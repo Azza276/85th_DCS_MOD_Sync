@@ -120,21 +120,6 @@
   <data name="dcsServerText.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="fileSyncStatusText.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="squadTitle.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="squadTitle.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ozGamingTitle.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="ozGamingTitle.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="updateStatus.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1563,9 +1548,6 @@
         SCUsYshxilYRRI5U9DpDj+k5vUav1XvkaO1DzrYiXMdQlOuYlrz/N9L/jzcr4iyFkGOkEhYx5DA5ziKI
         VCMhWA62YDk6vrP/6/B/g82ZFM6QE38P8V9v7ee/23+3/7TtT3/6H6xX+NQohB/hAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="updateStatus.ToolTip1" xml:space="preserve">
-    <value />
   </data>
   <data name="serverStatus.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5212,18 +5194,6 @@
         IYQQYl+4lUIIIYTYF26lEEIIIfbEDz/7N5r5ezptvY8GAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="logo.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="logo.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="titlePanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="titlePanel.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <data name="VerifyButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFoAAAAXCAYAAACLbliwAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -5253,12 +5223,6 @@
         Bnx759J/Juvbu8egB/3S36Uhqff7aBfsYZENci/QJtiuGPn3Gvg/Q7OkEf8McP0LPjSR1QD/gmPE38zu
         AdK5P6JQAAAAAElFTkSuQmCC
 </value>
-  </data>
-  <data name="VerifyButton.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="VerifyButton.ToolTip1" xml:space="preserve">
-    <value />
   </data>
   <data name="downloadButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5291,12 +5255,6 @@
         3n/B3RNZ9fMvOIb9Bb9HmCnjh+u4AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="downloadButton.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="downloadButton.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <data name="exitButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFoAAAAXCAYAAACLbliwAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
@@ -5325,44 +5283,8 @@
         apqv4Jj3H3uCzW9HPdWZAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="exitButton.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="exitButton.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="progressBar1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="progressBar1.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="statusLabel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="statusLabel.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <data name="currentAction.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 3</value>
-  </data>
-  <data name="currentAction.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="currentAction.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LinkSite.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="LinkSite.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lowerTablePanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="lowerTablePanel.ToolTip1" xml:space="preserve">
-    <value />
   </data>
   <data name="mainImage.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -8388,12 +8310,6 @@
         oAM0uaSigBaKSigBaKSgUALRRRQAUUUUAGaXNJRQAuaKSigD/9k=
 </value>
   </data>
-  <data name="mainImage.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="mainImage.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAN0AAAAEAIAAoOQAAFgAAACgAAAA3AAAAgAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -8642,11 +8558,5 @@
         DgD4AAAAAAA+APwAAAAAAH4A/gAAAAAA/gD/gAAAAAF+AP/AAAAAB/4A//AAAAAP/gD/+AAAAD/+AP/+
         AAAA//4A///AAAP//gA=
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.ToolTip1" xml:space="preserve">
-    <value />
   </data>
 </root>

@@ -38,7 +38,11 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>3d_splash_text_effect_16.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -78,6 +82,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.manifest">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -110,22 +117,6 @@
     <None Include="Resources\Hornet 8.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\85th SQN 1.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\85th SQN 32.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\85th SQN 256.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\85th SQN 128.ico.JPG" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\85th SQN 64.ico.JPG" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="3d_splash_text_effect_16.ico" />
     <None Include="Resources\Verify.png" />
     <None Include="Resources\Download.png" />
     <None Include="Resources\Exit.png" />

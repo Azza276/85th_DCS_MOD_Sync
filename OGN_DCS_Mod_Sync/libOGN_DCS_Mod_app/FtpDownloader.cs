@@ -17,7 +17,7 @@ namespace libOGN_DCS_Mod_app
     public class FtpDownloader
     {
         //Downloads the files that require update.
-        public bool DownloadFile(string URL, string destinationFilename)
+        public bool DownloadFile(WebFileInfo webFileInfo, string destinationFilename)
         {
             bool result = false;
 
@@ -27,9 +27,13 @@ namespace libOGN_DCS_Mod_app
                 dlFile.Host = "ftp://www.ozgamingnetwork.com.au";
                 dlFile.Connect();
                 dlFile.RetryAttempts = 3;
-                dlFile.DownloadFile(destinationFilename, URL, true, FtpVerify.Retry);
-            }
+                dlFile.DownloadFile(destinationFilename, webFileInfo.URL, true, FtpVerify.Retry);
 
+                if (File.Exists(destinationFilename))
+                {
+                    result = true;
+                }
+            }
 
             /*FtpWebRequest request = (FtpWebRequest)WebRequest.Create(URL + " -a");
             request.KeepAlive = true;
@@ -43,8 +47,8 @@ namespace libOGN_DCS_Mod_app
             StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.ASCII);
             var remoteFile = reader.ReadLine();
             remoteFile.Substring(62);*/
-                                 
-            using (var client = new WebClient())
+
+            /*using (var client = new WebClient())
             {
                 client.DownloadFile(URL, destinationFilename);
 
@@ -52,11 +56,12 @@ namespace libOGN_DCS_Mod_app
                 {
                     result = true;
                 }
-            }
+            }*/
 
             return result;
         }
         //Gets the file last modified date and size for change comparison
+        /*
         public WebFileInfo GetUrlInfo(string URL)
         {
             WebFileInfo result = null;
@@ -68,27 +73,25 @@ namespace libOGN_DCS_Mod_app
                 webInfo.Connect();
                 webInfo.GetObjectInfo(URL);
 
-
                 result = new WebFileInfo()
                 {
                     URL = URL,
-                    FtpExists = webInfo.FileExists(URL),
                     ModifiedDate = webInfo.GetModifiedTime(URL),
                     Length = webInfo.GetFileSize(URL),
                 };
             }
             return result;
         }
-        public List<string> GetFilesFromDirectoryListing(string URL)
+        */
+
+        public List<WebFileInfo> GetFilesFromDirectoryListing(string URL)
         {
             //gets the list of file names on the server
-            List<string> result = new List<string>();
+            List<WebFileInfo> result = new List<WebFileInfo>();
             var streamToLines = new List<string>();
-
 
             using (FtpClient conn = new FtpClient(URL))
             {
-
                 conn.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
                 //Seems to not be needed at this stage.
                 //conn.EncryptionMode = FtpEncryptionMode.Implicit;
@@ -113,25 +116,28 @@ namespace libOGN_DCS_Mod_app
                         case FtpFileSystemObjectType.Directory:
                             break;
                         case FtpFileSystemObjectType.File:
-                            var fileURL = item.FullName;
-                            result.Add(fileURL);
+                            var newWebFileInfo = new WebFileInfo()
+                            {
+                                URL = item.FullName,
+                                Length = item.Size,
+                                ModifiedDate = item.Modified
+                            };
+                            result.Add(newWebFileInfo);
                             break;
                         case FtpFileSystemObjectType.Link:
                             if (item.LinkObject != null)
                             {
                                 // switch (item.LinkObject.Type)...
-                                
+
                             }
                             break;
                     }
                 }
 
-
-
                 return result;
             }
         }
-             //   public bool AcceptAllCertifications(object sender, X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
-            //{ return true; }
+        //   public bool AcceptAllCertifications(object sender, X509Certificate certification, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors sslPolicyErrors)
+        //{ return true; }
     }
 }

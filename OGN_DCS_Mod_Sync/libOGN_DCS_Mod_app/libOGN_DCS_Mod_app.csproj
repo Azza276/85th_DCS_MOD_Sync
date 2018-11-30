@@ -34,6 +34,9 @@
     <Reference Include="FluentFTP, Version=19.2.2.0, Culture=neutral, PublicKeyToken=f4af092b1d8df44f, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentFTP.19.2.2\lib\net45\FluentFTP.dll</HintPath>
     </Reference>
+    <Reference Include="SymbolicLinkSupport, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SymbolicLinkSupport.1.2.0\lib\net35\SymbolicLinkSupport.dll</HintPath>
+    </Reference>
     <Reference Include="System">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
@@ -63,12 +66,12 @@
   <ItemGroup>
     <Compile Include="FtpDownloader.cs" />
     <Compile Include="ServerCheck.cs" />
-    <Compile Include="Downloader.cs" />
     <Compile Include="FilePair.cs" />
     <Compile Include="FolderHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="SymlinkManager.cs" />
     <Compile Include="WebFileInfo.cs" />
   </ItemGroup>
   <ItemGroup>

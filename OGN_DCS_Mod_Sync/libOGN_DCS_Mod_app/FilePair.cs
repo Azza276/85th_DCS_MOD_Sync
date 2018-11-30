@@ -8,69 +8,37 @@ namespace libOGN_DCS_Mod_app
 {
     public class FilePair
     {
-        public string URL;
         public readonly string LocalFilename;
-        private readonly string PathToDisplay;
         public readonly string DcsFolder;
         public WebFileInfo WebFileInfo;
 
-        public FilePair(string dcsFolder, string url, string localFilename)
+        public FilePair(string dcsFolder, WebFileInfo webFileInfo, string localFilename)
         {
             DcsFolder = dcsFolder;
-            URL = url;
-            LocalFilename = localFilename;
-            PathToDisplay = localFilename.Replace(dcsFolder, "");
+            WebFileInfo = webFileInfo;
+            LocalFilename = localFilename.Replace('/', Path.DirectorySeparatorChar);
         }
 
         public bool RequiresUpdate()
         {
+            if (WebFileInfo == null)
+            {
+                //This file isn't on the web server. It requires update (ie. to be deleted locally)
+                return true;
+            }
+
             bool result = false;
 
             var downloader = new FtpDownloader();
 
             var localFileInfo = new FileInfo(LocalFilename);
-            WebFileInfo = downloader.GetUrlInfo(URL);
 
-            
             if (!File.Exists(LocalFilename)) result = true;
             if (File.Exists(LocalFilename) && (WebFileInfo.ModifiedDate > localFileInfo.LastWriteTime)) result = true;
             if (File.Exists(LocalFilename) && (WebFileInfo.Length != localFileInfo.Length)) result = true;
-            if (File.Exists(LocalFilename) && (!WebFileInfo.FtpExists == true)) result = true;
+            //if (File.Exists(LocalFilename) && (!WebFileInfo.FtpExists == true)) result = true;
 
             return result;
-        }
-
-        public bool Download()
-        {
-            bool result = false;
-
-            var downloader = new Downloader();
-
-            //create the folder for the file
-            string localFilePath = Path.GetDirectoryName(LocalFilename);
-            Directory.CreateDirectory(localFilePath);
-
-            Console.WriteLine("   Downloading: " + PathToDisplay);
-
-            downloader.DownloadFile(URL, LocalFilename);
-
-            if (File.Exists(LocalFilename))
-            {
-                result = true;
-            }
-
-            return result;
-        }
-
-        public void DeleteOld()
-        {
-            var downloader = new FtpDownloader();
-
-            var localFileInfo = new FileInfo(LocalFilename);
-            WebFileInfo = downloader.GetUrlInfo(URL);
-
-            if (File.Exists(LocalFilename) && (!WebFileInfo.FtpExists == true)) File.Delete(LocalFilename);
-
         }
     }
 }
