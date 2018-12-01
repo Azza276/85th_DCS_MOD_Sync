@@ -65,7 +65,7 @@ namespace OGN_DCS_Mod_Sync_App.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _85th_SQN_2 {
             get {
-                object obj = ResourceManager.GetObject("85th SQN 2", resourceCulture);
+                object obj = ResourceManager.GetObject("_85th_SQN_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace OGN_DCS_Mod_Sync_App.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap Hornet_8 {
             get {
-                object obj = ResourceManager.GetObject("Hornet 8", resourceCulture);
+                object obj = ResourceManager.GetObject("Hornet_8", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

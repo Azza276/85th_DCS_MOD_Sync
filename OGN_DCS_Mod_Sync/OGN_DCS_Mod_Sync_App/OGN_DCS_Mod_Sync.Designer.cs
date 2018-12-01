@@ -214,7 +214,6 @@ namespace OGN_DCS_Mod_Sync_App
             // 
             resources.ApplyResources(this.mainImage, "mainImage");
             this.mainImage.BackColor = System.Drawing.Color.SteelBlue;
-            this.mainImage.InitialImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.Hornet_8;
             this.mainImage.Name = "mainImage";
             this.mainImage.TabStop = false;
             // 
