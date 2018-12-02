@@ -11,13 +11,58 @@ using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using FluentFTP;
 using System.Security.Authentication;
+using System.Threading.Tasks;
 
 namespace libOGN_DCS_Mod_app
 {
     public class FtpDownloader
     {
+        public delegate void ProgressChangedSignature(long bytes);
+        public ProgressChangedSignature OnProgressChanged;
+
+        public delegate void StartDownloadSignature(FilePair pair);
+        public StartDownloadSignature OnStartDownload;
+
+        public delegate void FinishedDownloadSignature(FilePair pair);
+        public FinishedDownloadSignature OnFinishedDownload;
+
+        public void DownloadFiles(IEnumerable<FilePair> files, int concurrentDownloads)
+        {
+            var filesToDownload = files.Select(pair => new
+            {
+                Pair = pair,
+                Progress = new DownloadProgressConverter(pair)
+            })
+            .ToList();
+
+            //Monitor the overall progress
+            var progressTaskToken = new CancellationTokenSource();
+            var progressTask = Task.Factory.StartNew(() =>
+            {
+                while (!progressTaskToken.IsCancellationRequested)
+                {
+                    var totalBytesDownloaded = filesToDownload.Sum(f => f.Progress.CurrentValue);
+                    OnProgressChanged?.Invoke(totalBytesDownloaded);
+                    Thread.Sleep(100);
+                }
+            });
+
+            //Start downloading files
+            filesToDownload
+                .AsParallel()
+                .WithDegreeOfParallelism(concurrentDownloads)
+                .ForAll(f =>
+                {
+                    OnStartDownload?.Invoke(f.Pair);
+                    DownloadFile(f.Pair, f.Progress);
+                    OnFinishedDownload?.Invoke(f.Pair);
+                });
+
+            progressTaskToken.Cancel();
+        }
+
         //Downloads the files that require update.
-        public bool DownloadFile(WebFileInfo webFileInfo, string destinationFilename)
+        public bool DownloadFile(FilePair pair, IProgress<double> progress)
         {
             bool result = false;
 
@@ -27,9 +72,9 @@ namespace libOGN_DCS_Mod_app
                 dlFile.Host = "ftp://www.ozgamingnetwork.com.au";
                 dlFile.Connect();
                 dlFile.RetryAttempts = 3;
-                dlFile.DownloadFile(destinationFilename, webFileInfo.URL, true, FtpVerify.Retry);
+                dlFile.DownloadFile(pair.LocalFilename, pair.WebFileInfo.URL, true, FtpVerify.Retry, progress);
 
-                if (File.Exists(destinationFilename))
+                if (File.Exists(pair.LocalFilename))
                 {
                     result = true;
                 }
@@ -108,8 +153,9 @@ namespace libOGN_DCS_Mod_app
                 //}
 
                 conn.SetWorkingDirectory("OGN_Mods");
-                foreach (FtpListItem item in conn.GetListing(conn.GetWorkingDirectory(),
-                FtpListOption.Modify | FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList))
+                foreach (FtpListItem item in conn.GetListing(
+                    conn.GetWorkingDirectory(),
+                    FtpListOption.Modify | FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList))
                 {
                     switch (item.Type)
                     {

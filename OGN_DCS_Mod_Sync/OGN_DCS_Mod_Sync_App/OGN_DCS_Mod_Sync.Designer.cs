@@ -39,13 +39,14 @@ namespace OGN_DCS_Mod_Sync_App
             this.serverStatus = new System.Windows.Forms.PictureBox();
             this.logo = new System.Windows.Forms.PictureBox();
             this.lowerTablePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.rebuildbutton = new System.Windows.Forms.Button();
             this.VerifyButton = new System.Windows.Forms.Button();
             this.downloadButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
             this.currentAction = new System.Windows.Forms.TextBox();
             this.LinkSite = new System.Windows.Forms.LinkLabel();
+            this.exitButton = new System.Windows.Forms.Button();
             this.mainImage = new System.Windows.Forms.PictureBox();
             this.toolTipFileSync = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipDcsServer = new System.Windows.Forms.ToolTip(this.components);
@@ -102,6 +103,9 @@ namespace OGN_DCS_Mod_Sync_App
             // 
             resources.ApplyResources(this.updateStatus, "updateStatus");
             this.updateStatus.BackColor = System.Drawing.Color.Transparent;
+            this.updateStatus.BackgroundImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.updateStatus.ErrorImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.updateStatus.InitialImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
             this.updateStatus.Name = "updateStatus";
             this.updateStatus.TabStop = false;
             this.toolTipFileSync.SetToolTip(this.updateStatus, resources.GetString("updateStatus.ToolTip"));
@@ -110,6 +114,9 @@ namespace OGN_DCS_Mod_Sync_App
             // 
             resources.ApplyResources(this.serverStatus, "serverStatus");
             this.serverStatus.BackColor = System.Drawing.Color.Transparent;
+            this.serverStatus.BackgroundImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.serverStatus.ErrorImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.serverStatus.InitialImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
             this.serverStatus.Name = "serverStatus";
             this.serverStatus.TabStop = false;
             this.toolTipFileSync.SetToolTip(this.serverStatus, resources.GetString("serverStatus.ToolTip"));
@@ -126,15 +133,30 @@ namespace OGN_DCS_Mod_Sync_App
             // 
             resources.ApplyResources(this.lowerTablePanel, "lowerTablePanel");
             this.lowerTablePanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.lowerTablePanel.Controls.Add(this.rebuildbutton, 2, 2);
             this.lowerTablePanel.Controls.Add(this.VerifyButton, 2, 0);
             this.lowerTablePanel.Controls.Add(this.downloadButton, 2, 1);
-            this.lowerTablePanel.Controls.Add(this.exitButton, 2, 2);
-            this.lowerTablePanel.Controls.Add(this.progressBar1, 0, 1);
+            this.lowerTablePanel.Controls.Add(this.progressBar1, 0, 2);
             this.lowerTablePanel.Controls.Add(this.statusLabel, 0, 0);
             this.lowerTablePanel.Controls.Add(this.currentAction, 1, 0);
-            this.lowerTablePanel.Controls.Add(this.LinkSite, 0, 2);
+            this.lowerTablePanel.Controls.Add(this.LinkSite, 0, 3);
+            this.lowerTablePanel.Controls.Add(this.exitButton, 2, 3);
             this.lowerTablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.lowerTablePanel.Name = "lowerTablePanel";
+            // 
+            // rebuildbutton
+            // 
+            resources.ApplyResources(this.rebuildbutton, "rebuildbutton");
+            this.rebuildbutton.BackColor = System.Drawing.Color.Transparent;
+            this.rebuildbutton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.rebuildbutton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.rebuildbutton.FlatAppearance.BorderSize = 0;
+            this.rebuildbutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.rebuildbutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.rebuildbutton.ForeColor = System.Drawing.Color.Transparent;
+            this.rebuildbutton.Name = "rebuildbutton";
+            this.rebuildbutton.UseVisualStyleBackColor = false;
+            this.rebuildbutton.Click += new System.EventHandler(this.Rebuildbutton_Click);
             // 
             // VerifyButton
             // 
@@ -162,20 +184,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.downloadButton.UseVisualStyleBackColor = false;
             this.downloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
             // 
-            // exitButton
-            // 
-            resources.ApplyResources(this.exitButton, "exitButton");
-            this.exitButton.BackColor = System.Drawing.Color.Transparent;
-            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.exitButton.FlatAppearance.BorderSize = 0;
-            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.exitButton.ForeColor = System.Drawing.Color.Transparent;
-            this.exitButton.Name = "exitButton";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
             // progressBar1
             // 
             resources.ApplyResources(this.progressBar1, "progressBar1");
@@ -199,6 +207,7 @@ namespace OGN_DCS_Mod_Sync_App
             this.currentAction.ForeColor = System.Drawing.Color.White;
             this.currentAction.Name = "currentAction";
             this.currentAction.ReadOnly = true;
+            this.lowerTablePanel.SetRowSpan(this.currentAction, 2);
             // 
             // LinkSite
             // 
@@ -209,6 +218,20 @@ namespace OGN_DCS_Mod_Sync_App
             this.LinkSite.Name = "LinkSite";
             this.LinkSite.TabStop = true;
             this.LinkSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkSite_LinkClicked_1);
+            // 
+            // exitButton
+            // 
+            resources.ApplyResources(this.exitButton, "exitButton");
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.exitButton.FlatAppearance.BorderSize = 0;
+            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.exitButton.ForeColor = System.Drawing.Color.Transparent;
+            this.exitButton.Name = "exitButton";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // mainImage
             // 
@@ -274,6 +297,7 @@ namespace OGN_DCS_Mod_Sync_App
         private System.Windows.Forms.LinkLabel LinkSite;
         private System.Windows.Forms.ToolTip toolTipFileSync;
         private System.Windows.Forms.ToolTip toolTipDcsServer;
+        public System.Windows.Forms.Button rebuildbutton;
     }
 }
 

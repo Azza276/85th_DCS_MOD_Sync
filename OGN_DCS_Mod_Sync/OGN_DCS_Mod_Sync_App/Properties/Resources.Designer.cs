@@ -93,7 +93,8 @@ namespace OGN_DCS_Mod_Sync_App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap green_light {
+        internal static System.Drawing.Bitmap green_light
+        {
             get {
                 object obj = ResourceManager.GetObject("green_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -129,25 +130,30 @@ namespace OGN_DCS_Mod_Sync_App.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap xmas_16 {
-            get {
+        internal static System.Drawing.Bitmap xmas_16
+        {
+            get
+            {
                 object obj = ResourceManager.GetObject("xmas_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap xmas_17 {
-            get {
+        internal static System.Drawing.Bitmap xmas_17
+        {
+            get
+            {
                 object obj = ResourceManager.GetObject("xmas_17", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+
     }
 }

@@ -28,12 +28,32 @@ namespace OGN_DCS_Mod_Sync_App
         {
             //Determine DCS Users Directory
             var folderHelper = new FolderHelper();
-            string dcsFolder = folderHelper.DetectDCSFolder();
+            dcsFolder = folderHelper.DetectDCSFolder();
 
             if (dcsFolder == null)
             {
                 SetCurrentAction("Could not find DCS folder");
                 return;
+            }
+
+            //Create the Liveries folder if it doesn't exist
+            liveriesFolder = Path.Combine(dcsFolder, "Liveries");
+            if (!Directory.Exists(liveriesFolder))
+            {
+                Directory.CreateDirectory(liveriesFolder);
+            }
+
+            //Create OGN Mod and Liveries Folder if it doesn't exist
+            ognModFolder = Path.Combine(dcsFolder, "OGN_Mods");
+            if (!Directory.Exists(ognModFolder))
+            {
+                Directory.CreateDirectory(ognModFolder);
+            }
+
+            string ognLivFolder = Path.Combine(ognModFolder, "Liveries");
+            if (!Directory.Exists(ognLivFolder))
+            {
+                Directory.CreateDirectory(ognLivFolder);
             }
         }
 
@@ -71,7 +91,7 @@ namespace OGN_DCS_Mod_Sync_App
 
             if (filesThatRequireUpdate.Count > 0)
             {
-                downloadTask = Task.Factory.StartNew(() =>
+                downloadTask = Task.Factory.StartNew((Action)(() =>
                 {
                     //Reset the progress bar
                     Invoke(new MethodInvoker(() =>
@@ -81,61 +101,65 @@ namespace OGN_DCS_Mod_Sync_App
                             progressBar1.Maximum = 1;
                         }));
 
-                    var totalFilesToDownload = filesThatRequireUpdate.Where(f => f.WebFileInfo != null).Count();
+                    var filesToDownload = filesThatRequireUpdate.Where(f => f.WebFileInfo != null);
+                    var totalFilesToDownload = filesToDownload.Count();
+                    var totalBytesToDownload = filesToDownload.Sum(f => f.WebFileInfo.Length);
 
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Visible = true;
-                        progressBar1.Maximum = totalFilesToDownload;
+                        progressBar1.Maximum = 100;
                     }));
 
                     int downloadCount = 0;
-                    filesThatRequireUpdate
-                        .AsParallel()
-                        .WithDegreeOfParallelism(4)
-                        .ForAll(pair =>
+
+                    var ftpDownloader = new FtpDownloader();
+                    ftpDownloader.OnProgressChanged += new FtpDownloader.ProgressChangedSignature((bytes) =>
+                    {
+                        var percentage = bytes / (double)totalBytesToDownload * 100;
+                        Invoke(new MethodInvoker(() =>
                         {
-                            if (pair.WebFileInfo == null)
-                            {
-                                SetCurrentAction("Removing file " + Path.GetDirectoryName(pair.LocalFilename) + @"\" + Path.GetFileNameWithoutExtension(pair.LocalFilename));
-                                File.Delete(pair.LocalFilename);
-                            }
-                            else
-                            {
-                                var ftpDownloader = new FtpDownloader();
+                            progressBar1.Value = (int)percentage;
+                        }));
+                    });
 
-                                SetCurrentAction("Downloading " + Path.GetDirectoryName(pair.LocalFilename) + @"\" + Path.GetFileNameWithoutExtension(pair.LocalFilename));
+                    ftpDownloader.OnStartDownload += new FtpDownloader.StartDownloadSignature((pair) =>
+                    {
+                        SetCurrentAction("Downloading " + Path.GetDirectoryName(pair.LocalFilename) + @"\" + Path.GetFileNameWithoutExtension(pair.LocalFilename));
+                    });
 
-                                bool downloaded = ftpDownloader.DownloadFile(pair.WebFileInfo, pair.LocalFilename);
-                                if (downloaded)
-                                {
-                                    Interlocked.Increment(ref downloadCount);
+                    ftpDownloader.OnFinishedDownload += new FtpDownloader.FinishedDownloadSignature((pair) =>
+                    {
+                        Interlocked.Increment(ref downloadCount);
+                    });
 
-                                    Invoke(new MethodInvoker(() =>
-                                    {
-                                        progressBar1.Increment(1);
-                                    }));
-                                }
-                            }
-                        });
+                    ftpDownloader.DownloadFiles(filesToDownload, 4);
+                    progressBar1.Value = progressBar1.Maximum;
+
+                    var filesToDelete = filesThatRequireUpdate.Where(f => f.WebFileInfo == null).ToList();
+                    filesToDelete.ForEach(pair =>
+                    {
+                        SetCurrentAction("Removing file " + Path.GetDirectoryName(pair.LocalFilename) + @"\" + Path.GetFileNameWithoutExtension(pair.LocalFilename));
+                        File.Delete(pair.LocalFilename);
+                    });
 
                     SetCurrentAction(string.Format("Finished. Downloaded {0:N0} files.", downloadCount));
 
                     filesAreInSync = true;
-                    updateStatus.BackgroundImage = Properties.Resources.green_light;
+                    updateStatus.BackgroundImage = Properties.Resources.xmas_17;
 
                     //Reset the progress bar
                     Invoke(new MethodInvoker(() =>
-                        {
-                            progressBar1.Visible = false;
-                            progressBar1.Value = 0;
-                        }));
-                });
-            }
+                    {
+                        progressBar1.Visible = false;
+                        progressBar1.Value = 0;
+                    }));
 
-            var symlinkManager = new SymlinkManager(dcsFolder, ognModFolder);
-            symlinkManager.DeleteCurrentSymlinks();
-            symlinkManager.CreateSymlinks();
+                    Rebuildbutton_Click(null, null);
+
+                    filesThatRequireUpdate.Clear();
+                }));
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -149,7 +173,7 @@ namespace OGN_DCS_Mod_Sync_App
         Task serverCheckTask;
         private void SetupServerCheckTimer()
         {
-            serverCheckTask = Task.Factory.StartNew(() =>
+            serverCheckTask = Task.Factory.StartNew((Action)(() =>
             {
                 while (true)
                 {
@@ -158,14 +182,14 @@ namespace OGN_DCS_Mod_Sync_App
 
                     if (serverOnline)
                     {
-                        serverStatus.BackgroundImage = Properties.Resources.green_light;
+                        serverStatus.BackgroundImage = Properties.Resources.xmas_17;
                     }
                     else
                     {
-                        serverStatus.BackgroundImage = Properties.Resources.red_light;
+                        serverStatus.BackgroundImage = Properties.Resources.xmas_16;
                     }
                 }
-            });
+            }));
         }
 
         private void OGN_DCS_Mod_Sync_Shown(object sender, EventArgs e)
@@ -213,7 +237,7 @@ namespace OGN_DCS_Mod_Sync_App
                 return;
             }
 
-            verifyTask = Task.Factory.StartNew(() =>
+            verifyTask = Task.Factory.StartNew((Action)(() =>
             {
                 //Reset the progress bar
                 Invoke(new MethodInvoker(() =>
@@ -225,44 +249,26 @@ namespace OGN_DCS_Mod_Sync_App
 
                 //Reset the Update Status Light
                 filesAreInSync = false;
-                updateStatus.BackgroundImage = Properties.Resources.red_light;
-
-                //Determine DCS Users Directory
-                var folderHelper = new FolderHelper();
-                dcsFolder = folderHelper.DetectDCSFolder();
-
-                if (dcsFolder == null)
-                {
-                    SetCurrentAction("Could not find DCS folder");
-                    return;
-                }
-
-                //Create the Liveries folder if it doesn't exist
-                liveriesFolder = Path.Combine(dcsFolder, "Liveries");
-                if (!Directory.Exists(liveriesFolder))
-                {
-                    Directory.CreateDirectory(liveriesFolder);
-                }
-
-                //Create OGN Mod and Liveries Folder if it doesn't exist
-                ognModFolder = Path.Combine(dcsFolder, "OGN_Mods");
-                if (!Directory.Exists(ognModFolder))
-                {
-                    Directory.CreateDirectory(ognModFolder);
-                }
-
-                string ognLivFolder = Path.Combine(ognModFolder, "Liveries");
-                if (!Directory.Exists(ognLivFolder))
-                {
-                    Directory.CreateDirectory(ognLivFolder);
-                }
+                updateStatus.BackgroundImage = Properties.Resources.xmas_16;
 
                 string dcsModsURL = "ftp://www.ozgamingnetwork.com.au/";
 
                 SetCurrentAction("Getting current list of files from the server...");
 
+                Invoke(new MethodInvoker(() =>
+                {
+                    progressBar1.Show();
+                    progressBar1.Style = ProgressBarStyle.Marquee;
+                    progressBar1.MarqueeAnimationSpeed = 50;
+                }));
                 var FtpDownloader = new FtpDownloader();
                 var allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL);
+
+                Invoke(new MethodInvoker(() =>
+                {
+                    progressBar1.Style = ProgressBarStyle.Continuous;
+                    progressBar1.Hide();
+                }));
 
                 List<FilePair> pairs = new List<FilePair>();
 
@@ -296,7 +302,7 @@ namespace OGN_DCS_Mod_Sync_App
                 {
                     SetCurrentAction("All files are up to date. No downloads are required.");
                     filesAreInSync = true;
-                    updateStatus.BackgroundImage = Properties.Resources.green_light;
+                    updateStatus.BackgroundImage = Properties.Resources.xmas_17;
                 }
                 else
                 {
@@ -313,12 +319,12 @@ namespace OGN_DCS_Mod_Sync_App
                     {
                         sizeString += $"{totalFilesToDownload} files, totalling {totalBytesToDownloadAsString} require downloading. ";
                     }
-                    
+
                     if (totalFilesToDelete > 0)
                     {
                         sizeString += $"{totalFilesToDelete} files will be removed.";
                     }
-                    
+
                     SetCurrentAction(sizeString);
                 }
 
@@ -328,8 +334,20 @@ namespace OGN_DCS_Mod_Sync_App
                     progressBar1.Visible = false;
                     progressBar1.Value = 0;
                 }));
-            });
+            }));
         }
 
+        private void Rebuildbutton_Click(object sender, EventArgs e)
+        {
+            var symlinkManager = new SymlinkManager(dcsFolder, ognModFolder);
+
+            symlinkManager.DeleteCurrentSymlinks();
+            symlinkManager.CreateSymlinks();
+
+            if (sender != null)
+            {
+                SetCurrentAction("Finished rebuilding links.");
+            }
+        }
     }
 }

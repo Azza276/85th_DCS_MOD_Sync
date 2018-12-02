@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DownloadProgressConverter.cs" />
     <Compile Include="FtpDownloader.cs" />
     <Compile Include="ServerCheck.cs" />
     <Compile Include="FilePair.cs" />
