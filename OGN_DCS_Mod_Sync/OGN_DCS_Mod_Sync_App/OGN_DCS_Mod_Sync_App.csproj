@@ -17,7 +17,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <PublishUrl>F:\OGN DCS Mod Sync\</PublishUrl>
-    <Install>false</Install>
+    <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
@@ -26,8 +26,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <SupportUrl>https://www.ozgamingnetwork.com.au</SupportUrl>
+    <ErrorReportUrl>https://www.ozgamingnetwork.com.au</ErrorReportUrl>
+    <ProductName>OGN DCS Mod Sync</ProductName>
+    <PublisherName>Oz Gaming Network</PublisherName>
+    <SuiteName>OGN DCS Mod Sync</SuiteName>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.1.0.0</ApplicationVersion>
+    <ApplicationVersion>0.2.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -181,6 +186,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="85th SQN 64.ico" />
+    <None Include="Resources\update.png" />
+    <None Include="Resources\rebuild.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
