@@ -339,6 +339,17 @@ namespace OGN_DCS_Mod_Sync_App
 
         private void Rebuildbutton_Click(object sender, EventArgs e)
         {
+
+            if (verifyTask != null && !verifyTask.IsCompleted)
+            {
+                return;
+            }
+
+            if (downloadTask != null && !downloadTask.IsCompleted)
+            {
+                return;
+            }
+
             var symlinkManager = new SymlinkManager(dcsFolder, ognModFolder);
 
             symlinkManager.DeleteCurrentSymlinks();
