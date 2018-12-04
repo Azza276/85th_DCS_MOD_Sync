@@ -404,5 +404,11 @@ namespace OGN_DCS_Mod_Sync_App
                 }
             }
         }
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            var options = new OGN_DCS_options();
+            options.Show();
+        }
     }
 }

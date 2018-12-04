@@ -29,38 +29,41 @@ namespace OGN_DCS_Mod_Sync_App
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Button optionsButton;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OGN_DCS_Mod_Sync));
             this.titlePanel = new System.Windows.Forms.Panel();
             this.dcsServerText = new System.Windows.Forms.Label();
             this.fileSyncStatusText = new System.Windows.Forms.Label();
             this.squadTitle = new System.Windows.Forms.Label();
             this.ozGamingTitle = new System.Windows.Forms.Label();
-            this.updateStatus = new System.Windows.Forms.PictureBox();
-            this.serverStatus = new System.Windows.Forms.PictureBox();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.lowerTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.rebuildbutton = new System.Windows.Forms.Button();
-            this.VerifyButton = new System.Windows.Forms.Button();
-            this.downloadButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
             this.currentAction = new System.Windows.Forms.TextBox();
             this.LinkSite = new System.Windows.Forms.LinkLabel();
-            this.exitButton = new System.Windows.Forms.Button();
             this.toolTipFileSync = new System.Windows.Forms.ToolTip(this.components);
-            this.mainImage = new System.Windows.Forms.PictureBox();
             this.toolTipDcsServer = new System.Windows.Forms.ToolTip(this.components);
+            this.exitButton = new System.Windows.Forms.Button();
+            this.rebuildbutton = new System.Windows.Forms.Button();
+            this.VerifyButton = new System.Windows.Forms.Button();
+            this.downloadButton = new System.Windows.Forms.Button();
+            this.mainImage = new System.Windows.Forms.PictureBox();
+            this.updateStatus = new System.Windows.Forms.PictureBox();
+            this.serverStatus = new System.Windows.Forms.PictureBox();
+            this.logo = new System.Windows.Forms.PictureBox();
+            optionsButton = new System.Windows.Forms.Button();
             this.titlePanel.SuspendLayout();
+            this.lowerTablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
-            this.lowerTablePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainImage)).BeginInit();
             this.SuspendLayout();
             // 
             // titlePanel
             // 
             this.titlePanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.titlePanel.Controls.Add(optionsButton);
             this.titlePanel.Controls.Add(this.dcsServerText);
             this.titlePanel.Controls.Add(this.fileSyncStatusText);
             this.titlePanel.Controls.Add(this.squadTitle);
@@ -99,36 +102,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.ozGamingTitle.ForeColor = System.Drawing.Color.White;
             this.ozGamingTitle.Name = "ozGamingTitle";
             // 
-            // updateStatus
-            // 
-            resources.ApplyResources(this.updateStatus, "updateStatus");
-            this.updateStatus.BackColor = System.Drawing.Color.Transparent;
-            this.updateStatus.BackgroundImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
-            this.updateStatus.ErrorImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
-            this.updateStatus.InitialImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
-            this.updateStatus.Name = "updateStatus";
-            this.updateStatus.TabStop = false;
-            this.toolTipFileSync.SetToolTip(this.updateStatus, resources.GetString("updateStatus.ToolTip"));
-            // 
-            // serverStatus
-            // 
-            resources.ApplyResources(this.serverStatus, "serverStatus");
-            this.serverStatus.BackColor = System.Drawing.Color.Transparent;
-            this.serverStatus.BackgroundImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
-            this.serverStatus.ErrorImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
-            this.serverStatus.InitialImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
-            this.serverStatus.Name = "serverStatus";
-            this.serverStatus.TabStop = false;
-            this.toolTipFileSync.SetToolTip(this.serverStatus, resources.GetString("serverStatus.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.serverStatus, resources.GetString("serverStatus.ToolTip1"));
-            // 
-            // logo
-            // 
-            this.logo.BackColor = System.Drawing.Color.SteelBlue;
-            resources.ApplyResources(this.logo, "logo");
-            this.logo.Name = "logo";
-            this.logo.TabStop = false;
-            // 
             // lowerTablePanel
             // 
             resources.ApplyResources(this.lowerTablePanel, "lowerTablePanel");
@@ -143,6 +116,65 @@ namespace OGN_DCS_Mod_Sync_App
             this.lowerTablePanel.Controls.Add(this.exitButton, 2, 3);
             this.lowerTablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.lowerTablePanel.Name = "lowerTablePanel";
+            // 
+            // progressBar1
+            // 
+            resources.ApplyResources(this.progressBar1, "progressBar1");
+            this.lowerTablePanel.SetColumnSpan(this.progressBar1, 2);
+            this.progressBar1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            // 
+            // statusLabel
+            // 
+            resources.ApplyResources(this.statusLabel, "statusLabel");
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Name = "statusLabel";
+            // 
+            // currentAction
+            // 
+            resources.ApplyResources(this.currentAction, "currentAction");
+            this.currentAction.BackColor = System.Drawing.Color.SteelBlue;
+            this.currentAction.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.currentAction.CausesValidation = false;
+            this.currentAction.ForeColor = System.Drawing.Color.White;
+            this.currentAction.Name = "currentAction";
+            this.currentAction.ReadOnly = true;
+            this.lowerTablePanel.SetRowSpan(this.currentAction, 2);
+            // 
+            // LinkSite
+            // 
+            this.LinkSite.ActiveLinkColor = System.Drawing.Color.PaleTurquoise;
+            resources.ApplyResources(this.LinkSite, "LinkSite");
+            this.lowerTablePanel.SetColumnSpan(this.LinkSite, 2);
+            this.LinkSite.LinkColor = System.Drawing.Color.White;
+            this.LinkSite.Name = "LinkSite";
+            this.LinkSite.TabStop = true;
+            this.LinkSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkSite_LinkClicked_1);
+            // 
+            // toolTipFileSync
+            // 
+            this.toolTipFileSync.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipFileSync.ToolTipTitle = "File Synchronisation Status";
+            // 
+            // toolTipDcsServer
+            // 
+            this.toolTipDcsServer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipDcsServer.ToolTipTitle = "Oz Gaming Network DCS Server";
+            // 
+            // exitButton
+            // 
+            resources.ApplyResources(this.exitButton, "exitButton");
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
+            this.exitButton.FlatAppearance.BorderSize = 0;
+            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
+            this.exitButton.ForeColor = System.Drawing.Color.Transparent;
+            this.exitButton.Name = "exitButton";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // rebuildbutton
             // 
@@ -184,60 +216,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.downloadButton.UseVisualStyleBackColor = false;
             this.downloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
             // 
-            // progressBar1
-            // 
-            resources.ApplyResources(this.progressBar1, "progressBar1");
-            this.lowerTablePanel.SetColumnSpan(this.progressBar1, 2);
-            this.progressBar1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            // 
-            // statusLabel
-            // 
-            resources.ApplyResources(this.statusLabel, "statusLabel");
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Name = "statusLabel";
-            // 
-            // currentAction
-            // 
-            resources.ApplyResources(this.currentAction, "currentAction");
-            this.currentAction.BackColor = System.Drawing.Color.SteelBlue;
-            this.currentAction.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.currentAction.CausesValidation = false;
-            this.currentAction.ForeColor = System.Drawing.Color.White;
-            this.currentAction.Name = "currentAction";
-            this.currentAction.ReadOnly = true;
-            this.lowerTablePanel.SetRowSpan(this.currentAction, 2);
-            // 
-            // LinkSite
-            // 
-            this.LinkSite.ActiveLinkColor = System.Drawing.Color.PaleTurquoise;
-            resources.ApplyResources(this.LinkSite, "LinkSite");
-            this.lowerTablePanel.SetColumnSpan(this.LinkSite, 2);
-            this.LinkSite.LinkColor = System.Drawing.Color.White;
-            this.LinkSite.Name = "LinkSite";
-            this.LinkSite.TabStop = true;
-            this.LinkSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkSite_LinkClicked_1);
-            // 
-            // exitButton
-            // 
-            resources.ApplyResources(this.exitButton, "exitButton");
-            this.exitButton.BackColor = System.Drawing.Color.Transparent;
-            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.exitButton.FlatAppearance.BorderSize = 0;
-            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.exitButton.ForeColor = System.Drawing.Color.Transparent;
-            this.exitButton.Name = "exitButton";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
-            // toolTipFileSync
-            // 
-            this.toolTipFileSync.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipFileSync.ToolTipTitle = "File Synchronisation Status";
-            // 
             // mainImage
             // 
             resources.ApplyResources(this.mainImage, "mainImage");
@@ -245,10 +223,48 @@ namespace OGN_DCS_Mod_Sync_App
             this.mainImage.Name = "mainImage";
             this.mainImage.TabStop = false;
             // 
-            // toolTipDcsServer
+            // optionsButton
             // 
-            this.toolTipDcsServer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipDcsServer.ToolTipTitle = "Oz Gaming Network DCS Server";
+            resources.ApplyResources(optionsButton, "optionsButton");
+            optionsButton.BackColor = System.Drawing.Color.Transparent;
+            optionsButton.BackgroundImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.options;
+            optionsButton.FlatAppearance.BorderSize = 0;
+            optionsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            optionsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            optionsButton.ForeColor = System.Drawing.Color.Transparent;
+            optionsButton.Name = "optionsButton";
+            optionsButton.UseVisualStyleBackColor = false;
+            optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
+            // 
+            // updateStatus
+            // 
+            resources.ApplyResources(this.updateStatus, "updateStatus");
+            this.updateStatus.BackColor = System.Drawing.Color.Transparent;
+            this.updateStatus.BackgroundImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.updateStatus.ErrorImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.updateStatus.InitialImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.updateStatus.Name = "updateStatus";
+            this.updateStatus.TabStop = false;
+            this.toolTipFileSync.SetToolTip(this.updateStatus, resources.GetString("updateStatus.ToolTip"));
+            // 
+            // serverStatus
+            // 
+            resources.ApplyResources(this.serverStatus, "serverStatus");
+            this.serverStatus.BackColor = System.Drawing.Color.Transparent;
+            this.serverStatus.BackgroundImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.serverStatus.ErrorImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.serverStatus.InitialImage = global::OGN_DCS_Mod_Sync_App.Properties.Resources.xmas_16;
+            this.serverStatus.Name = "serverStatus";
+            this.serverStatus.TabStop = false;
+            this.toolTipFileSync.SetToolTip(this.serverStatus, resources.GetString("serverStatus.ToolTip"));
+            this.toolTipDcsServer.SetToolTip(this.serverStatus, resources.GetString("serverStatus.ToolTip1"));
+            // 
+            // logo
+            // 
+            this.logo.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.logo, "logo");
+            this.logo.Name = "logo";
+            this.logo.TabStop = false;
             // 
             // OGN_DCS_Mod_Sync
             // 
@@ -267,12 +283,12 @@ namespace OGN_DCS_Mod_Sync_App
             this.Shown += new System.EventHandler(this.OGN_DCS_Mod_Sync_Shown);
             this.titlePanel.ResumeLayout(false);
             this.titlePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.lowerTablePanel.ResumeLayout(false);
             this.lowerTablePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
 
         }

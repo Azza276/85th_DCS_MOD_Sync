@@ -117,18 +117,57 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="optionsButton.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="optionsButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="optionsButton.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Stretch</value>
+  </data>
+  <data name="optionsButton.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="optionsButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="optionsButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>656, 8</value>
+  </data>
+  <data name="optionsButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>32, 32</value>
+  </data>
+  <data name="optionsButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="optionsButton.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;optionsButton.Name" xml:space="preserve">
+    <value>optionsButton</value>
+  </data>
+  <data name="&gt;&gt;optionsButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;optionsButton.Parent" xml:space="preserve">
+    <value>titlePanel</value>
+  </data>
+  <data name="&gt;&gt;optionsButton.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="dcsServerText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dcsServerText.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="dcsServerText.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dcsServerText.Location" type="System.Drawing.Point, System.Drawing">
     <value>471, 45</value>
   </data>
@@ -169,7 +208,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>titlePanel</value>
   </data>
   <data name="&gt;&gt;dcsServerText.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="fileSyncStatusText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -208,7 +247,7 @@ Green - Files have been recently Synchronised.</value>
     <value>titlePanel</value>
   </data>
   <data name="&gt;&gt;fileSyncStatusText.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="squadTitle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -241,7 +280,7 @@ Green - Files have been recently Synchronised.</value>
     <value>titlePanel</value>
   </data>
   <data name="&gt;&gt;squadTitle.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="ozGamingTitle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -274,7 +313,7 @@ Green - Files have been recently Synchronised.</value>
     <value>titlePanel</value>
   </data>
   <data name="&gt;&gt;ozGamingTitle.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="updateStatus.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -286,16 +325,16 @@ Green - Files have been recently Synchronised.</value>
     <value>NoControl</value>
   </data>
   <data name="updateStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>657, 70</value>
+    <value>657, 65</value>
   </data>
   <data name="updateStatus.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>20, 20</value>
   </data>
   <data name="updateStatus.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>20, 20</value>
   </data>
   <data name="updateStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>20, 20</value>
   </data>
   <data name="updateStatus.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>AutoSize</value>
@@ -319,7 +358,7 @@ Green - Files have been recently Synchronised.</value>
     <value>titlePanel</value>
   </data>
   <data name="&gt;&gt;updateStatus.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="serverStatus.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -331,16 +370,16 @@ Green - Files have been recently Synchronised.</value>
     <value>NoControl</value>
   </data>
   <data name="serverStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>657, 45</value>
+    <value>657, 40</value>
   </data>
   <data name="serverStatus.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>20, 20</value>
   </data>
   <data name="serverStatus.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>20, 20</value>
   </data>
   <data name="serverStatus.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
+    <value>20, 20</value>
   </data>
   <data name="serverStatus.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>AutoSize</value>
@@ -370,7 +409,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>titlePanel</value>
   </data>
   <data name="&gt;&gt;serverStatus.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="logo.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2614,7 +2653,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>titlePanel</value>
   </data>
   <data name="&gt;&gt;logo.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="titlePanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -7928,6 +7967,9 @@ Green - DCS Server is online and ready to join.</value>
         DgD4AAAAAAA+APwAAAAAAH4A/gAAAAAA/gD/gAAAAAF+AP/AAAAAB/4A//AAAAAP/gD/+AAAAD/+AP/+
         AAAA//4A///AAAP//gA=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
