@@ -48,8 +48,8 @@ namespace OGN_DCS_Mod_Sync_App
             this.LinkSite = new System.Windows.Forms.LinkLabel();
             this.exitButton = new System.Windows.Forms.Button();
             this.toolTipFileSync = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipDcsServer = new System.Windows.Forms.ToolTip(this.components);
             this.mainImage = new System.Windows.Forms.PictureBox();
+            this.toolTipDcsServer = new System.Windows.Forms.ToolTip(this.components);
             this.titlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).BeginInit();
@@ -60,7 +60,6 @@ namespace OGN_DCS_Mod_Sync_App
             // 
             // titlePanel
             // 
-            resources.ApplyResources(this.titlePanel, "titlePanel");
             this.titlePanel.BackColor = System.Drawing.Color.SteelBlue;
             this.titlePanel.Controls.Add(this.dcsServerText);
             this.titlePanel.Controls.Add(this.fileSyncStatusText);
@@ -69,9 +68,8 @@ namespace OGN_DCS_Mod_Sync_App
             this.titlePanel.Controls.Add(this.updateStatus);
             this.titlePanel.Controls.Add(this.serverStatus);
             this.titlePanel.Controls.Add(this.logo);
+            resources.ApplyResources(this.titlePanel, "titlePanel");
             this.titlePanel.Name = "titlePanel";
-            this.toolTipDcsServer.SetToolTip(this.titlePanel, resources.GetString("titlePanel.ToolTip"));
-            this.toolTipFileSync.SetToolTip(this.titlePanel, resources.GetString("titlePanel.ToolTip1"));
             // 
             // dcsServerText
             // 
@@ -87,7 +85,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.fileSyncStatusText.ForeColor = System.Drawing.Color.White;
             this.fileSyncStatusText.Name = "fileSyncStatusText";
             this.toolTipFileSync.SetToolTip(this.fileSyncStatusText, resources.GetString("fileSyncStatusText.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.fileSyncStatusText, resources.GetString("fileSyncStatusText.ToolTip1"));
             // 
             // squadTitle
             // 
@@ -95,16 +92,12 @@ namespace OGN_DCS_Mod_Sync_App
             this.squadTitle.BackColor = System.Drawing.Color.SteelBlue;
             this.squadTitle.ForeColor = System.Drawing.Color.White;
             this.squadTitle.Name = "squadTitle";
-            this.toolTipFileSync.SetToolTip(this.squadTitle, resources.GetString("squadTitle.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.squadTitle, resources.GetString("squadTitle.ToolTip1"));
             // 
             // ozGamingTitle
             // 
             resources.ApplyResources(this.ozGamingTitle, "ozGamingTitle");
             this.ozGamingTitle.ForeColor = System.Drawing.Color.White;
             this.ozGamingTitle.Name = "ozGamingTitle";
-            this.toolTipFileSync.SetToolTip(this.ozGamingTitle, resources.GetString("ozGamingTitle.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.ozGamingTitle, resources.GetString("ozGamingTitle.ToolTip1"));
             // 
             // updateStatus
             // 
@@ -116,7 +109,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.updateStatus.Name = "updateStatus";
             this.updateStatus.TabStop = false;
             this.toolTipFileSync.SetToolTip(this.updateStatus, resources.GetString("updateStatus.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.updateStatus, resources.GetString("updateStatus.ToolTip1"));
             // 
             // serverStatus
             // 
@@ -132,12 +124,10 @@ namespace OGN_DCS_Mod_Sync_App
             // 
             // logo
             // 
-            resources.ApplyResources(this.logo, "logo");
             this.logo.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(this.logo, "logo");
             this.logo.Name = "logo";
             this.logo.TabStop = false;
-            this.toolTipFileSync.SetToolTip(this.logo, resources.GetString("logo.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.logo, resources.GetString("logo.ToolTip1"));
             // 
             // lowerTablePanel
             // 
@@ -153,8 +143,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.lowerTablePanel.Controls.Add(this.exitButton, 2, 3);
             this.lowerTablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.lowerTablePanel.Name = "lowerTablePanel";
-            this.toolTipFileSync.SetToolTip(this.lowerTablePanel, resources.GetString("lowerTablePanel.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.lowerTablePanel, resources.GetString("lowerTablePanel.ToolTip1"));
             // 
             // rebuildbutton
             // 
@@ -167,8 +155,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.rebuildbutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.rebuildbutton.ForeColor = System.Drawing.Color.Transparent;
             this.rebuildbutton.Name = "rebuildbutton";
-            this.toolTipFileSync.SetToolTip(this.rebuildbutton, resources.GetString("rebuildbutton.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.rebuildbutton, resources.GetString("rebuildbutton.ToolTip1"));
             this.rebuildbutton.UseVisualStyleBackColor = false;
             this.rebuildbutton.Click += new System.EventHandler(this.Rebuildbutton_Click);
             // 
@@ -182,8 +168,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.VerifyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.VerifyButton.ForeColor = System.Drawing.Color.Transparent;
             this.VerifyButton.Name = "VerifyButton";
-            this.toolTipFileSync.SetToolTip(this.VerifyButton, resources.GetString("VerifyButton.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.VerifyButton, resources.GetString("VerifyButton.ToolTip1"));
             this.VerifyButton.UseVisualStyleBackColor = false;
             this.VerifyButton.Click += new System.EventHandler(this.VerifyButton_Click);
             // 
@@ -197,8 +181,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.downloadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.downloadButton.ForeColor = System.Drawing.Color.Transparent;
             this.downloadButton.Name = "downloadButton";
-            this.toolTipFileSync.SetToolTip(this.downloadButton, resources.GetString("downloadButton.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.downloadButton, resources.GetString("downloadButton.ToolTip1"));
             this.downloadButton.UseVisualStyleBackColor = false;
             this.downloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
             // 
@@ -209,16 +191,12 @@ namespace OGN_DCS_Mod_Sync_App
             this.progressBar1.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.toolTipDcsServer.SetToolTip(this.progressBar1, resources.GetString("progressBar1.ToolTip"));
-            this.toolTipFileSync.SetToolTip(this.progressBar1, resources.GetString("progressBar1.ToolTip1"));
             // 
             // statusLabel
             // 
             resources.ApplyResources(this.statusLabel, "statusLabel");
             this.statusLabel.ForeColor = System.Drawing.Color.White;
             this.statusLabel.Name = "statusLabel";
-            this.toolTipFileSync.SetToolTip(this.statusLabel, resources.GetString("statusLabel.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.statusLabel, resources.GetString("statusLabel.ToolTip1"));
             // 
             // currentAction
             // 
@@ -230,19 +208,15 @@ namespace OGN_DCS_Mod_Sync_App
             this.currentAction.Name = "currentAction";
             this.currentAction.ReadOnly = true;
             this.lowerTablePanel.SetRowSpan(this.currentAction, 2);
-            this.toolTipDcsServer.SetToolTip(this.currentAction, resources.GetString("currentAction.ToolTip"));
-            this.toolTipFileSync.SetToolTip(this.currentAction, resources.GetString("currentAction.ToolTip1"));
             // 
             // LinkSite
             // 
-            resources.ApplyResources(this.LinkSite, "LinkSite");
             this.LinkSite.ActiveLinkColor = System.Drawing.Color.PaleTurquoise;
+            resources.ApplyResources(this.LinkSite, "LinkSite");
             this.lowerTablePanel.SetColumnSpan(this.LinkSite, 2);
             this.LinkSite.LinkColor = System.Drawing.Color.White;
             this.LinkSite.Name = "LinkSite";
             this.LinkSite.TabStop = true;
-            this.toolTipDcsServer.SetToolTip(this.LinkSite, resources.GetString("LinkSite.ToolTip"));
-            this.toolTipFileSync.SetToolTip(this.LinkSite, resources.GetString("LinkSite.ToolTip1"));
             this.LinkSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkSite_LinkClicked_1);
             // 
             // exitButton
@@ -256,8 +230,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
             this.exitButton.ForeColor = System.Drawing.Color.Transparent;
             this.exitButton.Name = "exitButton";
-            this.toolTipFileSync.SetToolTip(this.exitButton, resources.GetString("exitButton.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.exitButton, resources.GetString("exitButton.ToolTip1"));
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
@@ -266,19 +238,17 @@ namespace OGN_DCS_Mod_Sync_App
             this.toolTipFileSync.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipFileSync.ToolTipTitle = "File Synchronisation Status";
             // 
-            // toolTipDcsServer
-            // 
-            this.toolTipDcsServer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipDcsServer.ToolTipTitle = "Oz Gaming Network DCS Server";
-            // 
             // mainImage
             // 
             resources.ApplyResources(this.mainImage, "mainImage");
             this.mainImage.BackColor = System.Drawing.Color.SteelBlue;
             this.mainImage.Name = "mainImage";
             this.mainImage.TabStop = false;
-            this.toolTipFileSync.SetToolTip(this.mainImage, resources.GetString("mainImage.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this.mainImage, resources.GetString("mainImage.ToolTip1"));
+            // 
+            // toolTipDcsServer
+            // 
+            this.toolTipDcsServer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipDcsServer.ToolTipTitle = "Oz Gaming Network DCS Server";
             // 
             // OGN_DCS_Mod_Sync
             // 
@@ -292,8 +262,6 @@ namespace OGN_DCS_Mod_Sync_App
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "OGN_DCS_Mod_Sync";
-            this.toolTipFileSync.SetToolTip(this, resources.GetString("$this.ToolTip"));
-            this.toolTipDcsServer.SetToolTip(this, resources.GetString("$this.ToolTip1"));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OGN_DCS_Mod_Sync_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.OGN_DCS_Mod_Sync_Shown);
