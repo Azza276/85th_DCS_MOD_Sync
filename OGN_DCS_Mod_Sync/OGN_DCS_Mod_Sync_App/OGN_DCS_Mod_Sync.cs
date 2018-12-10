@@ -108,7 +108,7 @@ namespace OGN_DCS_Mod_Sync_App
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Visible = true;
-                        progressBar1.Maximum = 100;
+                        progressBar1.Maximum = (int)totalBytesToDownload;
                     }));
 
                     int downloadCount = 0;
@@ -116,10 +116,9 @@ namespace OGN_DCS_Mod_Sync_App
                     var ftpDownloader = new FtpDownloader();
                     ftpDownloader.OnProgressChanged += new FtpDownloader.ProgressChangedSignature((bytes) =>
                     {
-                        var percentage = bytes / (double)totalBytesToDownload * 100;
                         Invoke(new MethodInvoker(() =>
                         {
-                            progressBar1.Value = (int)percentage;
+                            progressBar1.Value = (int)bytes;
                         }));
                     });
 
@@ -133,8 +132,19 @@ namespace OGN_DCS_Mod_Sync_App
                         Interlocked.Increment(ref downloadCount);
                     });
 
-                    ftpDownloader.DownloadFiles(filesToDownload, 4);
-                    progressBar1.Value = progressBar1.Maximum;
+                    bool allDownloadedSuccessfully = ftpDownloader.DownloadFiles(filesToDownload, 4);
+
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        progressBar1.Value = progressBar1.Maximum;
+                    }));
+                    
+
+                    if (!allDownloadedSuccessfully)
+                    {
+                        MessageBox.Show("Possible FTP Connection Problem" + Environment.NewLine + "Not all files were downloaded." + Environment.NewLine + "Please verify and try again.", 
+                                        "FTP Download Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
 
                     var filesToDelete = filesThatRequireUpdate.Where(f => f.WebFileInfo == null).ToList();
                     filesToDelete.ForEach(pair =>
@@ -261,8 +271,25 @@ namespace OGN_DCS_Mod_Sync_App
                     progressBar1.Style = ProgressBarStyle.Marquee;
                     progressBar1.MarqueeAnimationSpeed = 50;
                 }));
+
                 var FtpDownloader = new FtpDownloader();
-                var allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL);
+
+                List<WebFileInfo> allFilesOnWebserver;
+                try
+                {
+                    allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL);
+                }
+                catch (Exception ex)
+                {
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        progressBar1.Style = ProgressBarStyle.Continuous;
+                        progressBar1.Hide();
+                    }));
+
+                    SetCurrentAction("Could not get a file list from the server. Please try again later." + Environment.NewLine + "Cause: " + ex.Message);
+                    return;
+                }
 
                 Invoke(new MethodInvoker(() =>
                 {
@@ -339,26 +366,49 @@ namespace OGN_DCS_Mod_Sync_App
 
         private void Rebuildbutton_Click(object sender, EventArgs e)
         {
-
-            if (verifyTask != null && !verifyTask.IsCompleted)
-            {
-                return;
-            }
-
-            if (downloadTask != null && !downloadTask.IsCompleted)
-            {
-                return;
-            }
-
-            var symlinkManager = new SymlinkManager(dcsFolder, ognModFolder);
-
-            symlinkManager.DeleteCurrentSymlinks();
-            symlinkManager.CreateSymlinks();
-
             if (sender != null)
             {
-                SetCurrentAction("Finished rebuilding links.");
+                //This is an automated call
+
+                if (verifyTask != null && !verifyTask.IsCompleted)
+                {
+                    return;
+                }
+
+                if (downloadTask != null && !downloadTask.IsCompleted)
+                {
+                    return;
+                }
             }
+
+            try
+            {
+                var symlinkManager = new SymlinkManager(dcsFolder, ognModFolder);
+                symlinkManager.DeleteCurrentSymlinks();
+                symlinkManager.CreateSymlinks();
+
+                if (sender != null)
+                {
+                    SetCurrentAction("Finished rebuilding links.");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Contains("0x80070522"))
+                {
+                    MessageBox.Show("To create symlinks, the program must be run as Adminstrator", "Error rebuilding symlinks", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show(ex.ToString(), "Unknown error while rebuilding symlinks", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void optionsButton_Click(object sender, EventArgs e)
+        {
+            var options = new OGN_DCS_options();
+            options.Show();
         }
     }
 }

@@ -26,8 +26,10 @@ namespace libOGN_DCS_Mod_app
         public delegate void FinishedDownloadSignature(FilePair pair);
         public FinishedDownloadSignature OnFinishedDownload;
 
-        public void DownloadFiles(IEnumerable<FilePair> files, int concurrentDownloads)
+        public bool DownloadFiles(IEnumerable<FilePair> files, int concurrentDownloads)
         {
+            bool result = false;
+
             var filesToDownload = files.Select(pair => new
             {
                 Pair = pair,
@@ -48,7 +50,9 @@ namespace libOGN_DCS_Mod_app
             });
 
             //Start downloading files
-            filesToDownload
+            try
+            {
+                filesToDownload
                 .AsParallel()
                 .WithDegreeOfParallelism(concurrentDownloads)
                 .ForAll(f =>
@@ -58,7 +62,16 @@ namespace libOGN_DCS_Mod_app
                     OnFinishedDownload?.Invoke(f.Pair);
                 });
 
+                result = true;
+            }
+            catch (AggregateException ae)
+            {
+                //Do nothing. Would be worth logging at a later stage
+            }
+
             progressTaskToken.Cancel();
+
+            return result;
         }
 
         //Downloads the files that require update.
@@ -153,9 +166,14 @@ namespace libOGN_DCS_Mod_app
                 //}
 
                 conn.SetWorkingDirectory("OGN_Mods");
-                foreach (FtpListItem item in conn.GetListing(
+
+                var list = conn.GetListing(
                     conn.GetWorkingDirectory(),
-                    FtpListOption.Modify | FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList))
+                    //FtpListOption.Modify | FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList);
+                    //FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList);
+                    FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList);
+
+                foreach (FtpListItem item in list)
                 {
                     switch (item.Type)
                     {
@@ -174,7 +192,6 @@ namespace libOGN_DCS_Mod_app
                             if (item.LinkObject != null)
                             {
                                 // switch (item.LinkObject.Type)...
-
                             }
                             break;
                     }

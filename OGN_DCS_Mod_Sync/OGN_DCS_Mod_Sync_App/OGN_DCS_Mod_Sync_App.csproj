@@ -32,7 +32,7 @@
     <PublisherName>Oz Gaming Network</PublisherName>
     <SuiteName>OGN DCS Mod Sync</SuiteName>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>0.2.0.0</ApplicationVersion>
+    <ApplicationVersion>0.3.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -74,7 +74,7 @@
     <ManifestKeyFile>OGN_DCS_Mod_Sync_App_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -85,6 +85,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -102,6 +103,12 @@
     <Compile Include="OGN_DCS_Mod_Sync.Designer.cs">
       <DependentUpon>OGN_DCS_Mod_Sync.cs</DependentUpon>
     </Compile>
+    <Compile Include="OGN_DCS_options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OGN_DCS_options.Designer.cs">
+      <DependentUpon>OGN_DCS_options.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="OGN_DCS_Mod_Sync.en-AU.resx">
@@ -109,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OGN_DCS_Mod_Sync.resx">
       <DependentUpon>OGN_DCS_Mod_Sync.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OGN_DCS_options.resx">
+      <DependentUpon>OGN_DCS_options.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -186,6 +196,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="85th SQN 64.ico" />
+    <None Include="Resources\options1.png" />
+    <None Include="Resources\options.png" />
     <None Include="Resources\update.png" />
     <None Include="Resources\rebuild.png" />
   </ItemGroup>
