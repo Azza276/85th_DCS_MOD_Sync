@@ -69,13 +69,17 @@
   <ItemGroup>
     <Compile Include="DownloadProgressConverter.cs" />
     <Compile Include="FtpDownloader.cs" />
+    <Compile Include="Links\JunctionPoint.cs" />
+    <Compile Include="Links\Providers\LinkUtility.cs" />
+    <Compile Include="Links\Providers\JunctionUtility.cs" />
+    <Compile Include="Links\Providers\SymlinkUtility.cs" />
     <Compile Include="ServerCheck.cs" />
     <Compile Include="FilePair.cs" />
     <Compile Include="FolderHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="SymlinkManager.cs" />
+    <Compile Include="Links\LinkManager.cs" />
     <Compile Include="WebFileInfo.cs" />
   </ItemGroup>
   <ItemGroup>

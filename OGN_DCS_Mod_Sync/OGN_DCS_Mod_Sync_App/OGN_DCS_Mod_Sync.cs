@@ -1,4 +1,5 @@
 using libOGN_DCS_Mod_app;
+using libOGN_DCS_Mod_app.Links.Providers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,6 @@ namespace OGN_DCS_Mod_Sync_App
         public OGN_DCS_Mod_Sync()
         {
             InitializeComponent();
-            Init();
         }
 
         public void Init()
@@ -138,11 +138,11 @@ namespace OGN_DCS_Mod_Sync_App
                     {
                         progressBar1.Value = progressBar1.Maximum;
                     }));
-                    
+
 
                     if (!allDownloadedSuccessfully)
                     {
-                        MessageBox.Show("Possible FTP Connection Problem" + Environment.NewLine + "Not all files were downloaded." + Environment.NewLine + "Please verify and try again.", 
+                        MessageBox.Show("Possible FTP Connection Problem" + Environment.NewLine + "Not all files were downloaded." + Environment.NewLine + "Please verify and try again.",
                                         "FTP Download Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
@@ -205,6 +205,7 @@ namespace OGN_DCS_Mod_Sync_App
         private void OGN_DCS_Mod_Sync_Shown(object sender, EventArgs e)
         {
             SetupServerCheckTimer();
+            Init();
         }
 
         private void OGN_DCS_Mod_Sync_FormClosing(object sender, FormClosingEventArgs e)
@@ -383,9 +384,14 @@ namespace OGN_DCS_Mod_Sync_App
 
             try
             {
-                var symlinkManager = new SymlinkManager(dcsFolder, ognModFolder);
-                symlinkManager.DeleteCurrentSymlinks();
-                symlinkManager.CreateSymlinks();
+                //TODO: Based on the user's settings, use Symlinks or Junctions.
+                //Junctions don't require admin rights, but can only reference local drives.
+                //Symlinks require admin rights, but can reference network drivers.
+
+                var linkUtility = new JunctionUtility();
+                var linkManager = new LinkManager(dcsFolder, ognModFolder, linkUtility);
+                linkManager.DeleteCurrentLinks();
+                linkManager.CreateLinks();
 
                 if (sender != null)
                 {
@@ -400,7 +406,7 @@ namespace OGN_DCS_Mod_Sync_App
                 }
                 else
                 {
-                    MessageBox.Show(ex.ToString(), "Unknown error while rebuilding symlinks", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.ToString(), "Unknown error while rebuilding links", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

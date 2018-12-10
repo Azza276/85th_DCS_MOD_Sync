@@ -64,7 +64,7 @@ namespace libOGN_DCS_Mod_app
 
                 result = true;
             }
-            catch (AggregateException ae)
+            catch (AggregateException)
             {
                 //Do nothing. Would be worth logging at a later stage
             }
