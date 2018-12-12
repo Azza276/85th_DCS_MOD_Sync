@@ -238,6 +238,11 @@ namespace OGN_DCS_Mod_Sync_App
         string ognModFolder;
         private void VerifyButton_Click(object sender, EventArgs e)
         {
+            if (dcsFolder == null)
+            {
+                return;
+            }
+
             if (verifyTask != null && !verifyTask.IsCompleted)
             {
                 return;
@@ -367,9 +372,14 @@ namespace OGN_DCS_Mod_Sync_App
 
         private void Rebuildbutton_Click(object sender, EventArgs e)
         {
-            if (sender != null)
+            if (dcsFolder == null)
             {
-                //This is an automated call
+                return;
+            }
+
+            if (sender == null)
+            {
+                //This is a user call
 
                 if (verifyTask != null && !verifyTask.IsCompleted)
                 {
