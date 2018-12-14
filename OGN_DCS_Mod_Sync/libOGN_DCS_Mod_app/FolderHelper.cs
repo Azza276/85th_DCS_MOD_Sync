@@ -4,9 +4,9 @@ using System.IO;
 
 namespace libOGN_DCS_Mod_app
 {
-    public class FolderHelper
+    public static class FolderHelper
     {
-        public string DetectDCSFolder()
+        private static string DetectDCSFolder()
         {
             string result = null;
 
@@ -21,14 +21,40 @@ namespace libOGN_DCS_Mod_app
             foreach (string folder in folderLocations)
             {
                 string fullFolderName = folder.Replace("[Username]", Environment.UserName);
-                //Console.WriteLine(fullFolderName);
 
                 if (Directory.Exists(fullFolderName))
                 {
-                    //Console.WriteLine("Folder found!: " + fullFolderName);
                     result = fullFolderName;
                 }
             }
+
+            return result;
+        }
+        private static string DetectSubfolder(string subfolderName)
+        {
+            string result = null;
+
+            string dcsFolder = DetectDCSFolder();
+            string potentialPath = Path.Combine(dcsFolder, subfolderName);
+            if (Directory.Exists(potentialPath))
+            {
+                result = potentialPath;
+            }
+
+            return result;
+        }
+
+        public static string DetectLiveriesFolder()
+        {
+            string result = DetectSubfolder("Liveries");
+
+            return result;
+        }
+
+        public static string DetectOGNModsFolder()
+        {
+            string dcsFolder = DetectDCSFolder();
+            string result = Path.Combine(dcsFolder, "OGN_Mods");
 
             return result;
         }
