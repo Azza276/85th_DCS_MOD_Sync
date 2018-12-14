@@ -45,7 +45,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(885, 174);
+            this.btnOK.Location = new System.Drawing.Point(464, 174);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
@@ -56,7 +56,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(966, 174);
+            this.btnCancel.Location = new System.Drawing.Point(545, 174);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -92,9 +92,19 @@
             0,
             0,
             0});
+            this.downloadThreads.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.downloadThreads.Name = "downloadThreads";
             this.downloadThreads.Size = new System.Drawing.Size(53, 20);
             this.downloadThreads.TabIndex = 7;
+            this.downloadThreads.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // label3
             // 
@@ -135,7 +145,7 @@
             this.ognFolderSettings.Folder = "";
             this.ognFolderSettings.Location = new System.Drawing.Point(123, 12);
             this.ognFolderSettings.Name = "ognFolderSettings";
-            this.ognFolderSettings.Size = new System.Drawing.Size(918, 24);
+            this.ognFolderSettings.Size = new System.Drawing.Size(497, 24);
             this.ognFolderSettings.TabIndex = 6;
             this.ognFolderSettings.ValueForAutodetect = null;
             // 
@@ -148,7 +158,7 @@
             this.liveriesFolderSettings.Folder = "";
             this.liveriesFolderSettings.Location = new System.Drawing.Point(123, 56);
             this.liveriesFolderSettings.Name = "liveriesFolderSettings";
-            this.liveriesFolderSettings.Size = new System.Drawing.Size(918, 24);
+            this.liveriesFolderSettings.Size = new System.Drawing.Size(497, 24);
             this.liveriesFolderSettings.TabIndex = 4;
             this.liveriesFolderSettings.ValueForAutodetect = null;
             // 
@@ -157,7 +167,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(1053, 209);
+            this.ClientSize = new System.Drawing.Size(632, 209);
             this.Controls.Add(this.chkAutoBuildLinksAfterDownload);
             this.Controls.Add(this.chkAutoDownloadAfterVerification);
             this.Controls.Add(this.label3);
@@ -176,7 +186,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Options";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.OGN_DCS_options_Load);
             ((System.ComponentModel.ISupportInitialize)(this.downloadThreads)).EndInit();
             this.ResumeLayout(false);

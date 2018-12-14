@@ -25,6 +25,7 @@ namespace libOGN_DCS_Mod_app
                 if (Directory.Exists(fullFolderName))
                 {
                     result = fullFolderName;
+                    break;
                 }
             }
 

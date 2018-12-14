@@ -75,7 +75,6 @@ namespace OGN_DCS_Mod_Sync_App
                 dialog.ShowNewFolderButton = true;
                 dialog.SelectedPath = ucAutoDetectAndOverride1.txt.Text;
                 
-
                 var result = dialog.ShowDialog();
                 if (result == DialogResult.OK)
                 {

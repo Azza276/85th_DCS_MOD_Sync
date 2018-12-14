@@ -29,15 +29,7 @@ namespace OGN_DCS_Mod_Sync_App
 
         private void chkAutodetect_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkAutodetect.Checked)
-            {
-                txt.ReadOnly = true;
-                txt.BackColor = Color.FromKnownColor(KnownColor.ControlLight);
-            } else
-            {
-                txt.ReadOnly = false;
-                txt.BackColor = Color.FromKnownColor(KnownColor.Window);
-            }
+
         }
     }
 }
