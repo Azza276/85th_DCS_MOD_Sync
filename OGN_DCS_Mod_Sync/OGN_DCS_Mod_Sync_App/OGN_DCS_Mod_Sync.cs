@@ -1,5 +1,6 @@
 using libOGN_DCS_Mod_app;
 using libOGN_DCS_Mod_app.Links.Providers;
+using OGN_DCS_Mod_Sync_App.Config;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,36 +25,44 @@ namespace OGN_DCS_Mod_Sync_App
             InitializeComponent();
         }
 
+        Settings settings;
+        string settingsFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.json");
+
         public void Init()
         {
-            //Determine DCS Users Directory
-            var folderHelper = new FolderHelper();
-            dcsFolder = folderHelper.DetectDCSFolder();
+            //Load the settings from file
+            settings = Settings.LoadFromFile(settingsFilename);
 
-            if (dcsFolder == null)
+            //Determine the Liveries folder
+            if (settings.AutodetectLiveriesFolder)
             {
-                SetCurrentAction("Could not find DCS folder");
-                return;
+                liveriesFolder = FolderHelper.DetectLiveriesFolder();
+
+                if (!Directory.Exists(liveriesFolder))
+                {
+                    SetCurrentAction("Could not autodetect Liveries folder. Please provide it using the Options window.");
+                    return;
+                }
+            }
+            else
+            {
+                liveriesFolder = settings.LiveriesFolderOverride;
             }
 
-            //Create the Liveries folder if it doesn't exist
-            liveriesFolder = Path.Combine(dcsFolder, "Liveries");
-            if (!Directory.Exists(liveriesFolder))
+            //Determine the OGN Mods folder
+            if (settings.AutodetectOgnModsFolder)
             {
-                Directory.CreateDirectory(liveriesFolder);
-            }
+                ognModFolder = FolderHelper.DetectOGNModsFolder();
 
-            //Create OGN Mod and Liveries Folder if it doesn't exist
-            ognModFolder = Path.Combine(dcsFolder, "OGN_Mods");
-            if (!Directory.Exists(ognModFolder))
-            {
-                Directory.CreateDirectory(ognModFolder);
+                if (ognModFolder == null)
+                {
+                    SetCurrentAction("Could not autodetect OGN Mods folder. Please provide it using the Options window.");
+                    return;
+                }
             }
-
-            string ognLivFolder = Path.Combine(ognModFolder, "Liveries");
-            if (!Directory.Exists(ognLivFolder))
+            else
             {
-                Directory.CreateDirectory(ognLivFolder);
+                ognModFolder = settings.OgnModsFolderOverride;
             }
         }
 
@@ -74,14 +83,18 @@ namespace OGN_DCS_Mod_Sync_App
 
         private void DownloadButton_Click(object sender, EventArgs e)
         {
-            if (verifyTask != null && !verifyTask.IsCompleted)
+            if (sender != null)
             {
-                return;
-            }
+                //This is a user call
+                if (verifyTask != null && !verifyTask.IsCompleted)
+                {
+                    return;
+                }
 
-            if (downloadTask != null && !downloadTask.IsCompleted)
-            {
-                return;
+                if (downloadTask != null && !downloadTask.IsCompleted)
+                {
+                    return;
+                }
             }
 
             if (filesAreInSync)
@@ -101,9 +114,9 @@ namespace OGN_DCS_Mod_Sync_App
                             progressBar1.Maximum = 1;
                         }));
 
-                    var filesToDownload = filesThatRequireUpdate.Where(f => f.WebFileInfo != null);
+                    var filesToDownload = filesThatRequireUpdate.Where(f => f.RemoteFileInfo != null);
                     var totalFilesToDownload = filesToDownload.Count();
-                    var totalBytesToDownload = filesToDownload.Sum(f => f.WebFileInfo.Length);
+                    var totalBytesToDownload = filesToDownload.Sum(f => f.RemoteFileInfo.Length);
 
                     Invoke(new MethodInvoker(() =>
                     {
@@ -124,7 +137,7 @@ namespace OGN_DCS_Mod_Sync_App
 
                     ftpDownloader.OnStartDownload += new FtpDownloader.StartDownloadSignature((pair) =>
                     {
-                        SetCurrentAction("Downloading " + Path.GetDirectoryName(pair.LocalFilename) + @"\" + Path.GetFileNameWithoutExtension(pair.LocalFilename));
+                        SetCurrentAction("Downloading " + Path.GetFileName(pair.LocalFilename));
                     });
 
                     ftpDownloader.OnFinishedDownload += new FtpDownloader.FinishedDownloadSignature((pair) =>
@@ -132,7 +145,7 @@ namespace OGN_DCS_Mod_Sync_App
                         Interlocked.Increment(ref downloadCount);
                     });
 
-                    bool allDownloadedSuccessfully = ftpDownloader.DownloadFiles(filesToDownload, 4);
+                    bool allDownloadedSuccessfully = ftpDownloader.DownloadFiles(filesToDownload, settings.DownloadThreads);
 
                     Invoke(new MethodInvoker(() =>
                     {
@@ -146,7 +159,7 @@ namespace OGN_DCS_Mod_Sync_App
                                         "FTP Download Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
-                    var filesToDelete = filesThatRequireUpdate.Where(f => f.WebFileInfo == null).ToList();
+                    var filesToDelete = filesThatRequireUpdate.Where(f => f.RemoteFileInfo == null).ToList();
                     filesToDelete.ForEach(pair =>
                     {
                         SetCurrentAction("Removing file " + Path.GetDirectoryName(pair.LocalFilename) + @"\" + Path.GetFileNameWithoutExtension(pair.LocalFilename));
@@ -165,7 +178,10 @@ namespace OGN_DCS_Mod_Sync_App
                         progressBar1.Value = 0;
                     }));
 
-                    Rebuildbutton_Click(null, null);
+                    if (settings.AutomaticallyBuildLinksAfterDownload)
+                    {
+                        Rebuildbutton_Click(null, null);
+                    }
 
                     filesThatRequireUpdate.Clear();
                 }));
@@ -233,12 +249,11 @@ namespace OGN_DCS_Mod_Sync_App
             }));
         }
 
-        string dcsFolder;
         string liveriesFolder;
         string ognModFolder;
         private void VerifyButton_Click(object sender, EventArgs e)
         {
-            if (dcsFolder == null)
+            if (liveriesFolder == null || ognModFolder == null)
             {
                 return;
             }
@@ -255,6 +270,20 @@ namespace OGN_DCS_Mod_Sync_App
 
             verifyTask = Task.Factory.StartNew((Action)(() =>
             {
+                filesThatRequireUpdate.Clear();
+
+                //Create OGN Mods if it doesn't exist
+                if (!Directory.Exists(ognModFolder))
+                {
+                    Directory.CreateDirectory(ognModFolder);
+                }
+
+                string ognLivFolder = Path.Combine(ognModFolder, "Liveries");
+                if (!Directory.Exists(ognLivFolder))
+                {
+                    Directory.CreateDirectory(ognLivFolder);
+                }
+
                 //Reset the progress bar
                 Invoke(new MethodInvoker(() =>
                 {
@@ -308,9 +337,12 @@ namespace OGN_DCS_Mod_Sync_App
                 //Add the files from the web server
                 pairs.AddRange(allFilesOnWebserver.Select(webFileInfo =>
                 {
-                    string localFilename = (dcsFolder + webFileInfo.URL);
+                    //remove the working directory from the front
+                    string redactedURL = webFileInfo.URL.Replace("/" + FtpDownloader.FTP_WORKING_DIRECTORY, "");
 
-                    var pair = new FilePair(ognModFolder, webFileInfo, localFilename);
+                    string localFilename = Path.GetFullPath(ognModFolder + redactedURL);
+
+                    var pair = new FilePair(webFileInfo, localFilename);
 
                     return pair;
                 }));
@@ -319,7 +351,7 @@ namespace OGN_DCS_Mod_Sync_App
                 var localFiles = Directory.GetFiles(ognModFolder, "*.*", SearchOption.AllDirectories);
                 var localFilesNotOnWebServer = localFiles
                                 .Where(f => !pairs.Exists(p => p.LocalFilename.Equals(f)))
-                                .Select(f => new FilePair(ognModFolder, null, f))
+                                .Select(f => new FilePair(null, f))
                                 .ToList();
                 pairs.AddRange(localFilesNotOnWebServer);
 
@@ -339,12 +371,12 @@ namespace OGN_DCS_Mod_Sync_App
                 }
                 else
                 {
-                    var filesToDownload = filesThatRequireUpdate.Where(f => f.WebFileInfo != null);
+                    var filesToDownload = filesThatRequireUpdate.Where(f => f.RemoteFileInfo != null);
                     var totalFilesToDownload = filesToDownload.Count();
-                    var totalBytesToDownload = filesToDownload.Sum(f => f.WebFileInfo.Length);
+                    var totalBytesToDownload = filesToDownload.Sum(f => f.RemoteFileInfo.Length);
                     var totalBytesToDownloadAsString = BytesToString(totalBytesToDownload);
 
-                    var filesToDelete = filesThatRequireUpdate.Where(f => f.WebFileInfo == null);
+                    var filesToDelete = filesThatRequireUpdate.Where(f => f.RemoteFileInfo == null);
                     var totalFilesToDelete = filesToDelete.Count();
 
                     string sizeString = "";
@@ -367,17 +399,22 @@ namespace OGN_DCS_Mod_Sync_App
                     progressBar1.Visible = false;
                     progressBar1.Value = 0;
                 }));
+
+                if (settings.AutomaticallyDownloadAfterVerification)
+                {
+                    DownloadButton_Click(null, null);
+                }
             }));
         }
 
         private void Rebuildbutton_Click(object sender, EventArgs e)
         {
-            if (dcsFolder == null)
+            if (liveriesFolder == null || ognModFolder == null)
             {
                 return;
             }
 
-            if (sender == null)
+            if (sender != null)
             {
                 //This is a user call
 
@@ -399,7 +436,7 @@ namespace OGN_DCS_Mod_Sync_App
                 //Symlinks require admin rights, but can reference network drivers.
 
                 var linkUtility = new JunctionUtility();
-                var linkManager = new LinkManager(dcsFolder, ognModFolder, linkUtility);
+                var linkManager = new LinkManager(liveriesFolder, ognModFolder, linkUtility);
                 linkManager.DeleteCurrentLinks();
                 linkManager.CreateLinks();
 
@@ -423,8 +460,28 @@ namespace OGN_DCS_Mod_Sync_App
 
         private void optionsButton_Click(object sender, EventArgs e)
         {
-            var options = new OGN_DCS_options();
-            options.Show();
+            if (verifyTask != null && !verifyTask.IsCompleted)
+            {
+                return;
+            }
+
+            if (downloadTask != null && !downloadTask.IsCompleted)
+            {
+                return;
+            }
+
+
+            var options = new OGN_DCS_options(settings, settingsFilename, FolderHelper.DetectOGNModsFolder(), FolderHelper.DetectLiveriesFolder());
+
+            options.NewSettingsApplied += new OGN_DCS_options.NewSettingsAppliedSignature(() =>
+            {
+                Init();
+
+                //Create links to the new OGN folder
+                Rebuildbutton_Click(null, null);
+            });
+
+            options.ShowDialog();
         }
     }
 }

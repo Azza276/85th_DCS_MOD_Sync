@@ -6,21 +6,26 @@ namespace libOGN_DCS_Mod_app
 {
     public class LinkManager
     {
-        public string DCSFolder { get; }
+        public string LiveriesFolder { get; }
         public string OgnModsFolder { get; }
         public LinkUtility LinkUtility { get; }
 
-        public LinkManager(string dcsFolder, string ognModsFolder, LinkUtility linkUtility)
+        public LinkManager(string liveriesFolder, string ognModsFolder, LinkUtility linkUtility)
         {
-            DCSFolder = dcsFolder;
+            LiveriesFolder = liveriesFolder;
             OgnModsFolder = ognModsFolder;
             LinkUtility = linkUtility;
         }
 
         public void DeleteCurrentLinks()
         {
+            if (!Directory.Exists(LiveriesFolder))
+            {
+                return;
+            }
+
             //Delete existing links that point to the OGN mods folder
-            var linksToDelete = Directory.GetDirectories(DCSFolder, "*.*", SearchOption.AllDirectories)
+            var linksToDelete = Directory.GetDirectories(LiveriesFolder, "*.*", SearchOption.AllDirectories)
                                         .Select(folder => new DirectoryInfo(folder))
                                         .Where(folder => LinkUtility.IsLink(folder))
                                         .Where(folder => LinkUtility.GetLinkTarget(folder).StartsWith(OgnModsFolder))
@@ -34,11 +39,18 @@ namespace libOGN_DCS_Mod_app
 
         public void CreateLinks()
         {
-            var linksPairs = Directory.GetDirectories(OgnModsFolder, "*.*", SearchOption.AllDirectories)
+            var ognModsLiveries = Path.Combine(OgnModsFolder, "Liveries");
+
+            if (!Directory.Exists(ognModsLiveries))
+            {
+                Directory.CreateDirectory(ognModsLiveries);
+            }
+
+            var linksPairs = Directory.GetDirectories(ognModsLiveries, "*.*", SearchOption.AllDirectories)
                 .Select(d => new
                 {
                     FullPath = d,
-                    RelativePath = d.Replace(OgnModsFolder, ""),
+                    RelativePath = d.Replace(ognModsLiveries, ""),
                 })
                 .Select(d => new
                 {
@@ -46,10 +58,10 @@ namespace libOGN_DCS_Mod_app
                     d.RelativePath,
                     Depth = d.RelativePath.Split(Path.DirectorySeparatorChar).Length
                 })
-                .Where(d => d.Depth == 4)
+                .Where(d => d.Depth == 3)
                 .Select(d => new
                 {
-                    LinkSource = DCSFolder + d.RelativePath,
+                    LinkSource = LiveriesFolder + d.RelativePath,
                     LinkTarget = d.FullPath
                 })
                 .ToList();

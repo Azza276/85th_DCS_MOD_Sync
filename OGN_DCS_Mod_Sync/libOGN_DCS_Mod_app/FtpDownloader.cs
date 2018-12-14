@@ -26,6 +26,8 @@ namespace libOGN_DCS_Mod_app
         public delegate void FinishedDownloadSignature(FilePair pair);
         public FinishedDownloadSignature OnFinishedDownload;
 
+        public const string FTP_WORKING_DIRECTORY = "OGN_Mods";
+
         public bool DownloadFiles(IEnumerable<FilePair> files, int concurrentDownloads)
         {
             bool result = false;
@@ -85,7 +87,7 @@ namespace libOGN_DCS_Mod_app
                 dlFile.Host = "ftp://www.ozgamingnetwork.com.au";
                 dlFile.Connect();
                 dlFile.RetryAttempts = 3;
-                dlFile.DownloadFile(pair.LocalFilename, pair.WebFileInfo.URL, true, FtpVerify.Retry, progress);
+                dlFile.DownloadFile(pair.LocalFilename, pair.RemoteFileInfo.URL, true, FtpVerify.Retry, progress);
 
                 if (File.Exists(pair.LocalFilename))
                 {
@@ -165,7 +167,7 @@ namespace libOGN_DCS_Mod_app
                 //    e.Accept = true;
                 //}
 
-                conn.SetWorkingDirectory("OGN_Mods");
+                conn.SetWorkingDirectory(FTP_WORKING_DIRECTORY);
 
                 var list = conn.GetListing(
                     conn.GetWorkingDirectory(),
@@ -186,6 +188,7 @@ namespace libOGN_DCS_Mod_app
                                 Length = item.Size,
                                 ModifiedDate = item.Modified
                             };
+
                             result.Add(newWebFileInfo);
                             break;
                         case FtpFileSystemObjectType.Link:

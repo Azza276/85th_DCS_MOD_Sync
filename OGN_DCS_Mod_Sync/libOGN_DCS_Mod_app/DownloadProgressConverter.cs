@@ -19,7 +19,7 @@ namespace libOGN_DCS_Mod_app
 
         public void Report(double percentage)
         {
-            CurrentValue = (long)((percentage / 100d) * Pair.WebFileInfo.Length);
+            CurrentValue = (long)((percentage / 100d) * Pair.RemoteFileInfo.Length);
         }
     }
 }
