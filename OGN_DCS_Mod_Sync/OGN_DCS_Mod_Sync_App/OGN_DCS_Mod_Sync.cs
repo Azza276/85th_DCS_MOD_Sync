@@ -38,7 +38,7 @@ namespace OGN_DCS_Mod_Sync_App
             {
                 liveriesFolder = FolderHelper.DetectLiveriesFolder();
 
-                if (!Directory.Exists(liveriesFolder))
+                if (liveriesFolder == null)
                 {
                     SetCurrentAction("Could not autodetect Liveries folder. Please provide it using the Options window.");
                     return;
@@ -282,6 +282,12 @@ namespace OGN_DCS_Mod_Sync_App
                 if (!Directory.Exists(ognLivFolder))
                 {
                     Directory.CreateDirectory(ognLivFolder);
+                }
+
+                //Create Liveries folder if it doesn't exist
+                if (!Directory.Exists(liveriesFolder))
+                {
+                    Directory.CreateDirectory(liveriesFolder);
                 }
 
                 //Reset the progress bar
