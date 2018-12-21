@@ -78,7 +78,7 @@ The "Status" Line advises the applications current/latest action and process fee
 Notes:
 During download, the application makes 4 (default, changed in options download threads) different connections to the FTP server, therefore you will be downloading 
 	4 (default) files at one time. This is to improve download speed for those with fast internet (the server maxes at about 4-8 Mb/s per connection/file.)
-If you have symbolic links in the Liveries folder before starting, save them, this process deletes all symbolic links in the Liveries folder.
+Symbolic links in the liveries for should be safe. This App only deletes link to the OGN_Mods folder.
 You cannot Update before verifying.
 
 FAQs
@@ -98,6 +98,10 @@ Q: I've got a problem/suggestion, Who can I talk to?
 A: Raise an issue on the GitHub https://github.com/Azza276/OGN_DCS_MOD_Sync/issues. Or talk to Azza276 of the Oz Gaming Network
 
 Version Change Notes:
+
+Alpha - 0.3 Hotfix 1
+
+`=` On new installs without a liveries folder yet, the app would not auto detect correctly ask the user to use the options menu to manually select. This should not happen, and has been fixed so that the liveries folder is created if it is not there and autodetect selects the folder regardless, and the folder is created during Verification.
 
 Alpha - 0.3
 
