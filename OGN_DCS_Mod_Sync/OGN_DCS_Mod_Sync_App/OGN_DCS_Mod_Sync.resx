@@ -7968,9 +7968,6 @@ Green - DCS Server is online and ready to join.</value>
         AAAA//4A///AAAP//gA=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
@@ -7981,7 +7978,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>OGN DCS Mod Sync 0.3</value>
+    <value>OGN DCS Mod Sync 0.3 hotfix 1</value>
   </data>
   <data name="&gt;&gt;toolTipFileSync.Name" xml:space="preserve">
     <value>toolTipFileSync</value>
