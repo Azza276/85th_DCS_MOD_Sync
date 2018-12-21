@@ -31,15 +31,15 @@ namespace libOGN_DCS_Mod_app
 
             return result;
         }
-        private static string DetectSubfolder(string subfolderName)
+
+        private static string ConstructSubfolder(string subfolderName)
         {
             string result = null;
-
             string dcsFolder = DetectDCSFolder();
-            string potentialPath = Path.Combine(dcsFolder, subfolderName);
-            if (Directory.Exists(potentialPath))
+
+            if (!string.IsNullOrEmpty(dcsFolder))
             {
-                result = potentialPath;
+                result = Path.Combine(dcsFolder, subfolderName);
             }
 
             return result;
@@ -47,15 +47,14 @@ namespace libOGN_DCS_Mod_app
 
         public static string DetectLiveriesFolder()
         {
-            string result = DetectSubfolder("Liveries");
+            string result = ConstructSubfolder("Liveries");
 
             return result;
         }
 
         public static string DetectOGNModsFolder()
         {
-            string dcsFolder = DetectDCSFolder();
-            string result = Path.Combine(dcsFolder, "OGN_Mods");
+            string result = ConstructSubfolder("OGN_Mods");
 
             return result;
         }
