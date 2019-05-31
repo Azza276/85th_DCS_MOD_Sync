@@ -7978,7 +7978,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>OGN DCS Mod Sync 0.3 hotfix 1</value>
+    <value>OGN DCS Mod Sync 0.4</value>
   </data>
   <data name="&gt;&gt;toolTipFileSync.Name" xml:space="preserve">
     <value>toolTipFileSync</value>
