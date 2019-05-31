@@ -116,12 +116,12 @@ namespace OGN_DCS_Mod_Sync_App
 
                     var filesToDownload = filesThatRequireUpdate.Where(f => f.RemoteFileInfo != null);
                     var totalFilesToDownload = filesToDownload.Count();
-                    var totalBytesToDownload = filesToDownload.Sum(f => f.RemoteFileInfo.Length);
+                    var totalKilobytesToDownload = filesToDownload.Sum(f => f.RemoteFileInfo.Length) / 1024d;
 
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Visible = true;
-                        progressBar1.Maximum = (int)totalBytesToDownload;
+                        progressBar1.Maximum = (int)totalKilobytesToDownload;
                     }));
 
                     int downloadCount = 0;
@@ -129,9 +129,10 @@ namespace OGN_DCS_Mod_Sync_App
                     var ftpDownloader = new FtpDownloader();
                     ftpDownloader.OnProgressChanged += new FtpDownloader.ProgressChangedSignature((bytes) =>
                     {
+                        var kb = bytes / 1024d;
                         Invoke(new MethodInvoker(() =>
                         {
-                            progressBar1.Value = (int)bytes;
+                            progressBar1.Value = (int)kb;
                         }));
                     });
 
@@ -203,7 +204,6 @@ namespace OGN_DCS_Mod_Sync_App
             {
                 while (true)
                 {
-
                     bool serverOnline = serverCheck.GetServerResponse();
 
                     if (serverOnline)
@@ -214,6 +214,8 @@ namespace OGN_DCS_Mod_Sync_App
                     {
                         serverStatus.BackgroundImage = Properties.Resources.xmas_16;
                     }
+
+                    Thread.Sleep(TimeSpan.FromSeconds(30));
                 }
             }));
         }
