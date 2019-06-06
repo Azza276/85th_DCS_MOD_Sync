@@ -260,3 +260,4 @@ paket-files/
 __pycache__/
 *.pyc
 /OGN_DCS_Mod_Sync/libOGN_DCS_Mod_Sync/Auth.cs
+/OGN_DCS_Mod_Sync/libOGN_DCS_Mod_app/FtpDownloader.cs
