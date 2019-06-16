@@ -4,7 +4,7 @@ The 85th SQN DCS Livery(Mod) Sync Application
 
 Readme!
 
-Alpha 0.4
+Alpha 0.5
 
 The 85th SQN DCS Mod Sync is intended to be used by members of the Borderline Tactical's 85th Squadron (Fictional). The Mod Sync App keeps the client’s files up to date with an FTP server that
 may from time to time be updated with new skins and liveries. Without these skins and liveries, members will not be able to see the wonderfully crafted skins that others use.
