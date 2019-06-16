@@ -16,7 +16,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>F:\OGN DCS Mod Sync\</PublishUrl>
+    <PublishUrl>F:\DCS Mod Sync\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,9 +28,9 @@
     <MapFileExtensions>true</MapFileExtensions>
     <SupportUrl>https://www.ozgamingnetwork.com.au</SupportUrl>
     <ErrorReportUrl>https://www.ozgamingnetwork.com.au</ErrorReportUrl>
-    <ProductName>OGN DCS Mod Sync</ProductName>
+    <ProductName>DCS Mod Sync</ProductName>
     <PublisherName>Oz Gaming Network</PublisherName>
-    <SuiteName>OGN DCS Mod Sync</SuiteName>
+    <SuiteName>DCS Mod Sync</SuiteName>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>0.5.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
@@ -71,7 +71,7 @@
     <ManifestCertificateThumbprint>E889E168EA81AA29B532ADFD4BD4BF4F386A3356</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>OGN_DCS_Mod_Sync_App_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>DCS_Mod_Sync_App_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
@@ -200,7 +200,7 @@
     <None Include="Resources\Exit.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\libOGN_DCS_Mod_app\libDCS_Mod_app.csproj">
+    <ProjectReference Include="..\libDCS_Mod_app\libDCS_Mod_app.csproj">
       <Project>{63cb16f6-ae63-4543-a20a-804537659682}</Project>
       <Name>libDCS_Mod_app</Name>
       <EmbedInteropTypes>False</EmbedInteropTypes>
