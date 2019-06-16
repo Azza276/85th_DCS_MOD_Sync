@@ -4,7 +4,7 @@ The Oz Gaming Network DCS Livery(Mod) Sync Application
 
 Readme!
 
-Alpha 0.3 hotfix 1
+Alpha 0.4
 
 The OGN DCS Mod Sync is intended to be used by members of the OGN's 85th Squadron (Fictional). The Mod Sync App keeps the client’s files up to date with an FTP server that
 may from time to time be updated with new skins and liveries. Without these skins and liveries, members will not be able to see the wonderfully crafted skins that others use.
@@ -98,6 +98,14 @@ Q: I've got a problem/suggestion, Who can I talk to?
 A: Raise an issue on the GitHub https://github.com/Azza276/OGN_DCS_MOD_Sync/issues. Or talk to Azza276 of the Oz Gaming Network
 
 Version Change Notes:
+
+Alpha - 0.5
+
+`-` Removed references to the Oz Gaming Network (OGN) from the code and app Window as the 85th are no longer associated with OGN.
+
+Alpha - 0.4
+
+ `=` Fixed - Update/Download not starting if the size of the download is greater than 2GB. This was due to counting size in Bytes and the value of bytes over 2GB is bigger the what can be stored in an integer, causing the app to overflow and trip up.
 
 Alpha - 0.3 Hotfix 1
 
