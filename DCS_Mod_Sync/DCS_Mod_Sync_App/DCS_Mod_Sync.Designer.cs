@@ -35,7 +35,7 @@ namespace DCS_Mod_Sync_App
             this.dcsServerText = new System.Windows.Forms.Label();
             this.fileSyncStatusText = new System.Windows.Forms.Label();
             this.squadTitle = new System.Windows.Forms.Label();
-            this.ozGamingTitle = new System.Windows.Forms.Label();
+            this.btac_Title = new System.Windows.Forms.Label();
             this.updateStatus = new System.Windows.Forms.PictureBox();
             this.serverStatus = new System.Windows.Forms.PictureBox();
             this.logo = new System.Windows.Forms.PictureBox();
@@ -71,7 +71,7 @@ namespace DCS_Mod_Sync_App
             optionsButton.ForeColor = System.Drawing.Color.Transparent;
             optionsButton.Name = "optionsButton";
             optionsButton.UseVisualStyleBackColor = false;
-            optionsButton.Click += new System.EventHandler(this.optionsButton_Click);
+            optionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
             // 
             // titlePanel
             // 
@@ -80,7 +80,7 @@ namespace DCS_Mod_Sync_App
             this.titlePanel.Controls.Add(this.dcsServerText);
             this.titlePanel.Controls.Add(this.fileSyncStatusText);
             this.titlePanel.Controls.Add(this.squadTitle);
-            this.titlePanel.Controls.Add(this.ozGamingTitle);
+            this.titlePanel.Controls.Add(this.btac_Title);
             this.titlePanel.Controls.Add(this.updateStatus);
             this.titlePanel.Controls.Add(this.serverStatus);
             this.titlePanel.Controls.Add(this.logo);
@@ -109,11 +109,11 @@ namespace DCS_Mod_Sync_App
             this.squadTitle.ForeColor = System.Drawing.Color.White;
             this.squadTitle.Name = "squadTitle";
             // 
-            // ozGamingTitle
+            // btac_Title
             // 
-            resources.ApplyResources(this.ozGamingTitle, "ozGamingTitle");
-            this.ozGamingTitle.ForeColor = System.Drawing.Color.White;
-            this.ozGamingTitle.Name = "ozGamingTitle";
+            resources.ApplyResources(this.btac_Title, "btac_Title");
+            this.btac_Title.ForeColor = System.Drawing.Color.White;
+            this.btac_Title.Name = "btac_Title";
             // 
             // updateStatus
             // 
@@ -233,6 +233,7 @@ namespace DCS_Mod_Sync_App
             this.LinkSite.LinkColor = System.Drawing.Color.White;
             this.LinkSite.Name = "LinkSite";
             this.LinkSite.TabStop = true;
+            this.LinkSite.Tag = "";
             this.LinkSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkSite_LinkClicked_1);
             // 
             // exitButton
@@ -257,7 +258,7 @@ namespace DCS_Mod_Sync_App
             // toolTipDcsServer
             // 
             this.toolTipDcsServer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipDcsServer.ToolTipTitle = "Oz Gaming Network DCS Server";
+            this.toolTipDcsServer.ToolTipTitle = "85th SQN DCS Server";
             // 
             // mainImage
             // 
@@ -307,7 +308,7 @@ namespace DCS_Mod_Sync_App
         private System.Windows.Forms.Label dcsServerText;
         private System.Windows.Forms.Label fileSyncStatusText;
         private System.Windows.Forms.Label squadTitle;
-        private System.Windows.Forms.Label ozGamingTitle;
+        private System.Windows.Forms.Label btac_Title;
         private System.Windows.Forms.Label statusLabel;
         public System.Windows.Forms.TextBox currentAction;
         private System.Windows.Forms.LinkLabel LinkSite;

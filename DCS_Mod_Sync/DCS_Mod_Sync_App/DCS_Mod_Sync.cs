@@ -26,7 +26,7 @@ namespace DCS_Mod_Sync_App
         }
 
         Settings settings;
-        string settingsFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.json");
+        readonly string settingsFilename = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.json");
 
         public void Init()
         {
@@ -66,11 +66,11 @@ namespace DCS_Mod_Sync_App
             }
         }
 
-        List<FilePair> filesThatRequireUpdate = new List<FilePair>();
+        readonly List<FilePair> filesThatRequireUpdate = new List<FilePair>();
 
         private void LinkSite_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("www.ozgamingnetwork.com.au/forums");
+            System.Diagnostics.Process.Start("https://discordapp.com/channels/305335492508123136/431848751167176724");
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -196,7 +196,7 @@ namespace DCS_Mod_Sync_App
 
 
         //Povides visual indication that the client has connection to the 85th DCS server
-        ServerCheck serverCheck = new ServerCheck();
+        readonly ServerCheck serverCheck = new ServerCheck();
         Task serverCheckTask;
         private void SetupServerCheckTimer()
         {
@@ -466,7 +466,7 @@ namespace DCS_Mod_Sync_App
             }
         }
 
-        private void optionsButton_Click(object sender, EventArgs e)
+        private void OptionsButton_Click(object sender, EventArgs e)
         {
             if (verifyTask != null && !verifyTask.IsCompleted)
             {

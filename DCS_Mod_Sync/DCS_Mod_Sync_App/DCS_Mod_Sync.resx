@@ -159,6 +159,120 @@
   <data name="&gt;&gt;optionsButton.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="&gt;&gt;dcsServerText.Name" xml:space="preserve">
+    <value>dcsServerText</value>
+  </data>
+  <data name="&gt;&gt;dcsServerText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dcsServerText.Parent" xml:space="preserve">
+    <value>titlePanel</value>
+  </data>
+  <data name="&gt;&gt;dcsServerText.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;fileSyncStatusText.Name" xml:space="preserve">
+    <value>fileSyncStatusText</value>
+  </data>
+  <data name="&gt;&gt;fileSyncStatusText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;fileSyncStatusText.Parent" xml:space="preserve">
+    <value>titlePanel</value>
+  </data>
+  <data name="&gt;&gt;fileSyncStatusText.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;squadTitle.Name" xml:space="preserve">
+    <value>squadTitle</value>
+  </data>
+  <data name="&gt;&gt;squadTitle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;squadTitle.Parent" xml:space="preserve">
+    <value>titlePanel</value>
+  </data>
+  <data name="&gt;&gt;squadTitle.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;btac_Title.Name" xml:space="preserve">
+    <value>btac_Title</value>
+  </data>
+  <data name="&gt;&gt;btac_Title.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btac_Title.Parent" xml:space="preserve">
+    <value>titlePanel</value>
+  </data>
+  <data name="&gt;&gt;btac_Title.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;updateStatus.Name" xml:space="preserve">
+    <value>updateStatus</value>
+  </data>
+  <data name="&gt;&gt;updateStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;updateStatus.Parent" xml:space="preserve">
+    <value>titlePanel</value>
+  </data>
+  <data name="&gt;&gt;updateStatus.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;serverStatus.Name" xml:space="preserve">
+    <value>serverStatus</value>
+  </data>
+  <data name="&gt;&gt;serverStatus.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;serverStatus.Parent" xml:space="preserve">
+    <value>titlePanel</value>
+  </data>
+  <data name="&gt;&gt;serverStatus.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;logo.Name" xml:space="preserve">
+    <value>logo</value>
+  </data>
+  <data name="&gt;&gt;logo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;logo.Parent" xml:space="preserve">
+    <value>titlePanel</value>
+  </data>
+  <data name="&gt;&gt;logo.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="titlePanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="titlePanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="titlePanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>684, 100</value>
+  </data>
+  <data name="titlePanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;titlePanel.Name" xml:space="preserve">
+    <value>titlePanel</value>
+  </data>
+  <data name="&gt;&gt;titlePanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;titlePanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;titlePanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="toolTipFileSync.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="toolTipDcsServer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>151, 17</value>
+  </metadata>
   <data name="dcsServerText.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -169,29 +283,23 @@
     <value>NoControl</value>
   </data>
   <data name="dcsServerText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>471, 45</value>
+    <value>527, 45</value>
   </data>
   <data name="dcsServerText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 15</value>
+    <value>124, 15</value>
   </data>
   <data name="dcsServerText.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="dcsServerText.Text" xml:space="preserve">
-    <value>Oz Gaming Network DCS Server</value>
+    <value>85th SQN DCS Server</value>
   </data>
-  <metadata name="toolTipFileSync.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="dcsServerText.ToolTip" xml:space="preserve">
     <value>Red - DCS Server is currently Offline or you
 have Internet Connection Issues
 
 Green - DCS Server is online and ready to join.</value>
   </data>
-  <metadata name="toolTipDcsServer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>151, 17</value>
-  </metadata>
   <data name="dcsServerText.ToolTip1" xml:space="preserve">
     <value>Red - DCS Server is currently Offline or you
 have Internet Connection Issues
@@ -282,37 +390,37 @@ Green - Files have been recently Synchronised.</value>
   <data name="&gt;&gt;squadTitle.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="ozGamingTitle.AutoSize" type="System.Boolean, mscorlib">
+  <data name="btac_Title.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="ozGamingTitle.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btac_Title.Font" type="System.Drawing.Font, System.Drawing">
     <value>Corbel, 18pt, style=Bold</value>
   </data>
-  <data name="ozGamingTitle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="btac_Title.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="ozGamingTitle.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btac_Title.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 15</value>
   </data>
-  <data name="ozGamingTitle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 29</value>
+  <data name="btac_Title.Size" type="System.Drawing.Size, System.Drawing">
+    <value>201, 29</value>
   </data>
-  <data name="ozGamingTitle.TabIndex" type="System.Int32, mscorlib">
+  <data name="btac_Title.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="ozGamingTitle.Text" xml:space="preserve">
-    <value>Oz Gaming Network</value>
+  <data name="btac_Title.Text" xml:space="preserve">
+    <value>Borderline Tactical</value>
   </data>
-  <data name="&gt;&gt;ozGamingTitle.Name" xml:space="preserve">
-    <value>ozGamingTitle</value>
+  <data name="&gt;&gt;btac_Title.Name" xml:space="preserve">
+    <value>btac_Title</value>
   </data>
-  <data name="&gt;&gt;ozGamingTitle.Type" xml:space="preserve">
+  <data name="&gt;&gt;btac_Title.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ozGamingTitle.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btac_Title.Parent" xml:space="preserve">
     <value>titlePanel</value>
   </data>
-  <data name="&gt;&gt;ozGamingTitle.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btac_Title.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="updateStatus.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -2655,30 +2763,6 @@ Green - DCS Server is online and ready to join.</value>
   <data name="&gt;&gt;logo.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="titlePanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="titlePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="titlePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 100</value>
-  </data>
-  <data name="titlePanel.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;titlePanel.Name" xml:space="preserve">
-    <value>titlePanel</value>
-  </data>
-  <data name="&gt;&gt;titlePanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;titlePanel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;titlePanel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="lowerTablePanel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -3018,7 +3102,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>7</value>
   </data>
   <data name="LinkSite.Text" xml:space="preserve">
-    <value>www.ozgamingnetwork.com.au/forums</value>
+    <value>85th SQN on B|Tac Discord</value>
   </data>
   <data name="LinkSite.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
@@ -3132,6 +3216,12 @@ Green - DCS Server is online and ready to join.</value>
   <data name="lowerTablePanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="rebuildbutton" Row="2" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="VerifyButton" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="downloadButton" Row="1" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="progressBar1" Row="2" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="statusLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="currentAction" Row="0" RowSpan="2" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="LinkSite" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="exitButton" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,56,Percent,100,Absolute,100" /&gt;&lt;Rows Styles="Absolute,33,Absolute,33,Absolute,33,Absolute,33" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <metadata name="toolTipFileSync.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <metadata name="toolTipDcsServer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>151, 17</value>
+  </metadata>
   <data name="mainImage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
