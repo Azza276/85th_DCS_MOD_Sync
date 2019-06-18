@@ -7,13 +7,13 @@ namespace libDCS_Mod_app
     public class LinkManager
     {
         public string LiveriesFolder { get; }
-        public string ModsFolder { get; }
+        public string DcsModsFolder { get; }
         public LinkUtility LinkUtility { get; }
 
         public LinkManager(string liveriesFolder, string ModsFolder, LinkUtility linkUtility)
         {
             LiveriesFolder = liveriesFolder;
-            ModsFolder = ModsFolder;
+            DcsModsFolder = ModsFolder;
             LinkUtility = linkUtility;
         }
 
@@ -28,7 +28,7 @@ namespace libDCS_Mod_app
             var linksToDelete = Directory.GetDirectories(LiveriesFolder, "*.*", SearchOption.AllDirectories)
                                         .Select(folder => new DirectoryInfo(folder))
                                         .Where(folder => LinkUtility.IsLink(folder))
-                                        .Where(folder => LinkUtility.GetLinkTarget(folder).StartsWith(ModsFolder))
+                                        .Where(folder => LinkUtility.GetLinkTarget(folder).StartsWith(DcsModsFolder))
                                         .ToList();
 
             linksToDelete.ForEach(link =>
@@ -39,7 +39,7 @@ namespace libDCS_Mod_app
 
         public void CreateLinks()
         {
-            var ModsLiveries = Path.Combine(ModsFolder, "Liveries");
+            var ModsLiveries = Path.Combine(DcsModsFolder, "Liveries");
 
             if (!Directory.Exists(ModsLiveries))
             {
