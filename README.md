@@ -10,8 +10,8 @@ The 85th SQN DCS Mod Sync is intended to be used by members of the Borderline Ta
 may from time to time be updated with new skins and liveries. Without these skins and liveries, members will not be able to see the wonderfully crafted skins that others use.
 
 Updating from prior to 0.5 to 0.5
-1. Rename the OGN_Mods folder in Users/[Yourname]/DCS/ folder to 85th_Mods
-2. Run the 0.5 version of the Mod Sync. If it needs to download all the skins again, check the folder name or the mods folder in the options.
+1. Rename the OGN_Mods folder in Users/[Yourname]/DCS/ folder to 85TH_Mods
+2. Run the 0.5 version of the Mod Sync. If it needs to download all the skins again, check the folder name or the mods folder in the options. There may be a few files that need updating/deleting.. This is Normal.
 
 Updating from Version 0.1 or 0.2
 1. Skip before and after use sections.
