@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace libDCS_Mod_app
 {
-    public class DownloadProgressConverter : IProgress<double>
+    public class DownloadProgressConverter : IProgress<FtpProgress>
     {
-        public long CurrentValue { get; private set; }
+        public long BytesDownloaded { get; private set; }
 
         public DownloadProgressConverter(FilePair pair)
         {
@@ -18,9 +18,9 @@ namespace libDCS_Mod_app
 
         public FilePair Pair { get; }
 
-        public void Report(double percentage)
+        public void Report(FtpProgress progress)
         {
-            CurrentValue = (long)((percentage / 100d) * Pair.RemoteFileInfo.Length);
+            BytesDownloaded = (long)((progress.Progress / 100d) * Pair.RemoteFileInfo.Length);
         }
     }
 }
