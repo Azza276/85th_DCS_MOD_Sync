@@ -48,7 +48,7 @@
             // 
             this.ucAutoDetectAndOverride1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ucAutoDetectAndOverride1.BackColor = System.Drawing.Color.SteelBlue;
+            this.ucAutoDetectAndOverride1.BackColor = System.Drawing.Color.LightGray;
             this.ucAutoDetectAndOverride1.Location = new System.Drawing.Point(0, 0);
             this.ucAutoDetectAndOverride1.Name = "ucAutoDetectAndOverride1";
             this.ucAutoDetectAndOverride1.Size = new System.Drawing.Size(831, 25);
@@ -67,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.Controls.Add(this.lblAutodetectedFolder);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.ucAutoDetectAndOverride1);

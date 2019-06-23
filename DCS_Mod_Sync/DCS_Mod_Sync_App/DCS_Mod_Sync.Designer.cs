@@ -36,46 +36,33 @@ namespace DCS_Mod_Sync_App
             this.fileSyncStatusText = new System.Windows.Forms.Label();
             this.squadTitle = new System.Windows.Forms.Label();
             this.btac_Title = new System.Windows.Forms.Label();
-            this.updateStatus = new System.Windows.Forms.PictureBox();
-            this.serverStatus = new System.Windows.Forms.PictureBox();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.lowerTablePanel = new System.Windows.Forms.TableLayoutPanel();
-            this.rebuildbutton = new System.Windows.Forms.Button();
-            this.VerifyButton = new System.Windows.Forms.Button();
-            this.downloadButton = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
             this.currentAction = new System.Windows.Forms.TextBox();
             this.LinkSite = new System.Windows.Forms.LinkLabel();
-            this.exitButton = new System.Windows.Forms.Button();
             this.toolTipFileSync = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipDcsServer = new System.Windows.Forms.ToolTip(this.components);
+            this.exitButton = new System.Windows.Forms.Button();
+            this.rebuildbutton = new System.Windows.Forms.Button();
+            this.VerifyButton = new System.Windows.Forms.Button();
+            this.downloadButton = new System.Windows.Forms.Button();
             this.mainImage = new System.Windows.Forms.PictureBox();
+            this.updateStatus = new System.Windows.Forms.PictureBox();
+            this.serverStatus = new System.Windows.Forms.PictureBox();
+            this.logo = new System.Windows.Forms.PictureBox();
             optionsButton = new System.Windows.Forms.Button();
             this.titlePanel.SuspendLayout();
+            this.lowerTablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
-            this.lowerTablePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mainImage)).BeginInit();
             this.SuspendLayout();
-            // 
-            // optionsButton
-            // 
-            resources.ApplyResources(optionsButton, "optionsButton");
-            optionsButton.BackColor = System.Drawing.Color.Transparent;
-            optionsButton.BackgroundImage = global::DCS_Mod_Sync_App.Properties.Resources.options;
-            optionsButton.FlatAppearance.BorderSize = 0;
-            optionsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
-            optionsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            optionsButton.ForeColor = System.Drawing.Color.Transparent;
-            optionsButton.Name = "optionsButton";
-            optionsButton.UseVisualStyleBackColor = false;
-            optionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
             // 
             // titlePanel
             // 
-            this.titlePanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.titlePanel.BackColor = System.Drawing.Color.LightGray;
             this.titlePanel.Controls.Add(optionsButton);
             this.titlePanel.Controls.Add(this.dcsServerText);
             this.titlePanel.Controls.Add(this.fileSyncStatusText);
@@ -90,7 +77,7 @@ namespace DCS_Mod_Sync_App
             // dcsServerText
             // 
             resources.ApplyResources(this.dcsServerText, "dcsServerText");
-            this.dcsServerText.ForeColor = System.Drawing.Color.White;
+            this.dcsServerText.ForeColor = System.Drawing.Color.Black;
             this.dcsServerText.Name = "dcsServerText";
             this.toolTipFileSync.SetToolTip(this.dcsServerText, resources.GetString("dcsServerText.ToolTip"));
             this.toolTipDcsServer.SetToolTip(this.dcsServerText, resources.GetString("dcsServerText.ToolTip1"));
@@ -98,22 +85,161 @@ namespace DCS_Mod_Sync_App
             // fileSyncStatusText
             // 
             resources.ApplyResources(this.fileSyncStatusText, "fileSyncStatusText");
-            this.fileSyncStatusText.ForeColor = System.Drawing.Color.White;
+            this.fileSyncStatusText.ForeColor = System.Drawing.Color.Black;
             this.fileSyncStatusText.Name = "fileSyncStatusText";
             this.toolTipFileSync.SetToolTip(this.fileSyncStatusText, resources.GetString("fileSyncStatusText.ToolTip"));
             // 
             // squadTitle
             // 
             resources.ApplyResources(this.squadTitle, "squadTitle");
-            this.squadTitle.BackColor = System.Drawing.Color.SteelBlue;
-            this.squadTitle.ForeColor = System.Drawing.Color.White;
+            this.squadTitle.BackColor = System.Drawing.Color.Transparent;
+            this.squadTitle.ForeColor = System.Drawing.Color.Black;
             this.squadTitle.Name = "squadTitle";
             // 
             // btac_Title
             // 
             resources.ApplyResources(this.btac_Title, "btac_Title");
-            this.btac_Title.ForeColor = System.Drawing.Color.White;
+            this.btac_Title.ForeColor = System.Drawing.Color.Black;
             this.btac_Title.Name = "btac_Title";
+            // 
+            // lowerTablePanel
+            // 
+            resources.ApplyResources(this.lowerTablePanel, "lowerTablePanel");
+            this.lowerTablePanel.BackColor = System.Drawing.Color.LightGray;
+            this.lowerTablePanel.CausesValidation = false;
+            this.lowerTablePanel.Controls.Add(this.rebuildbutton, 2, 2);
+            this.lowerTablePanel.Controls.Add(this.VerifyButton, 2, 0);
+            this.lowerTablePanel.Controls.Add(this.downloadButton, 2, 1);
+            this.lowerTablePanel.Controls.Add(this.progressBar1, 0, 2);
+            this.lowerTablePanel.Controls.Add(this.statusLabel, 0, 0);
+            this.lowerTablePanel.Controls.Add(this.currentAction, 1, 0);
+            this.lowerTablePanel.Controls.Add(this.LinkSite, 0, 3);
+            this.lowerTablePanel.Controls.Add(this.exitButton, 2, 3);
+            this.lowerTablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
+            this.lowerTablePanel.Name = "lowerTablePanel";
+            // 
+            // progressBar1
+            // 
+            resources.ApplyResources(this.progressBar1, "progressBar1");
+            this.lowerTablePanel.SetColumnSpan(this.progressBar1, 2);
+            this.progressBar1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            // 
+            // statusLabel
+            // 
+            resources.ApplyResources(this.statusLabel, "statusLabel");
+            this.statusLabel.ForeColor = System.Drawing.Color.Black;
+            this.statusLabel.Name = "statusLabel";
+            // 
+            // currentAction
+            // 
+            resources.ApplyResources(this.currentAction, "currentAction");
+            this.currentAction.BackColor = System.Drawing.Color.LightGray;
+            this.currentAction.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.currentAction.CausesValidation = false;
+            this.currentAction.ForeColor = System.Drawing.Color.Black;
+            this.currentAction.Name = "currentAction";
+            this.currentAction.ReadOnly = true;
+            this.lowerTablePanel.SetRowSpan(this.currentAction, 2);
+            // 
+            // LinkSite
+            // 
+            this.LinkSite.ActiveLinkColor = System.Drawing.Color.PaleTurquoise;
+            resources.ApplyResources(this.LinkSite, "LinkSite");
+            this.lowerTablePanel.SetColumnSpan(this.LinkSite, 2);
+            this.LinkSite.LinkColor = System.Drawing.Color.Black;
+            this.LinkSite.Name = "LinkSite";
+            this.LinkSite.TabStop = true;
+            this.LinkSite.Tag = "";
+            this.LinkSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkSite_LinkClicked_1);
+            // 
+            // toolTipFileSync
+            // 
+            this.toolTipFileSync.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipFileSync.ToolTipTitle = "File Synchronisation Status";
+            // 
+            // toolTipDcsServer
+            // 
+            this.toolTipDcsServer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipDcsServer.ToolTipTitle = "85th SQN DCS Server";
+            // 
+            // exitButton
+            // 
+            resources.ApplyResources(this.exitButton, "exitButton");
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.exitButton.FlatAppearance.BorderSize = 0;
+            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.exitButton.ForeColor = System.Drawing.Color.Transparent;
+            this.exitButton.Name = "exitButton";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // rebuildbutton
+            // 
+            resources.ApplyResources(this.rebuildbutton, "rebuildbutton");
+            this.rebuildbutton.BackColor = System.Drawing.Color.Transparent;
+            this.rebuildbutton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.rebuildbutton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.rebuildbutton.FlatAppearance.BorderSize = 0;
+            this.rebuildbutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.rebuildbutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.rebuildbutton.ForeColor = System.Drawing.Color.Transparent;
+            this.rebuildbutton.Name = "rebuildbutton";
+            this.rebuildbutton.UseVisualStyleBackColor = false;
+            this.rebuildbutton.Click += new System.EventHandler(this.Rebuildbutton_Click);
+            // 
+            // VerifyButton
+            // 
+            resources.ApplyResources(this.VerifyButton, "VerifyButton");
+            this.VerifyButton.BackColor = System.Drawing.Color.Transparent;
+            this.VerifyButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.VerifyButton.FlatAppearance.BorderSize = 0;
+            this.VerifyButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.VerifyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.VerifyButton.ForeColor = System.Drawing.Color.Transparent;
+            this.VerifyButton.Name = "VerifyButton";
+            this.VerifyButton.UseVisualStyleBackColor = false;
+            this.VerifyButton.Click += new System.EventHandler(this.VerifyButton_Click);
+            // 
+            // downloadButton
+            // 
+            resources.ApplyResources(this.downloadButton, "downloadButton");
+            this.downloadButton.BackColor = System.Drawing.Color.Transparent;
+            this.downloadButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
+            this.downloadButton.FlatAppearance.BorderSize = 0;
+            this.downloadButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            this.downloadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.downloadButton.ForeColor = System.Drawing.Color.Transparent;
+            this.downloadButton.Name = "downloadButton";
+            this.downloadButton.UseVisualStyleBackColor = false;
+            this.downloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
+            // 
+            // mainImage
+            // 
+            resources.ApplyResources(this.mainImage, "mainImage");
+            this.mainImage.BackColor = System.Drawing.Color.LightGray;
+            this.mainImage.BackgroundImage = global::DCS_Mod_Sync_App.Properties.Resources.cat1;
+            this.mainImage.ErrorImage = global::DCS_Mod_Sync_App.Properties.Resources.cat1;
+            this.mainImage.InitialImage = global::DCS_Mod_Sync_App.Properties.Resources.cat1;
+            this.mainImage.Name = "mainImage";
+            this.mainImage.TabStop = false;
+            // 
+            // optionsButton
+            // 
+            resources.ApplyResources(optionsButton, "optionsButton");
+            optionsButton.BackColor = System.Drawing.Color.Transparent;
+            optionsButton.BackgroundImage = global::DCS_Mod_Sync_App.Properties.Resources.options_b;
+            optionsButton.FlatAppearance.BorderSize = 0;
+            optionsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightGray;
+            optionsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            optionsButton.ForeColor = System.Drawing.Color.Transparent;
+            optionsButton.Name = "optionsButton";
+            optionsButton.UseVisualStyleBackColor = false;
+            optionsButton.Click += new System.EventHandler(this.OptionsButton_Click);
             // 
             // updateStatus
             // 
@@ -140,138 +266,16 @@ namespace DCS_Mod_Sync_App
             // 
             // logo
             // 
-            this.logo.BackColor = System.Drawing.Color.SteelBlue;
+            this.logo.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.logo, "logo");
             this.logo.Name = "logo";
             this.logo.TabStop = false;
-            // 
-            // lowerTablePanel
-            // 
-            resources.ApplyResources(this.lowerTablePanel, "lowerTablePanel");
-            this.lowerTablePanel.BackColor = System.Drawing.Color.SteelBlue;
-            this.lowerTablePanel.Controls.Add(this.rebuildbutton, 2, 2);
-            this.lowerTablePanel.Controls.Add(this.VerifyButton, 2, 0);
-            this.lowerTablePanel.Controls.Add(this.downloadButton, 2, 1);
-            this.lowerTablePanel.Controls.Add(this.progressBar1, 0, 2);
-            this.lowerTablePanel.Controls.Add(this.statusLabel, 0, 0);
-            this.lowerTablePanel.Controls.Add(this.currentAction, 1, 0);
-            this.lowerTablePanel.Controls.Add(this.LinkSite, 0, 3);
-            this.lowerTablePanel.Controls.Add(this.exitButton, 2, 3);
-            this.lowerTablePanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.lowerTablePanel.Name = "lowerTablePanel";
-            // 
-            // rebuildbutton
-            // 
-            resources.ApplyResources(this.rebuildbutton, "rebuildbutton");
-            this.rebuildbutton.BackColor = System.Drawing.Color.Transparent;
-            this.rebuildbutton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.rebuildbutton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.rebuildbutton.FlatAppearance.BorderSize = 0;
-            this.rebuildbutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.rebuildbutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.rebuildbutton.ForeColor = System.Drawing.Color.Transparent;
-            this.rebuildbutton.Name = "rebuildbutton";
-            this.rebuildbutton.UseVisualStyleBackColor = false;
-            this.rebuildbutton.Click += new System.EventHandler(this.Rebuildbutton_Click);
-            // 
-            // VerifyButton
-            // 
-            resources.ApplyResources(this.VerifyButton, "VerifyButton");
-            this.VerifyButton.BackColor = System.Drawing.Color.Transparent;
-            this.VerifyButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.VerifyButton.FlatAppearance.BorderSize = 0;
-            this.VerifyButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.VerifyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.VerifyButton.ForeColor = System.Drawing.Color.Transparent;
-            this.VerifyButton.Name = "VerifyButton";
-            this.VerifyButton.UseVisualStyleBackColor = false;
-            this.VerifyButton.Click += new System.EventHandler(this.VerifyButton_Click);
-            // 
-            // downloadButton
-            // 
-            resources.ApplyResources(this.downloadButton, "downloadButton");
-            this.downloadButton.BackColor = System.Drawing.Color.Transparent;
-            this.downloadButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.downloadButton.FlatAppearance.BorderSize = 0;
-            this.downloadButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.downloadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.downloadButton.ForeColor = System.Drawing.Color.Transparent;
-            this.downloadButton.Name = "downloadButton";
-            this.downloadButton.UseVisualStyleBackColor = false;
-            this.downloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
-            // 
-            // progressBar1
-            // 
-            resources.ApplyResources(this.progressBar1, "progressBar1");
-            this.lowerTablePanel.SetColumnSpan(this.progressBar1, 2);
-            this.progressBar1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            // 
-            // statusLabel
-            // 
-            resources.ApplyResources(this.statusLabel, "statusLabel");
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Name = "statusLabel";
-            // 
-            // currentAction
-            // 
-            resources.ApplyResources(this.currentAction, "currentAction");
-            this.currentAction.BackColor = System.Drawing.Color.SteelBlue;
-            this.currentAction.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.currentAction.CausesValidation = false;
-            this.currentAction.ForeColor = System.Drawing.Color.White;
-            this.currentAction.Name = "currentAction";
-            this.currentAction.ReadOnly = true;
-            this.lowerTablePanel.SetRowSpan(this.currentAction, 2);
-            // 
-            // LinkSite
-            // 
-            this.LinkSite.ActiveLinkColor = System.Drawing.Color.PaleTurquoise;
-            resources.ApplyResources(this.LinkSite, "LinkSite");
-            this.lowerTablePanel.SetColumnSpan(this.LinkSite, 2);
-            this.LinkSite.LinkColor = System.Drawing.Color.White;
-            this.LinkSite.Name = "LinkSite";
-            this.LinkSite.TabStop = true;
-            this.LinkSite.Tag = "";
-            this.LinkSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkSite_LinkClicked_1);
-            // 
-            // exitButton
-            // 
-            resources.ApplyResources(this.exitButton, "exitButton");
-            this.exitButton.BackColor = System.Drawing.Color.Transparent;
-            this.exitButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.SteelBlue;
-            this.exitButton.FlatAppearance.BorderSize = 0;
-            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SteelBlue;
-            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SteelBlue;
-            this.exitButton.ForeColor = System.Drawing.Color.Transparent;
-            this.exitButton.Name = "exitButton";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
-            // toolTipFileSync
-            // 
-            this.toolTipFileSync.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipFileSync.ToolTipTitle = "File Synchronisation Status";
-            // 
-            // toolTipDcsServer
-            // 
-            this.toolTipDcsServer.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTipDcsServer.ToolTipTitle = "85th SQN DCS Server";
-            // 
-            // mainImage
-            // 
-            resources.ApplyResources(this.mainImage, "mainImage");
-            this.mainImage.BackColor = System.Drawing.Color.SteelBlue;
-            this.mainImage.Name = "mainImage";
-            this.mainImage.TabStop = false;
             // 
             // DCS_Mod_Sync
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.exitButton;
             this.Controls.Add(this.lowerTablePanel);
             this.Controls.Add(this.mainImage);
@@ -284,12 +288,12 @@ namespace DCS_Mod_Sync_App
             this.Shown += new System.EventHandler(this.DCS_Mod_Sync_Shown);
             this.titlePanel.ResumeLayout(false);
             this.titlePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.lowerTablePanel.ResumeLayout(false);
             this.lowerTablePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mainImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.updateStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serverStatus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
 
         }

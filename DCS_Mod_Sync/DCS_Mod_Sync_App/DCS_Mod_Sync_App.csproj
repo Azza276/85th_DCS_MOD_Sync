@@ -221,6 +221,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="85th SQN 64.ico" />
+    <None Include="Resources\options_b.png" />
+    <None Include="Resources\cat1.jpg" />
     <None Include="Resources\options.png" />
     <None Include="Resources\update.png" />
     <None Include="Resources\rebuild.png" />

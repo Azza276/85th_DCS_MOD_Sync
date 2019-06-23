@@ -44,19 +44,20 @@
             // chkAutodetect
             // 
             this.chkAutodetect.AutoSize = true;
+            this.chkAutodetect.BackColor = System.Drawing.Color.LightGray;
             this.chkAutodetect.Location = new System.Drawing.Point(3, 4);
             this.chkAutodetect.Name = "chkAutodetect";
             this.chkAutodetect.Size = new System.Drawing.Size(78, 17);
             this.chkAutodetect.TabIndex = 3;
             this.chkAutodetect.Text = "Autodetect";
-            this.chkAutodetect.UseVisualStyleBackColor = true;
+            this.chkAutodetect.UseVisualStyleBackColor = false;
             this.chkAutodetect.CheckedChanged += new System.EventHandler(this.chkAutodetect_CheckedChanged);
             // 
             // ucAutodetectAndOverride
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.Controls.Add(this.chkAutodetect);
             this.Controls.Add(this.txt);
             this.Name = "ucAutodetectAndOverride";

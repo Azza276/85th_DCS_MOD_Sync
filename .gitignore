@@ -260,4 +260,3 @@ paket-files/
 __pycache__/
 *.pyc
 /DCS_Mod_Sync/libDCS_Mod_Sync/Auth.cs
-/DCS_Mod_Sync/libDCS_Mod_app/FtpDownloader.cs

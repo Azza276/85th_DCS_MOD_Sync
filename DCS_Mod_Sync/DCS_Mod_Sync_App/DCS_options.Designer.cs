@@ -80,7 +80,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 13);
+            this.label2.Size = new System.Drawing.Size(76, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Mods Folder";
             // 
@@ -141,7 +141,7 @@
             this.FolderSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.FolderSettings.Autodetect = false;
-            this.FolderSettings.BackColor = System.Drawing.Color.SteelBlue;
+            this.FolderSettings.BackColor = System.Drawing.Color.LightGray;
             this.FolderSettings.Folder = "";
             this.FolderSettings.Location = new System.Drawing.Point(123, 12);
             this.FolderSettings.Name = "FolderSettings";
@@ -154,7 +154,7 @@
             this.liveriesFolderSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.liveriesFolderSettings.Autodetect = false;
-            this.liveriesFolderSettings.BackColor = System.Drawing.Color.SteelBlue;
+            this.liveriesFolderSettings.BackColor = System.Drawing.Color.LightGray;
             this.liveriesFolderSettings.Folder = "";
             this.liveriesFolderSettings.Location = new System.Drawing.Point(123, 56);
             this.liveriesFolderSettings.Name = "liveriesFolderSettings";
@@ -166,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SteelBlue;
+            this.BackColor = System.Drawing.Color.LightGray;
             this.ClientSize = new System.Drawing.Size(632, 209);
             this.Controls.Add(this.chkAutoBuildLinksAfterDownload);
             this.Controls.Add(this.chkAutoDownloadAfterVerification);

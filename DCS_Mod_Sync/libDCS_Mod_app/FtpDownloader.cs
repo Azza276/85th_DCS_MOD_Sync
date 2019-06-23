@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -26,7 +26,7 @@ namespace libDCS_Mod_app
         public delegate void FinishedDownloadSignature(FilePair pair);
         public FinishedDownloadSignature OnFinishedDownload;
 
-        public const string FTP_WORKING_DIRECTORY = "OGN_Mods";
+        public const string FTP_WORKING_DIRECTORY = "85TH_Mods";
 
         public bool DownloadFiles(IEnumerable<FilePair> files, int concurrentDownloads)
         {
@@ -45,7 +45,7 @@ namespace libDCS_Mod_app
             {
                 while (!progressTaskToken.IsCancellationRequested)
                 {
-                    var totalBytesDownloaded = filesToDownload.Sum(f => f.Progress.BytesDownloaded); //This Line
+                    var totalBytesDownloaded = filesToDownload.Sum(f => f.Progress.BytesDownloaded);
                     OnProgressChanged?.Invoke(totalBytesDownloaded);
                     Thread.Sleep(100);
                 }
@@ -77,14 +77,14 @@ namespace libDCS_Mod_app
         }
 
         //Downloads the files that require update.
-        public bool DownloadFile(FilePair pair, IProgress<FtpProgress> progress)  //This Line
+        public bool DownloadFile(FilePair pair, IProgress<FtpProgress> progress)
         {
             bool result = false;
 
-            using (FtpClient dlFile = new FtpClient("ftp://www.ozgamingnetwork.com.au"))
+            using (FtpClient dlFile = new FtpClient("ftp://dcs.btac.pro/"))
             {
-                dlFile.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
-                dlFile.Host = "ftp://www.ozgamingnetwork.com.au";
+                dlFile.Credentials = new NetworkCredential("85th_user", "85th_user");
+                dlFile.Host = "ftp://dcs.btac.pro/";
                 dlFile.Connect();
                 dlFile.RetryAttempts = 3;
                 dlFile.DownloadFile(pair.LocalFilename, pair.RemoteFileInfo.URL, FtpLocalExists.Overwrite, FtpVerify.Retry, progress);
@@ -101,7 +101,7 @@ namespace libDCS_Mod_app
             request.UseBinary = true;
             request.EnableSsl = true;
             ServicePointManager.ServerCertificateValidationCallback = AcceptAllCertifications;
-            request.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
+            request.Credentials = new NetworkCredential("u_name", "pw");
             request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
             FtpWebResponse response = (FtpWebResponse)request.GetResponse();
             StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.ASCII);
@@ -126,10 +126,10 @@ namespace libDCS_Mod_app
         {
             WebFileInfo result = null;
 
-            using (FtpClient webInfo = new FtpClient("ftp://www.ozgamingnetwork.com.au"))
+            using (FtpClient webInfo = new FtpClient("ftp://www.url.com"))
             {
-                webInfo.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
-                webInfo.Host = "ftp://www.ozgamingnetwork.com.au";
+                webInfo.Credentials = new NetworkCredential("u_name", "pw");
+                webInfo.Host = "ftp://www.url.com";
                 webInfo.Connect();
                 webInfo.GetObjectInfo(URL);
 
@@ -152,7 +152,7 @@ namespace libDCS_Mod_app
 
             using (FtpClient conn = new FtpClient(URL))
             {
-                conn.Credentials = new NetworkCredential("dcs@ozgamingnetwork.com.au", "ozgaming");
+                conn.Credentials = new NetworkCredential("85th_user", "85th_user");
                 //Seems to not be needed at this stage.
                 //conn.EncryptionMode = FtpEncryptionMode.Implicit;
                 //conn.SslProtocols = SslProtocols.Tls;
@@ -173,7 +173,8 @@ namespace libDCS_Mod_app
                     conn.GetWorkingDirectory(),
                     //FtpListOption.Modify | FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList);
                     //FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList);
-                    FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList);
+                    //FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList);
+                    FtpListOption.Recursive | FtpListOption.DerefLinks | FtpListOption.ForceList);
 
                 foreach (FtpListItem item in list)
                 {
