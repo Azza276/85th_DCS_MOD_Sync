@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Octokit;
 using System.IO;
-using Git_Release_Update_Check;
+using lib_appupdate;
 using appupdatewin;
 
 namespace Git_Test
@@ -49,9 +49,6 @@ namespace Git_Test
                 asset.DownloadCount);
             Console.WriteLine("Press the Enter Key to begin the update");
             Console.ReadLine();
-
-            var update = new Updateconfirm(asset.Name, latest.TagName, latest.PublishedAt, Math.Round((double)asset.Size / 1024, 2), asset_uri, download_file, extract_path, latest.HtmlUrl);
-            update.ShowDialog();
 
             //Webclient to Download the file.
             WebClient wb = new WebClient();

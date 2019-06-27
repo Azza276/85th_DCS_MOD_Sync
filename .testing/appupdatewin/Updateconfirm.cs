@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Octokit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -38,6 +40,10 @@ namespace appupdatewin
             
         }
 
+        public Updateconfirm()
+        {
+        }
+
         private void Btn_Link_Click(object sender, EventArgs e)
         {
             Process.Start(ReleaseUrl);
@@ -46,7 +52,7 @@ namespace appupdatewin
 
         private void Btn_Update_Click(object sender, EventArgs e)
         {
-            var progresswin = new UpdatePro(asset_uri, download_file, extract_path);
+            UpdatePro progresswin = new UpdatePro(asset_uri, download_file, extract_path);
             progresswin.ShowDialog();
         }
 

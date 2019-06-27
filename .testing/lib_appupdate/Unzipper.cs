@@ -2,28 +2,12 @@
 using System.Net;
 using System.IO;
 using System.IO.Compression;
+using System.Windows.Forms;
 
-namespace Git_Release_Update_Check
+namespace lib_appupdate
 {
-    public class Appupdate
+    public class Unzipper
     {
-        private static float count = 0;
-        public static void DownloadProgressCallback(object sender, DownloadProgressChangedEventArgs e)
-        {
-            count++;
-            float div = count % 10;
-
-            if (div == 0)
-            {
-                //Prints: "Downloaded 3.25 kB of 61.46 kB  (4%)"
-                Console.WriteLine("Downloaded "
-                                + (e.BytesReceived / 1024f).ToString("#0.##") + " kB"
-                                + " of "
-                                + (e.TotalBytesToReceive / 1024f).ToString("#0.##") + " kB"
-                                + "  (" + e.ProgressPercentage + "%)"
-                );
-            }
-        }
         public static void Zipextractor(string path_to_zipfile, string extract_to_path)
         {
             // Ensures that the last character on the extraction path

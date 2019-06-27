@@ -195,7 +195,7 @@
             this.Installpathtitle.Text = "App Folder:";
             this.Installpathtitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Updatewin
+            // Updateconfirm
             // 
             this.AcceptButton = this.Btn_Update;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,7 +220,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Updatewin";
+            this.Name = "Updateconfirm";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

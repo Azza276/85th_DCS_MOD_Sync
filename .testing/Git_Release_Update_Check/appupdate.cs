@@ -3,7 +3,7 @@ using System.Net;
 using System.IO;
 using System.IO.Compression;
 
-namespace Git_Release_Update_Check
+namespace lib_appupdate
 {
     public class Appupdate
     {
