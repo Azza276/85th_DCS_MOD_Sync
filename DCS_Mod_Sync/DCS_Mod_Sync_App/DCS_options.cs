@@ -74,7 +74,7 @@ namespace DCS_Mod_Sync_App
             Settings.AutomaticallyBuildLinksAfterDownload = chkAutoBuildLinksAfterDownload.Checked;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -84,7 +84,7 @@ namespace DCS_Mod_Sync_App
 
         }
 
-        private void btnOK_Click(object sender, EventArgs e)
+        private void BtnOK_Click(object sender, EventArgs e)
         {
             GUIToSettings();
             Settings.SaveToFile(SettingsFilename, Settings);

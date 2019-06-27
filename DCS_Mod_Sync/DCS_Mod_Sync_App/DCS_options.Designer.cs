@@ -37,8 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.chkAutoDownloadAfterVerification = new System.Windows.Forms.CheckBox();
             this.chkAutoBuildLinksAfterDownload = new System.Windows.Forms.CheckBox();
-            this.FolderSettings = new DCS_Mod_Sync_App.ucAutodetectAndOverrideFolder();
-            this.liveriesFolderSettings = new DCS_Mod_Sync_App.ucAutodetectAndOverrideFolder();
+            this.FolderSettings = new DCS_Mod_Sync_App.UcAutodetectAndOverrideFolder();
+            this.liveriesFolderSettings = new DCS_Mod_Sync_App.UcAutodetectAndOverrideFolder();
             ((System.ComponentModel.ISupportInitialize)(this.downloadThreads)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +51,7 @@
             this.btnOK.TabIndex = 0;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnOK.Click += new System.EventHandler(this.BtnOK_Click);
             // 
             // btnCancel
             // 
@@ -62,7 +62,7 @@
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // label1
             // 
@@ -197,9 +197,9 @@
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label1;
-        private ucAutodetectAndOverrideFolder liveriesFolderSettings;
+        private UcAutodetectAndOverrideFolder liveriesFolderSettings;
         private System.Windows.Forms.Label label2;
-        private ucAutodetectAndOverrideFolder FolderSettings;
+        private UcAutodetectAndOverrideFolder FolderSettings;
         private System.Windows.Forms.NumericUpDown downloadThreads;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkAutoDownloadAfterVerification;

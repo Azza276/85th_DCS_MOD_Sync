@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DCS_Mod_Sync_App
 {
-    public partial class ucAutodetectAndOverrideFolder : UserControl
+    public partial class UcAutodetectAndOverrideFolder : UserControl
     {
-        public ucAutodetectAndOverrideFolder()
+        public UcAutodetectAndOverrideFolder()
         {
             InitializeComponent();
 
@@ -66,7 +66,7 @@ namespace DCS_Mod_Sync_App
             }
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void BtnBrowse_Click(object sender, EventArgs e)
         {
             using (var dialog = new FolderBrowserDialog())
             {

@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Git_Release_Update_Check", "Git_Release_Update_Check\Git_Release_Update_Check.csproj", "{F000EDF8-4AD8-4CD1-813D-035FAC3ED0E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1A59CE6F-7683-4F9A-A88D-86D0DDB4D8A5} = {1A59CE6F-7683-4F9A-A88D-86D0DDB4D8A5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "appupdatewin", "appupdatewin\appupdatewin.csproj", "{1A59CE6F-7683-4F9A-A88D-86D0DDB4D8A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{F000EDF8-4AD8-4CD1-813D-035FAC3ED0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F000EDF8-4AD8-4CD1-813D-035FAC3ED0E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F000EDF8-4AD8-4CD1-813D-035FAC3ED0E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A59CE6F-7683-4F9A-A88D-86D0DDB4D8A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A59CE6F-7683-4F9A-A88D-86D0DDB4D8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A59CE6F-7683-4F9A-A88D-86D0DDB4D8A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A59CE6F-7683-4F9A-A88D-86D0DDB4D8A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

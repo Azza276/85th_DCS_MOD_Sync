@@ -1,6 +1,6 @@
 ﻿namespace DCS_Mod_Sync_App
 {
-    partial class ucAutodetectAndOverrideFolder
+    partial class UcAutodetectAndOverrideFolder
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.ucAutoDetectAndOverride1 = new DCS_Mod_Sync_App.ucAutodetectAndOverride();
+            this.ucAutoDetectAndOverride1 = new DCS_Mod_Sync_App.UcAutodetectAndOverride();
             this.lblAutodetectedFolder = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -42,7 +42,7 @@
             this.btnBrowse.TabIndex = 1;
             this.btnBrowse.Text = "...";
             this.btnBrowse.UseVisualStyleBackColor = true;
-            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            this.btnBrowse.Click += new System.EventHandler(this.BtnBrowse_Click);
             // 
             // ucAutoDetectAndOverride1
             // 
@@ -80,7 +80,7 @@
 
         #endregion
 
-        private ucAutodetectAndOverride ucAutoDetectAndOverride1;
+        private UcAutodetectAndOverride ucAutoDetectAndOverride1;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Label lblAutodetectedFolder;
     }

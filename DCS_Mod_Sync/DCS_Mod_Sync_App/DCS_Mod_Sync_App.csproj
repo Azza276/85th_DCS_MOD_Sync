@@ -118,17 +118,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ucAutodetectAndOverride.cs">
+    <Compile Include="UcAutodetectAndOverride.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucAutodetectAndOverride.Designer.cs">
-      <DependentUpon>ucAutodetectAndOverride.cs</DependentUpon>
+    <Compile Include="UcAutodetectAndOverride.Designer.cs">
+      <DependentUpon>UcAutodetectAndOverride.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucAutodetectAndOverrideFolder.cs">
+    <Compile Include="UcAutodetectAndOverrideFolder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucAutodetectAndOverrideFolder.Designer.cs">
-      <DependentUpon>ucAutodetectAndOverrideFolder.cs</DependentUpon>
+    <Compile Include="UcAutodetectAndOverrideFolder.Designer.cs">
+      <DependentUpon>UcAutodetectAndOverrideFolder.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DCS_Mod_Sync.en-AU.resx">
       <DependentUpon>DCS_Mod_Sync.cs</DependentUpon>
@@ -151,11 +151,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ucAutodetectAndOverride.resx">
-      <DependentUpon>ucAutodetectAndOverride.cs</DependentUpon>
+    <EmbeddedResource Include="UcAutodetectAndOverride.resx">
+      <DependentUpon>UcAutodetectAndOverride.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucAutodetectAndOverrideFolder.resx">
-      <DependentUpon>ucAutodetectAndOverrideFolder.cs</DependentUpon>
+    <EmbeddedResource Include="UcAutodetectAndOverrideFolder.resx">
+      <DependentUpon>UcAutodetectAndOverrideFolder.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>

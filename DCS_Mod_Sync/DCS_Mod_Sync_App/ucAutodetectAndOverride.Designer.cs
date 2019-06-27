@@ -1,6 +1,6 @@
 ﻿namespace DCS_Mod_Sync_App
 {
-    partial class ucAutodetectAndOverride
+    partial class UcAutodetectAndOverride
     {
         /// <summary> 
         /// Required designer variable.
@@ -51,7 +51,7 @@
             this.chkAutodetect.TabIndex = 3;
             this.chkAutodetect.Text = "Autodetect";
             this.chkAutodetect.UseVisualStyleBackColor = false;
-            this.chkAutodetect.CheckedChanged += new System.EventHandler(this.chkAutodetect_CheckedChanged);
+            this.chkAutodetect.CheckedChanged += new System.EventHandler(this.ChkAutodetect_CheckedChanged);
             // 
             // ucAutodetectAndOverride
             // 
