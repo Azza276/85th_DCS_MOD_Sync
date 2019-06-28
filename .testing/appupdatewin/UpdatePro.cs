@@ -15,9 +15,6 @@ namespace appupdatewin
         public string download_file;
         public string extract_path;
         public static CancellationTokenSource ts = new CancellationTokenSource();
-        CancellationToken ct = ts.Token;
-        Task downloadTask;
-
 
         public UpdatePro(Uri Asset_uri, string Download_file, string Extract_path)
         {
@@ -64,8 +61,6 @@ namespace appupdatewin
         private void Btn_abort_Click(object sender, EventArgs e)
         {
             ts.Cancel();
-            ct.ThrowIfCancellationRequested();
-            downloadTask.Dispose();
             Environment.Exit(0);
         }
 
@@ -75,7 +70,7 @@ namespace appupdatewin
             DLStatus.Text = "Preparing Download...";
             DLStatus.Update();
 
-            downloadTask = Task.Factory.StartNew((() =>
+            var downloadTask = Task.Factory.StartNew((() =>
             {
                 WebClient wb = new WebClient();
                 Invoke((MethodInvoker)delegate
@@ -84,7 +79,7 @@ namespace appupdatewin
                     wb.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
                     wb.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleteCallback);
                     wb.DownloadFileAsync(asset_uri, download_file);
-                }, ts.Token);
+                });
             }));
 
         }   

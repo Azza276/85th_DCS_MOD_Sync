@@ -40,6 +40,7 @@
             this.updateBar.Location = new System.Drawing.Point(12, 46);
             this.updateBar.Name = "updateBar";
             this.updateBar.Size = new System.Drawing.Size(526, 23);
+            this.updateBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.updateBar.TabIndex = 0;
             // 
             // Btn_abort

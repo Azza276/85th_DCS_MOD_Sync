@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Net;
 using System.IO;
 using System.IO.Compression;
-using System.Windows.Forms;
 
 namespace lib_appupdate
 {
