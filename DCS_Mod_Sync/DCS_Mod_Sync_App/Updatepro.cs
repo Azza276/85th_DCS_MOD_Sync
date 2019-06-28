@@ -1,4 +1,4 @@
-﻿using lib_appupdate;
+﻿using libDCS_Mod_app;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace appupdatewin
+namespace DCS_Mod_Sync_App
 {
     public partial class UpdatePro : Form
     {

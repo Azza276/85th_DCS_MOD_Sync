@@ -88,6 +88,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Octokit, Version=0.32.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.32.0\lib\net45\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -129,6 +132,19 @@
     </Compile>
     <Compile Include="UcAutodetectAndOverrideFolder.Designer.cs">
       <DependentUpon>UcAutodetectAndOverrideFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updateapp.cs" />
+    <Compile Include="Updateconfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updateconfirm.Designer.cs">
+      <DependentUpon>Updateconfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updatepro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updatepro.Designer.cs">
+      <DependentUpon>Updatepro.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DCS_Mod_Sync.en-AU.resx">
       <DependentUpon>DCS_Mod_Sync.cs</DependentUpon>

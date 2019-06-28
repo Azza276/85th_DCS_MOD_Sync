@@ -8,10 +8,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 // This is the code for your desktop app.
 // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
@@ -121,6 +123,7 @@ namespace DCS_Mod_Sync_App
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Visible = true;
+                        progressBar1.ForeColor = SystemColors.Highlight;
                         progressBar1.Maximum = (int)totalKilobytesToDownload;
                     }));
 
@@ -191,13 +194,24 @@ namespace DCS_Mod_Sync_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Check for updates to the App. Open Dialog if true.
+            var appupdateTask = Task.Factory.StartNew((() =>
+            {
+                _ = Invoke((MethodInvoker)delegate
+                  {
+                      _ = Updateapp.Main();
+                  });
+            }));
 
+            //Current version info
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            this.version.Text = String.Format(this.version.Text, version.Major, version.Minor, version.Build, version.Revision);
         }
 
 
         //Povides visual indication that the client has connection to the 85th DCS server
         readonly ServerCheck serverCheck = new ServerCheck();
-        Task serverCheckTask;
+        private Task serverCheckTask;
         private void SetupServerCheckTimer()
         {
             serverCheckTask = Task.Factory.StartNew((Action)(() =>
@@ -310,6 +324,7 @@ namespace DCS_Mod_Sync_App
 
                 Invoke(new MethodInvoker(() =>
                 {
+
                     progressBar1.Show();
                     progressBar1.Style = ProgressBarStyle.Marquee;
                     progressBar1.MarqueeAnimationSpeed = 50;

@@ -1,11 +1,13 @@
 ﻿using Octokit;
 using System;
 using System.IO;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace appupdatewin
 {
-    static class Updatecode
+    static class Updateapp
     {
         /// <summary>
         /// The main entry point for the application.
@@ -34,26 +36,29 @@ namespace appupdatewin
             // Normalizes the extract path.
             extract_path = Path.GetFullPath(extract_path);
 
-            var update = new Updateconfirm(asset.Name, latest.TagName, latest.PublishedAt, Math.Round((double)asset.Size / 1024, 2), asset_uri, download_file, extract_path, latest.HtmlUrl);
-            update.ShowDialog();
+            //Get Latest Github Version Info (to int)
+            var Tag_ver = latest.TagName;
+            string output = Regex.Replace(Tag_ver, "[^0-9]+", string.Empty);
+            string out_t = output.Truncate(4);
+            string out_p = out_t.PadRight(4, '0');
+            int.TryParse(out_p, out int git_ver);
+            
+            //Get Application Version
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            string app_out = String.Format("{0}{1}{2}{3}", version.Major, version.Minor, version.Build, version.Revision);
+            int.TryParse(app_out, out int app_ver);
 
-            //Details of the updated file.
-            /*Console.WriteLine(
-                "The latest release of the {0} is version {1}, updated on {2}.",
-                latest.Name,
-                latest.TagName,
-                latest.PublishedAt);
-            Console.WriteLine(
-                "You are about to download the file {0} (ID {1}). It is " + Math.Round((double)asset.Size / 1024, 3) + "kB in size. It has been Downloaded {3} times.",
-                asset.Name,
-                asset.Id,
-                asset.ContentType,
-                asset.DownloadCount);
-            Console.WriteLine("Press the Enter Key to begin the update");
-            Console.ReadLine();*/
 
-            //var update = new Updateconfirm(asset.Name, latest.TagName, latest.PublishedAt, Math.Round((double)asset.Size / 1024, 2), asset_uri, download_file, extract_path, latest.HtmlUrl);
-            //update.ShowDialog();
+            if (git_ver > app_ver)
+            {
+                var update = new Updateconfirm(asset.Name, latest.TagName, latest.PublishedAt, Math.Round((double)asset.Size / 1024, 2), asset_uri, download_file, extract_path, latest.HtmlUrl);
+                update.ShowDialog();
+            }
+        
+        }
+        public static string Truncate(this string value, int maxChars)
+        {
+            return value.Length <= maxChars ? value : value.Substring(0, maxChars);
         }
     }
 }

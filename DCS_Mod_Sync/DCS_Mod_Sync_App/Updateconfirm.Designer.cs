@@ -1,4 +1,4 @@
-﻿namespace appupdatewin
+﻿namespace DCS_Mod_Sync_App
 {
     partial class Updateconfirm
     {

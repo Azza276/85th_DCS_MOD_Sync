@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-namespace appupdatewin
+namespace DCS_Mod_Sync_App
 {
     public partial class Updateconfirm : Form
     {
@@ -26,8 +26,8 @@ namespace appupdatewin
             extract_path = Extract_path;
 
             File_text(Filename, Version, Datetext, Sizetext, Extract_path);
-            
-            
+
+
         }
 
         public Updateconfirm()
@@ -37,7 +37,8 @@ namespace appupdatewin
         private void Btn_Link_Click(object sender, EventArgs e)
         {
             Process.Start(ReleaseUrl);
-            Environment.Exit(0);
+            Close();
+            //Environment.Exit(0);
         }
 
         private void Btn_Update_Click(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace appupdatewin
 
         private void Btn_Cancel_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void File_text(string filename, string version, string date, string size, string ExtractPath)
