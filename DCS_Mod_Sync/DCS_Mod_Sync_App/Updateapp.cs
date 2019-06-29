@@ -39,29 +39,47 @@ namespace DCS_Mod_Sync_App
             // Normalizes the extract path.
             extract_path = Path.GetFullPath(extract_path);
 
-            //Get Latest Github Version Info (to int)
+            //Get Latest Github Version Info.
             var Tag_ver = latest.TagName;
-            string output = Regex.Replace(Tag_ver, "[^0-9]+", string.Empty);
-            string out_t = output.Truncate(4);
-            string out_p = out_t.PadRight(4, '0');
-            int.TryParse(out_p, out int git_ver);
 
-            //Get Application Version
-            Version version = Assembly.GetExecutingAssembly().GetName().Version;
-            string app_out = String.Format("{0}{1}{2}{3}", version.Major, version.Minor, version.Build, version.Revision);
-            int.TryParse(app_out, out int app_ver);
+            // Force the Github Version - Only for testing
+            //var Tag_ver = "v0.5.0.8-alpha";
 
+            //Strip out all but numbers and "." to capture version numbers only.
+            string output = Regex.Replace(Tag_ver, "[^0-9 .]+", string.Empty); 
 
-            if (git_ver > app_ver)
+            //This section provides protection in case the versioning does not exactly match #.#.# scheme, whilst also
+            //allowing for multi digit version numbers e.g. the 45 in the minor version of 1.45.6.
+            var count = output.Count(x => x == '.'); //count number of full stops.
+            string out_p = output; //Set out_p to initiate and have a value if the if's are passed over.
+            if (count < 1) { out_p = output + ".0.0"; } //If only one number e.g. V1, adds trailing .0.0 otherwise next section will break.
+            else if (count < 2) { out_p = output + ".0"; } //If only two numbers e.g. V1.5, adds trailing .0 otherwise next section will break.
+
+            //Split the version out_p string into and array based on the '.' character, to protect multi digit numbers.
+            string[] ver_list = out_p.Split(new char[] { '.' }, StringSplitOptions.None);
+            int.TryParse(ver_list[0], out int git_major); //Convert first array number to int for Major Version revision.
+            int.TryParse(ver_list[1], out int git_minor); //Convert second array number to int for minor Version revision.
+            int.TryParse(ver_list[2], out int git_build); //Convert third array number to int  for Build Version revision. 
+            //From here, don't care for any more numbers, although more could be supported, it's not required for this App.
+
+            //Get Application Version and split into their own int's for next if statement bool operators.
+            Version App_ver = Assembly.GetExecutingAssembly().GetName().Version;
+            int app_major = App_ver.Major;
+            int app_minor = App_ver.Minor;
+            int app_build = App_ver.Build;
+
+            //Perform bool operators on version numbers. When a build update happens, the minor and major versions shall be the same,
+            //else we would have the app update if minor version may be higher, and and older version build goes up. It's highly
+            //unlikely, but this provides some protection.
+            //When Minor updates happen, we want to update regradless of "Build" update version as these would be reset on the minor update.
+            //When Major Updates happen, don't care for "Minor" or "Build" update version as these. would be reset on the Major update.
+            if (git_build > app_build && git_minor == app_minor && git_major == app_major
+                || git_minor > app_minor && git_major == app_major
+                || git_major > app_major)
             {
                 var update = new Updateconfirm(asset.Name, latest.TagName, latest.PublishedAt, Math.Round((double)asset.Size / 1024, 2), asset_uri, download_file, extract_path, latest.HtmlUrl);
                 update.ShowDialog();
             }
-
-        }
-        public static string Truncate(this string value, int maxChars)
-        {
-            return value.Length <= maxChars ? value : value.Substring(0, maxChars);
         }
     }
 }
