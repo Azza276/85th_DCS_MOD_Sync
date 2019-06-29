@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdatePro));
             this.updateBar = new System.Windows.Forms.ProgressBar();
             this.Btn_abort = new System.Windows.Forms.Button();
             this.DLStatus = new System.Windows.Forms.Label();
@@ -87,6 +88,7 @@
             this.Controls.Add(this.updateBar);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(566, 158);
             this.MinimizeBox = false;

@@ -293,7 +293,6 @@ namespace DCS_Mod_Sync_App
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "DCS_Mod_Sync";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DCS_Mod_Sync_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.DCS_Mod_Sync_Shown);
             this.titlePanel.ResumeLayout(false);

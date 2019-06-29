@@ -66,6 +66,22 @@ namespace DCS_Mod_Sync_App
             {
                 ModFolder = settings.ModsFolderOverride;
             }
+
+            //Set Default Application Folder
+            if (settings.AutodetectAppFolder)
+            {
+                AppFolder = FolderHelper.DetectAppFolder();
+
+                if (AppFolder == null)
+                {
+                    SetCurrentAction("Could not Find Application folder. Please provide it using the Options window.");
+                    return;
+                }
+            }
+            else
+            {
+                AppFolder = settings.AppFolderOverride;
+            }
         }
 
         readonly List<FilePair> filesThatRequireUpdate = new List<FilePair>();
@@ -199,7 +215,7 @@ namespace DCS_Mod_Sync_App
             {
                 _ = Invoke((MethodInvoker)delegate
                   {
-                      _ = Updateapp.Main();
+                      _ = Updateapp.Main(AppFolder);
                   });
             }));
 
@@ -240,10 +256,6 @@ namespace DCS_Mod_Sync_App
             Init();
         }
 
-        private void DCS_Mod_Sync_FormClosing(object sender, FormClosingEventArgs e)
-        {
-        }
-
         static String BytesToString(long byteCount)
         {
             string[] suf = { "B", "KB", "MB", "GB", "TB", "PB", "EB" }; //Longs run out around EB
@@ -267,6 +279,7 @@ namespace DCS_Mod_Sync_App
 
         string liveriesFolder;
         string ModFolder;
+        string AppFolder;
         private void VerifyButton_Click(object sender, EventArgs e)
         {
             if (liveriesFolder == null || ModFolder == null)
@@ -494,7 +507,7 @@ namespace DCS_Mod_Sync_App
             }
 
 
-            var options = new DCS_options(settings, settingsFilename, FolderHelper.DetectModsFolder(), FolderHelper.DetectLiveriesFolder());
+            var options = new DCS_options(settings, settingsFilename, FolderHelper.DetectModsFolder(), FolderHelper.DetectLiveriesFolder(), FolderHelper.DetectAppFolder());
 
             options.NewSettingsApplied += new DCS_options.NewSettingsAppliedSignature(() =>
             {

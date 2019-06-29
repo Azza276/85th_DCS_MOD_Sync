@@ -1,4 +1,5 @@
-﻿using System;
+﻿using libDCS_Mod_app;
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 
@@ -11,8 +12,9 @@ namespace DCS_Mod_Sync_App
         public Uri asset_uri;
         public string download_file;
         public string extract_path;
+        public string Appfolder;
 
-        public Updateconfirm(string Filename, string Version, DateTimeOffset? DateFull, double Size, Uri Asset_Uri, string Download_file, string Extract_path, string Releaseurl)
+        public Updateconfirm(string Filename, string Version, DateTimeOffset? DateFull, double Size, Uri Asset_Uri, string Download_file, string Releaseurl, string AppFolder)
         {
             InitializeComponent();
 
@@ -23,9 +25,9 @@ namespace DCS_Mod_Sync_App
             ReleaseUrl = Releaseurl;
             asset_uri = Asset_Uri;
             download_file = Download_file;
-            extract_path = Extract_path;
+            Appfolder = AppFolder;
 
-            File_text(Filename, Version, Datetext, Sizetext, Extract_path);
+            File_text(Filename, Version, Datetext, Sizetext, AppFolder);
 
 
         }
@@ -43,7 +45,7 @@ namespace DCS_Mod_Sync_App
 
         private void Btn_Update_Click(object sender, EventArgs e)
         {
-            UpdatePro progresswin = new UpdatePro(asset_uri, download_file, extract_path);
+            UpdatePro progresswin = new UpdatePro(asset_uri, download_file, Appfolder);
             progresswin.ShowDialog();
         }
 
@@ -52,13 +54,14 @@ namespace DCS_Mod_Sync_App
 
         }
 
-        private void File_text(string filename, string version, string date, string size, string ExtractPath)
+        private void File_text(string filename, string version, string date, string size, string AppFolder)
         {
             Filenametxt.Text = filename;
             Versiontxt.Text = version;
             Dateupdatedtxt.Text = date;
             Filesizetxt.Text = size;
-            Installpathtxt.Text = ExtractPath;
+            //Installpathtxt.Text = ExtractPath;
+            Installpathtxt.Text = AppFolder;
         }
     }
 }

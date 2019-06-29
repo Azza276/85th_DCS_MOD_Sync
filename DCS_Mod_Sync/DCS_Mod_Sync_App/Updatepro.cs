@@ -1,4 +1,5 @@
 ﻿using libDCS_Mod_app;
+using libDCS_Mod_app.Links.Providers;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -17,12 +18,12 @@ namespace DCS_Mod_Sync_App
         public string extract_path;
         public static CancellationTokenSource ts = new CancellationTokenSource();
 
-        public UpdatePro(Uri Asset_uri, string Download_file, string Extract_path)
+        public UpdatePro(Uri Asset_uri, string Download_file, string AppFolder)
         {
             InitializeComponent();
             asset_uri = Asset_uri;
             download_file = Download_file;
-            extract_path = Extract_path;
+            extract_path = AppFolder;
 
         }
 
@@ -51,19 +52,26 @@ namespace DCS_Mod_Sync_App
         {
             DLStatus.Text = "Unpacking...";
             DLStatus.Update();
-            File.Move(extract_path + "DCS Mod Sync App v0.5.exe", extract_path + "DCS Mod Sync App v0.5_old.exe");
-            File.Move(extract_path + "Readme v0.5.txt", extract_path + "Readme v0.5_old.txt");
+            File.Move(extract_path + "//DCS Mod Sync App v0.5.exe", extract_path + "//DCS Mod Sync App v0.5_old.exe");
+            File.Move(extract_path + "//Readme v0.5.txt", extract_path + "//Readme v0.5_old.txt");
             Thread.Sleep(1000);
 
             Unzipper.Zipextractor(download_file, extract_path);
-            if (File.Exists(extract_path + "DCS Mod Sync App v0.5_old.exe"))
+            if (File.Exists(extract_path + "//DCS Mod Sync App v0.5_old.exe"))
             {
-                File.Delete(extract_path + "DCS Mod Sync App v0.5_old.exe");
+                File.Delete(extract_path + "//DCS Mod Sync App v0.5_old.exe");
             }
-            if (File.Exists(extract_path + "Readme v0.5_old.txt"))
+            if (File.Exists(extract_path + "//Readme v0.5_old.txt"))
             {
-                File.Delete(extract_path + "Readme v0.5_old.txt");
+                File.Delete(extract_path + "//Readme v0.5_old.txt");
             }
+
+            string desktop_path = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Desktop\") + "DCS Mod Sync App";
+            //string desktop_path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//DCS Mod Sync App";
+            string app_path = extract_path + "//DCS Mod Sync App v0.5.exe";
+            LinkUtility Link = new LinkUtility();
+            Link.CreateLink(app_path, desktop_path);
+
             DLStatus.Text = "Update is Complete. Click \"Restart\" to Restart the 85th SQN DCS Mod Sync Application.";
             DLStatus.Update();
             Btn_abort.Visible = false;

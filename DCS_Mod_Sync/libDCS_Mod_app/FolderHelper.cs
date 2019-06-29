@@ -58,5 +58,14 @@ namespace libDCS_Mod_app
 
             return result;
         }
+
+        public static string DetectAppFolder()
+        {
+            //string result = ConstructSubfolder("85TH_Mod_Sync_App");
+            string result = AppDomain.CurrentDomain.BaseDirectory;
+            result = Path.GetFullPath(result);
+
+            return result;
+        }
     }
 }

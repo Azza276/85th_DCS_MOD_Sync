@@ -135,7 +135,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="optionsButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>656, 8</value>
+    <value>980, 8</value>
   </data>
   <data name="optionsButton.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>32, 32</value>
@@ -169,7 +169,7 @@
     <value>NoControl</value>
   </data>
   <data name="dcsServerText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>527, 45</value>
+    <value>851, 45</value>
   </data>
   <data name="dcsServerText.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 15</value>
@@ -220,7 +220,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>NoControl</value>
   </data>
   <data name="fileSyncStatusText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>497, 70</value>
+    <value>821, 70</value>
   </data>
   <data name="fileSyncStatusText.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 15</value>
@@ -325,7 +325,7 @@ Green - Files have been recently Synchronised.</value>
     <value>NoControl</value>
   </data>
   <data name="updateStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>657, 65</value>
+    <value>981, 65</value>
   </data>
   <data name="updateStatus.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
@@ -370,7 +370,7 @@ Green - Files have been recently Synchronised.</value>
     <value>NoControl</value>
   </data>
   <data name="serverStatus.Location" type="System.Drawing.Point, System.Drawing">
-    <value>657, 40</value>
+    <value>981, 40</value>
   </data>
   <data name="serverStatus.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
@@ -2662,7 +2662,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>0, 0</value>
   </data>
   <data name="titlePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 100</value>
+    <value>1008, 100</value>
   </data>
   <data name="titlePanel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2778,7 +2778,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>NoControl</value>
   </data>
   <data name="rebuildbutton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>589, 71</value>
+    <value>913, 71</value>
   </data>
   <data name="rebuildbutton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -2844,7 +2844,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>NoControl</value>
   </data>
   <data name="VerifyButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>589, 5</value>
+    <value>913, 5</value>
   </data>
   <data name="VerifyButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -2910,7 +2910,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>NoControl</value>
   </data>
   <data name="downloadButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>589, 38</value>
+    <value>913, 38</value>
   </data>
   <data name="downloadButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -2940,7 +2940,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>3, 71</value>
   </data>
   <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>572, 23</value>
+    <value>896, 23</value>
   </data>
   <data name="progressBar1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -3012,7 +3012,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>Corbel, 11.25pt</value>
   </data>
   <data name="currentAction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 7</value>
+    <value>60, 7</value>
   </data>
   <data name="currentAction.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 5, 5</value>
@@ -3021,7 +3021,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>True</value>
   </data>
   <data name="currentAction.Size" type="System.Drawing.Size, System.Drawing">
-    <value>517, 50</value>
+    <value>837, 50</value>
   </data>
   <data name="currentAction.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3048,10 +3048,10 @@ Green - DCS Server is online and ready to join.</value>
     <value>NoControl</value>
   </data>
   <data name="LinkSite.Location" type="System.Drawing.Point, System.Drawing">
-    <value>245, 108</value>
+    <value>153, 108</value>
   </data>
   <data name="LinkSite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 15</value>
+    <value>746, 15</value>
   </data>
   <data name="LinkSite.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3060,7 +3060,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>85th SQN on B|Tac Discord</value>
   </data>
   <data name="LinkSite.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+    <value>MiddleCenter</value>
   </data>
   <data name="&gt;&gt;LinkSite.Name" xml:space="preserve">
     <value>LinkSite</value>
@@ -3118,7 +3118,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>NoControl</value>
   </data>
   <data name="exitButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>589, 104</value>
+    <value>913, 104</value>
   </data>
   <data name="exitButton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -3145,13 +3145,13 @@ Green - DCS Server is online and ready to join.</value>
     <value>Bottom</value>
   </data>
   <data name="lowerTablePanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 372</value>
+    <value>0, 496</value>
   </data>
   <data name="lowerTablePanel.RowCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="lowerTablePanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 132</value>
+    <value>1008, 132</value>
   </data>
   <data name="lowerTablePanel.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -3169,7 +3169,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>0</value>
   </data>
   <data name="lowerTablePanel.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="version" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="rebuildbutton" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="VerifyButton" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="downloadButton" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="progressBar1" Row="2" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="statusLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="currentAction" Row="0" RowSpan="2" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="LinkSite" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="exitButton" Row="3" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,56,Percent,100,Absolute,336,Absolute,106" /&gt;&lt;Rows Styles="Absolute,33,Absolute,33,Absolute,33,Absolute,33" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="version" Row="3" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;Control Name="rebuildbutton" Row="2" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="VerifyButton" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="downloadButton" Row="1" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="progressBar1" Row="2" RowSpan="1" Column="0" ColumnSpan="3" /&gt;&lt;Control Name="statusLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="currentAction" Row="0" RowSpan="2" Column="1" ColumnSpan="2" /&gt;&lt;Control Name="LinkSite" Row="3" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="exitButton" Row="3" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Absolute,60,Absolute,90,Percent,100,Absolute,106" /&gt;&lt;Rows Styles="Absolute,33,Absolute,33,Absolute,33,Absolute,33" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="mainImage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -3187,7 +3187,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="mainImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>684, 272</value>
+    <value>1008, 396</value>
   </data>
   <data name="mainImage.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
     <value>Zoom</value>
@@ -3220,7 +3220,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>Zoom</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>684, 504</value>
+    <value>1008, 628</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Corbel, 9.75pt</value>

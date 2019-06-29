@@ -39,13 +39,19 @@
             this.chkAutoBuildLinksAfterDownload = new System.Windows.Forms.CheckBox();
             this.FolderSettings = new DCS_Mod_Sync_App.UcAutodetectAndOverrideFolder();
             this.liveriesFolderSettings = new DCS_Mod_Sync_App.UcAutodetectAndOverrideFolder();
+            this.label4 = new System.Windows.Forms.Label();
+            this.appFolderSettings = new DCS_Mod_Sync_App.UcAutodetectAndOverrideFolder();
+            this.chkDeleteLinksandModFolder = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.downloadThreads)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(464, 174);
+            this.btnOK.Location = new System.Drawing.Point(464, 326);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
             this.btnOK.TabIndex = 0;
@@ -56,7 +62,7 @@
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(545, 174);
+            this.btnCancel.Location = new System.Drawing.Point(545, 326);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -162,12 +168,77 @@
             this.liveriesFolderSettings.TabIndex = 4;
             this.liveriesFolderSettings.ValueForAutodetect = null;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(9, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(109, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Application Folder";
+            // 
+            // appFolderSettings
+            // 
+            this.appFolderSettings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.appFolderSettings.Autodetect = false;
+            this.appFolderSettings.BackColor = System.Drawing.Color.LightGray;
+            this.appFolderSettings.Folder = "";
+            this.appFolderSettings.Location = new System.Drawing.Point(120, 24);
+            this.appFolderSettings.Name = "appFolderSettings";
+            this.appFolderSettings.Size = new System.Drawing.Size(497, 24);
+            this.appFolderSettings.TabIndex = 12;
+            this.appFolderSettings.ValueForAutodetect = null;
+            // 
+            // chkDeleteLinksandModFolder
+            // 
+            this.chkDeleteLinksandModFolder.AutoSize = true;
+            this.chkDeleteLinksandModFolder.BackColor = System.Drawing.Color.LightGray;
+            this.chkDeleteLinksandModFolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkDeleteLinksandModFolder.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.chkDeleteLinksandModFolder.Location = new System.Drawing.Point(9, 77);
+            this.chkDeleteLinksandModFolder.Name = "chkDeleteLinksandModFolder";
+            this.chkDeleteLinksandModFolder.Size = new System.Drawing.Size(585, 17);
+            this.chkDeleteLinksandModFolder.TabIndex = 13;
+            this.chkDeleteLinksandModFolder.Text = "Select this and Click \"OK\" to Remove Mod Links and Delete Mod Folder. (Warning: C" +
+    "annot Undo!)";
+            this.chkDeleteLinksandModFolder.UseVisualStyleBackColor = false;
+            this.chkDeleteLinksandModFolder.CheckedChanged += new System.EventHandler(this.ChkDeleteLinksandModFolder_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.LightGray;
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.chkDeleteLinksandModFolder);
+            this.groupBox1.Controls.Add(this.appFolderSettings);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox1.Location = new System.Drawing.Point(3, 211);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(624, 104);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Advanced Application Settings";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(50, 51);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(285, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "*Only change if you need the Application saved elsewhere.";
+            // 
             // DCS_options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(632, 209);
+            this.ClientSize = new System.Drawing.Size(632, 361);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chkAutoBuildLinksAfterDownload);
             this.Controls.Add(this.chkAutoDownloadAfterVerification);
             this.Controls.Add(this.label3);
@@ -188,6 +259,8 @@
             this.Text = "Options";
             this.Load += new System.EventHandler(this.DCS_options_Load);
             ((System.ComponentModel.ISupportInitialize)(this.downloadThreads)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -204,5 +277,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkAutoDownloadAfterVerification;
         private System.Windows.Forms.CheckBox chkAutoBuildLinksAfterDownload;
+        private System.Windows.Forms.Label label4;
+        private UcAutodetectAndOverrideFolder appFolderSettings;
+        private System.Windows.Forms.CheckBox chkDeleteLinksandModFolder;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label5;
     }
 }

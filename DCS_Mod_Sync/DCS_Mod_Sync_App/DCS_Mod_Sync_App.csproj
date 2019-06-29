@@ -173,6 +173,12 @@
     <EmbeddedResource Include="UcAutodetectAndOverrideFolder.resx">
       <DependentUpon>UcAutodetectAndOverrideFolder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Updateconfirm.resx">
+      <DependentUpon>Updateconfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updatepro.resx">
+      <DependentUpon>Updatepro.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>

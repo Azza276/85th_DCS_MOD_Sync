@@ -16,7 +16,7 @@ namespace DCS_Mod_Sync_App
         /// The main entry point for the application.
         /// </summary>
         //[STAThread]
-        public static async Task Main()
+        public static async Task Main(string AppFolder)
         {
             //Setup some Variables/Statics.
             long repo_id = 157181568;
@@ -35,15 +35,15 @@ namespace DCS_Mod_Sync_App
 
             //Setup the Download file path and Zip extraction path.
             string download_file = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Downloads\") + asset.Name;
-            string extract_path = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Saved Games\");
+            //string extract_path = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Saved Games\");
             // Normalizes the extract path.
-            extract_path = Path.GetFullPath(extract_path);
+            //AppFolder = Path.GetFullPath(AppFolder);
 
             //Get Latest Github Version Info.
-            var Tag_ver = latest.TagName;
+            //var Tag_ver = latest.TagName;
 
             // Force the Github Version - Only for testing
-            //var Tag_ver = "v0.5.0.8-alpha";
+            var Tag_ver = "v0.5.1.8-alpha";
 
             //Strip out all but numbers and "." to capture version numbers only.
             string output = Regex.Replace(Tag_ver, "[^0-9 .]+", string.Empty); 
@@ -77,7 +77,7 @@ namespace DCS_Mod_Sync_App
                 || git_minor > app_minor && git_major == app_major
                 || git_major > app_major)
             {
-                var update = new Updateconfirm(asset.Name, latest.TagName, latest.PublishedAt, Math.Round((double)asset.Size / 1024, 2), asset_uri, download_file, extract_path, latest.HtmlUrl);
+                var update = new Updateconfirm(asset.Name, latest.TagName, latest.PublishedAt, Math.Round((double)asset.Size / 1024, 2), asset_uri, download_file, latest.HtmlUrl, AppFolder);
                 update.ShowDialog();
             }
         }
