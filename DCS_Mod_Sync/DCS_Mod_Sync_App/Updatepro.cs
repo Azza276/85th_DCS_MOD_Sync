@@ -52,25 +52,27 @@ namespace DCS_Mod_Sync_App
         {
             DLStatus.Text = "Unpacking...";
             DLStatus.Update();
-            File.Move(extract_path + "//DCS Mod Sync App v0.5.exe", extract_path + "//DCS Mod Sync App v0.5_old.exe");
-            File.Move(extract_path + "//Readme v0.5.txt", extract_path + "//Readme v0.5_old.txt");
+            string newFilePath = Path.Combine(extract_path, "DCS Mod Sync App v0.5.exe");
+            string oldFilePath = Path.Combine(extract_path, "DCS Mod Sync App v0.5_old.exe");
+            string newReadme = Path.Combine(extract_path, "Readme v0.5.txt");
+            string oldReadme = Path.Combine(extract_path, "Readme v0.5_old.txt");
+
+            if (File.Exists(newFilePath))
+            {
+                File.Move(newFilePath, oldFilePath);
+            }
+            if (File.Exists(newReadme))
+            {
+                File.Move(newReadme, oldReadme);
+            }
             Thread.Sleep(1000);
 
             Unzipper.Zipextractor(download_file, extract_path);
-            if (File.Exists(extract_path + "//DCS Mod Sync App v0.5_old.exe"))
-            {
-                File.Delete(extract_path + "//DCS Mod Sync App v0.5_old.exe");
-            }
-            if (File.Exists(extract_path + "//Readme v0.5_old.txt"))
-            {
-                File.Delete(extract_path + "//Readme v0.5_old.txt");
-            }
 
-            string desktop_path = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Desktop\") + "DCS Mod Sync App";
-            //string desktop_path = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "//DCS Mod Sync App";
-            string app_path = extract_path + "//DCS Mod Sync App v0.5.exe";
-            LinkUtility Link = new LinkUtility();
-            Link.CreateLink(app_path, desktop_path);
+            //string desktop_path = Path.Combine(Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Desktop\"), "85th SQN DCS Sync.lnk");
+            string desktop_path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "85th SQN DCS Sync.lnk");
+
+            CreateShortcut(desktop_path, newFilePath, extract_path);
 
             DLStatus.Text = "Update is Complete. Click \"Restart\" to Restart the 85th SQN DCS Mod Sync Application.";
             DLStatus.Update();
@@ -84,29 +86,10 @@ namespace DCS_Mod_Sync_App
             Environment.Exit(0);
         }
 
-        /*private void Btn_go_Click(object sender, EventArgs e)
-        {
-           /* Btn_go.Visible = false;
-            DLStatus.Text = "Preparing Download...";
-            DLStatus.Update();
-
-            var downloadTask = Task.Factory.StartNew((() =>
-            {
-                WebClient wb = new WebClient();
-                Invoke((MethodInvoker)delegate
-                {
-                    wb.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.33 Safari/537.36");
-                    wb.DownloadProgressChanged += new DownloadProgressChangedEventHandler(DownloadProgressCallback);
-                    wb.DownloadFileCompleted += new AsyncCompletedEventHandler(DownloadCompleteCallback);
-                    wb.DownloadFileAsync(asset_uri, download_file);
-                });
-            }));
-
-        }   */
-
         private void Btn_done_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(extract_path + "DCS Mod Sync App v0.5.exe");
+            string newFilePath = Path.Combine(extract_path, "DCS Mod Sync App v0.5.exe");
+            System.Diagnostics.Process.Start(newFilePath);
             Environment.Exit(0);
         }
 
@@ -126,6 +109,15 @@ namespace DCS_Mod_Sync_App
                     wb.DownloadFileAsync(asset_uri, download_file);
                 });
             }));
+        }
+        private void CreateShortcut(string Link_file, string Source_file, string App_folder)
+        {
+            IWshRuntimeLibrary.WshShell shell = new IWshRuntimeLibrary.WshShell();
+            IWshRuntimeLibrary.IWshShortcut shortcut = (IWshRuntimeLibrary.IWshShortcut)shell.CreateShortcut(Link_file);
+            shortcut.Description = "85th SQN DCS Mod Sync";
+            shortcut.RelativePath = App_folder;
+            shortcut.TargetPath = Source_file;
+            shortcut.Save();
         }
     }
 }

@@ -206,6 +206,8 @@
     "annot Undo!)";
             this.chkDeleteLinksandModFolder.UseVisualStyleBackColor = false;
             this.chkDeleteLinksandModFolder.CheckedChanged += new System.EventHandler(this.ChkDeleteLinksandModFolder_CheckedChanged);
+            this.chkDeleteLinksandModFolder.MouseEnter += ChkDeleteLinksandModFolder_MouseEnter;
+            this.chkDeleteLinksandModFolder.MouseLeave += ChkDeleteLinksandModFolder_MouseLeave;
             // 
             // groupBox1
             // 

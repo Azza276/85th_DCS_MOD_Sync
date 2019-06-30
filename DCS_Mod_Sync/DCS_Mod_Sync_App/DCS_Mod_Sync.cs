@@ -22,6 +22,7 @@ namespace DCS_Mod_Sync_App
 {
     public partial class DCS_Mod_Sync : Form
     {
+        public bool init_comp = false;
         public DCS_Mod_Sync()
         {
             InitializeComponent();
@@ -82,6 +83,8 @@ namespace DCS_Mod_Sync_App
             {
                 AppFolder = settings.AppFolderOverride;
             }
+
+            init_comp = true;
         }
 
         readonly List<FilePair> filesThatRequireUpdate = new List<FilePair>();
@@ -213,6 +216,19 @@ namespace DCS_Mod_Sync_App
             //Check for updates to the App. Open Dialog if true.
             var appupdateTask = Task.Factory.StartNew((() =>
             {
+                //Wait until the Init class has completed.
+                while (init_comp == false)
+                {
+                    Thread.Sleep(10);
+                }
+
+                //Cleanup of File if still there after update.
+                string oldFilePath = Path.Combine(AppFolder, "DCS Mod Sync App v0.5_old.exe");
+                string oldReadme = Path.Combine(AppFolder, "Readme v0.5_old.txt");
+                if (File.Exists(oldFilePath)){ File.Delete(oldFilePath);}
+                if (File.Exists(oldReadme)){File.Delete(oldReadme);}
+
+                //Kick off Update Check.
                 _ = Invoke((MethodInvoker)delegate
                   {
                       _ = Updateapp.Main(AppFolder);

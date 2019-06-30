@@ -33,11 +33,8 @@ namespace DCS_Mod_Sync_App
             //Setup Uri to download asset from.
             Uri asset_uri = new Uri(asset.BrowserDownloadUrl);
 
-            //Setup the Download file path and Zip extraction path.
+            //Setup the Download file path.
             string download_file = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Downloads\") + asset.Name;
-            //string extract_path = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Saved Games\");
-            // Normalizes the extract path.
-            //AppFolder = Path.GetFullPath(AppFolder);
 
             //Get Latest Github Version Info.
             //var Tag_ver = latest.TagName;
