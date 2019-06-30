@@ -37,10 +37,10 @@ namespace DCS_Mod_Sync_App
             string download_file = Environment.ExpandEnvironmentVariables(@"%USERPROFILE%\Downloads\") + asset.Name;
 
             //Get Latest Github Version Info.
-            //var Tag_ver = latest.TagName;
+            var Tag_ver = latest.TagName;
 
             // Force the Github Version - Only for testing
-            var Tag_ver = "v0.5.1.8-alpha";
+            //var Tag_ver = "v0.5.1.8-alpha";
 
             //Strip out all but numbers and "." to capture version numbers only.
             string output = Regex.Replace(Tag_ver, "[^0-9 .]+", string.Empty); 

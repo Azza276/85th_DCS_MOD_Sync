@@ -223,8 +223,8 @@ namespace DCS_Mod_Sync_App
                 }
 
                 //Cleanup of File if still there after update.
-                string oldFilePath = Path.Combine(AppFolder, "DCS Mod Sync App v0.5_old.exe");
-                string oldReadme = Path.Combine(AppFolder, "Readme v0.5_old.txt");
+                string oldFilePath = Path.Combine(AppFolder, "85th SQN DCS Mod Sync_old.exe");
+                string oldReadme = Path.Combine(AppFolder, "Readme_old.txt");
                 if (File.Exists(oldFilePath)){ File.Delete(oldFilePath);}
                 if (File.Exists(oldReadme)){File.Delete(oldReadme);}
 

@@ -52,10 +52,10 @@ namespace DCS_Mod_Sync_App
         {
             DLStatus.Text = "Unpacking...";
             DLStatus.Update();
-            string newFilePath = Path.Combine(extract_path, "DCS Mod Sync App v0.5.exe");
-            string oldFilePath = Path.Combine(extract_path, "DCS Mod Sync App v0.5_old.exe");
-            string newReadme = Path.Combine(extract_path, "Readme v0.5.txt");
-            string oldReadme = Path.Combine(extract_path, "Readme v0.5_old.txt");
+            string newFilePath = Path.Combine(extract_path, "85th SQN DCS Mod Sync.exe");
+            string oldFilePath = Path.Combine(extract_path, "85th SQN DCS Mod Sync_old.exe");
+            string newReadme = Path.Combine(extract_path, "Readme.txt");
+            string oldReadme = Path.Combine(extract_path, "Readme_old.txt");
 
             if (File.Exists(newFilePath))
             {
@@ -88,7 +88,7 @@ namespace DCS_Mod_Sync_App
 
         private void Btn_done_Click(object sender, EventArgs e)
         {
-            string newFilePath = Path.Combine(extract_path, "DCS Mod Sync App v0.5.exe");
+            string newFilePath = Path.Combine(extract_path, "85th SQN DCS Mod Sync.exe");
             System.Diagnostics.Process.Start(newFilePath);
             Environment.Exit(0);
         }
