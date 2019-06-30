@@ -1,17 +1,16 @@
-using System.Resources;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("85th_SQN_DCS_Mod_Sync")]
+[assembly: AssemblyTitle("appupdatewin")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("Debug")]
-[assembly: AssemblyCompany("Borderline Tactical")]
-[assembly: AssemblyProduct("85th_SQN_DCS_Mod_Sync")]
-[assembly: AssemblyCopyright("Copyright © Borderline Tactical 2019")]
+[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("appupdatewin")]
+[assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -21,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("57f2c322-4b54-49c0-be39-ea4e10111b50")]
+[assembly: Guid("1a59ce6f-7683-4f9a-a88d-86d0ddb4d8a5")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,7 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.6.0.0")]
-[assembly: AssemblyFileVersion("0.6.0.0")]
-[assembly: NeutralResourcesLanguage("en-AU")]
-
+[assembly: AssemblyVersion("0.5.0.0")]
+[assembly: AssemblyFileVersion("0.5.0.0")]

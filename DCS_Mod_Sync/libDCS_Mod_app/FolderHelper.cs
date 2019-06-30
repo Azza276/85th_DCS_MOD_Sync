@@ -58,5 +58,12 @@ namespace libDCS_Mod_app
 
             return result;
         }
+
+        public static string DetectAppFolder()
+        {
+            string result = AppDomain.CurrentDomain.BaseDirectory;
+
+            return result;
+        }
     }
 }

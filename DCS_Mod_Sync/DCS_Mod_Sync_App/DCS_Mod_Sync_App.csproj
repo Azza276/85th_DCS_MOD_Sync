@@ -88,6 +88,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Octokit, Version=0.32.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.32.0\lib\net45\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -118,17 +121,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ucAutodetectAndOverride.cs">
+    <Compile Include="UcAutodetectAndOverride.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucAutodetectAndOverride.Designer.cs">
-      <DependentUpon>ucAutodetectAndOverride.cs</DependentUpon>
+    <Compile Include="UcAutodetectAndOverride.Designer.cs">
+      <DependentUpon>UcAutodetectAndOverride.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucAutodetectAndOverrideFolder.cs">
+    <Compile Include="UcAutodetectAndOverrideFolder.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucAutodetectAndOverrideFolder.Designer.cs">
-      <DependentUpon>ucAutodetectAndOverrideFolder.cs</DependentUpon>
+    <Compile Include="UcAutodetectAndOverrideFolder.Designer.cs">
+      <DependentUpon>UcAutodetectAndOverrideFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updateapp.cs" />
+    <Compile Include="Updateconfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updateconfirm.Designer.cs">
+      <DependentUpon>Updateconfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Updatepro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Updatepro.Designer.cs">
+      <DependentUpon>Updatepro.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="DCS_Mod_Sync.en-AU.resx">
       <DependentUpon>DCS_Mod_Sync.cs</DependentUpon>
@@ -151,11 +167,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ucAutodetectAndOverride.resx">
-      <DependentUpon>ucAutodetectAndOverride.cs</DependentUpon>
+    <EmbeddedResource Include="UcAutodetectAndOverride.resx">
+      <DependentUpon>UcAutodetectAndOverride.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucAutodetectAndOverrideFolder.resx">
-      <DependentUpon>ucAutodetectAndOverrideFolder.cs</DependentUpon>
+    <EmbeddedResource Include="UcAutodetectAndOverrideFolder.resx">
+      <DependentUpon>UcAutodetectAndOverrideFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updateconfirm.resx">
+      <DependentUpon>Updateconfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Updatepro.resx">
+      <DependentUpon>Updatepro.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
@@ -226,6 +248,17 @@
     <None Include="Resources\options.png" />
     <None Include="Resources\update.png" />
     <None Include="Resources\rebuild.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

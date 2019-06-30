@@ -8,10 +8,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 // This is the code for your desktop app.
 // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
@@ -20,6 +22,7 @@ namespace DCS_Mod_Sync_App
 {
     public partial class DCS_Mod_Sync : Form
     {
+        public bool init_comp = false;
         public DCS_Mod_Sync()
         {
             InitializeComponent();
@@ -64,6 +67,24 @@ namespace DCS_Mod_Sync_App
             {
                 ModFolder = settings.ModsFolderOverride;
             }
+
+            //Set Default Application Folder
+            if (settings.AutodetectAppFolder)
+            {
+                AppFolder = FolderHelper.DetectAppFolder();
+
+                if (AppFolder == null)
+                {
+                    SetCurrentAction("Could not Find Application folder. Please provide it using the Options window.");
+                    return;
+                }
+            }
+            else
+            {
+                AppFolder = settings.AppFolderOverride;
+            }
+
+            init_comp = true;
         }
 
         readonly List<FilePair> filesThatRequireUpdate = new List<FilePair>();
@@ -121,6 +142,7 @@ namespace DCS_Mod_Sync_App
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Visible = true;
+                        progressBar1.ForeColor = SystemColors.Highlight;
                         progressBar1.Maximum = (int)totalKilobytesToDownload;
                     }));
 
@@ -191,13 +213,37 @@ namespace DCS_Mod_Sync_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Check for updates to the App. Open Dialog if true.
+            var appupdateTask = Task.Factory.StartNew((() =>
+            {
+                //Wait until the Init class has completed.
+                while (init_comp == false)
+                {
+                    Thread.Sleep(10);
+                }
 
+                //Cleanup of File if still there after update.
+                string oldFilePath = Path.Combine(AppFolder, "85th SQN DCS Mod Sync_old.exe");
+                string oldReadme = Path.Combine(AppFolder, "Readme_old.txt");
+                if (File.Exists(oldFilePath)){ File.Delete(oldFilePath);}
+                if (File.Exists(oldReadme)){File.Delete(oldReadme);}
+
+                //Kick off Update Check.
+                _ = Invoke((MethodInvoker)delegate
+                  {
+                      _ = Updateapp.Main(AppFolder);
+                  });
+            }));
+
+            //Current version info
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            this.version.Text = String.Format(this.version.Text, version.Major, version.Minor, version.Build, version.Revision);
         }
 
 
         //Povides visual indication that the client has connection to the 85th DCS server
         readonly ServerCheck serverCheck = new ServerCheck();
-        Task serverCheckTask;
+        private Task serverCheckTask;
         private void SetupServerCheckTimer()
         {
             serverCheckTask = Task.Factory.StartNew((Action)(() =>
@@ -226,10 +272,6 @@ namespace DCS_Mod_Sync_App
             Init();
         }
 
-        private void DCS_Mod_Sync_FormClosing(object sender, FormClosingEventArgs e)
-        {
-        }
-
         static String BytesToString(long byteCount)
         {
             string[] suf = { "B", "KB", "MB", "GB", "TB", "PB", "EB" }; //Longs run out around EB
@@ -253,6 +295,7 @@ namespace DCS_Mod_Sync_App
 
         string liveriesFolder;
         string ModFolder;
+        string AppFolder;
         private void VerifyButton_Click(object sender, EventArgs e)
         {
             if (liveriesFolder == null || ModFolder == null)
@@ -310,6 +353,7 @@ namespace DCS_Mod_Sync_App
 
                 Invoke(new MethodInvoker(() =>
                 {
+
                     progressBar1.Show();
                     progressBar1.Style = ProgressBarStyle.Marquee;
                     progressBar1.MarqueeAnimationSpeed = 50;
@@ -479,7 +523,7 @@ namespace DCS_Mod_Sync_App
             }
 
 
-            var options = new DCS_options(settings, settingsFilename, FolderHelper.DetectModsFolder(), FolderHelper.DetectLiveriesFolder());
+            var options = new DCS_options(settings, settingsFilename, FolderHelper.DetectModsFolder(), FolderHelper.DetectLiveriesFolder(), FolderHelper.DetectAppFolder());
 
             options.NewSettingsApplied += new DCS_options.NewSettingsAppliedSignature(() =>
             {

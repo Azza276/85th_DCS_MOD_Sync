@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DCS_Mod_Sync_App
 {
-    public partial class ucAutodetectAndOverride : UserControl
+    public partial class UcAutodetectAndOverride : UserControl
     {
-        public ucAutodetectAndOverride()
+        public UcAutodetectAndOverride()
         {
             InitializeComponent();
         }
@@ -27,7 +27,7 @@ namespace DCS_Mod_Sync_App
             return txt.Text;
         }
 
-        private void chkAutodetect_CheckedChanged(object sender, EventArgs e)
+        private void ChkAutodetect_CheckedChanged(object sender, EventArgs e)
         {
 
         }

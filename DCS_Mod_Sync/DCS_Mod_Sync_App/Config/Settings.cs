@@ -22,6 +22,8 @@ namespace DCS_Mod_Sync_App.Config
         public bool AutomaticallyDownloadAfterVerification { get; set; } = false;
         public bool AutomaticallyBuildLinksAfterDownload { get; set; } = true;
 
+        public bool AutodetectAppFolder { get; set; } = true;
+        public string AppFolderOverride { get; set; } = "";
         public static Settings LoadFromFile(string filename)
         {
             Settings result;
