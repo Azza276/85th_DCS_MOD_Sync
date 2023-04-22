@@ -122,24 +122,35 @@ Version Change Notes:
 Beta - 0.6.0.1
 
 `+` Added New Port parameter for the FTP Server (non-standard port number used).
+
 `=` Fixed FTP Server connection issues (related to port number above).
+
 `=` Other Minor code cleanup (commented out unnecessary code).
+
 `=` Fixed Server Online indication (incorrect port being interrogated).
 
 Beta - 0.6
 
 `+` Added new App Update Check and Download Feature (https://github.com/Azza276/85th_DCS_MOD_Sync/issues/16).
+
 `+` Added to Options the ability to change the Application folder directory.
+
 `+` Added selection in Options that will Fix/Clean the Mod Folders and Links. (https://github.com/Azza276/85th_DCS_MOD_Sync/issues/19).
+
 `+` Added When Ap gets updated it puts a shortcut on the Desktop.
+
 `=` Changed some code to align with B|Tac 85th SQN a bit more.
+
 `=` Increased the size of the Application Window. She ain't no small Baby App anymore.
 
 Alpha - 0.5
 
 `-` Removed references to the Oz Gaming Network (OGN) from the code and app Window as the 85th are no longer associated with OGN.
+
 `=` Changed Indicator lights as it's no longer the season.
+
 `=` Changed the Background Picture to something a little more exciting.
+
 `=` Changed the UI colour as the Blue clashed with the new background image.
 
 Alpha - 0.4
@@ -153,6 +164,7 @@ Alpha - 0.3 Hotfix 1
 Alpha - 0.3
 
 `+` Options menu. Can select mod download location, livery folder locations, number of downlad threads, select auto download after verification, auto link rebuilding after download.
+
 `+` Exception handling for a number of different cases, including symbolic link creation, FTP server overload/offline, DCS folders not found.
 
 `=` Improved the File Verification Time significantly
