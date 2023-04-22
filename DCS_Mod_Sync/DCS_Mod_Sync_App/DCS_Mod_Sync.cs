@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
+using FluentFTP;
 
 // This is the code for your desktop app.
 // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
@@ -348,6 +349,7 @@ namespace DCS_Mod_Sync_App
                 updateStatus.BackgroundImage = Properties.Resources.red_light;
 
                 string dcsModsURL = "ftp://dcs.btac.pro/";
+                int dcsModsPort = 221;
 
                 SetCurrentAction("Getting current list of files from the server...");
 
@@ -364,7 +366,7 @@ namespace DCS_Mod_Sync_App
                 List<WebFileInfo> allFilesOnWebserver;
                 try
                 {
-                    allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL);
+                    allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL, dcsModsPort);
                 }
                 catch (Exception ex)
                 {

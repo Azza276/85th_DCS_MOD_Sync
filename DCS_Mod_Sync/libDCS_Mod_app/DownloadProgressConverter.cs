@@ -17,10 +17,10 @@ namespace libDCS_Mod_app
         }
 
         public FilePair Pair { get; }
-
+        
         public void Report(FtpProgress progress)
         {
-            BytesDownloaded = (long)((progress.Progress / 100d) * Pair.RemoteFileInfo.Length);
+            BytesDownloaded = (long)((progress.Progress / 100d) * Pair.RemoteFileInfo.Length);            
         }
     }
 }
