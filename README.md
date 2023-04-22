@@ -119,7 +119,7 @@ A: Raise an issue on the GitHub https://github.com/Azza276/DCS_MOD_Sync/issues. 
 
 Version Change Notes:
 
-Beta - 0.6.0.1
+Beta - 0.6.1
 
 `+` Added New Port parameter for the FTP Server (non-standard port number used).
 
