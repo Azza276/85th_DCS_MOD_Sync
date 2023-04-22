@@ -414,7 +414,7 @@ Green - DCS Server is online and ready to join.</value>
   <data name="logo.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAI8CAYAAAAHhVnOAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAH
-        6AAAB+gBRj3epAAA/7JJREFUeF7s/Qm4ZUV59w3n+97red8YI5ioMQrdIMjU0H2aeWroZgYbaBREmRGU
+        5gAAB+YB4rSSWgAA/7JJREFUeF7s/Qm4ZUV59w3n+97red8YI5ioMQrdIMjU0H2aeWroZgYbaBREmRGU
         yNg420yCmUBQiBMokZBgAKMo0aDGKIKiSXyidBIQo2gjYzczokmevH7X/tZvddfp2nX+a1XVmvba+9S6
         rt8FXWftNdaqf9133XXXbwwGg0QikUgkEmOOLEwkEolEIjFeyMJEIpFIJBLjhSxMJBKJRCIxXsjCRCKR
         SCQS44UsTCQSiUQiMV7IwkQikUgkEuOFLEwkEolEIjFeyMJEIpFIJBLjhSxMJBKJRCIxXsjCRCLRPdm2
@@ -1527,7 +1527,7 @@ Green - DCS Server is online and ready to join.</value>
   <data name="logo.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAfQAAAI8CAYAAAAHhVnOAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAH
-        6AAAB+gBRj3epAAA/7JJREFUeF7s/Qm4ZUV59w3n+97red8YI5ioMQrdIMjU0H2aeWroZgYbaBREmRGU
+        5gAAB+YB4rSSWgAA/7JJREFUeF7s/Qm4ZUV59w3n+97red8YI5ioMQrdIMjU0H2aeWroZgYbaBREmRGU
         yNg420yCmUBQiBMokZBgAKMo0aDGKIKiSXyidBIQo2gjYzczokmevH7X/tZvddfp2nX+a1XVmvba+9S6
         rt8FXWftNdaqf9133XXXbwwGg0QikUgkEmOOLEwkEolEIjFeyMJEIpFIJBLjhSxMJBKJRCIxXsjCRCKR
         SCQS44UsTCQSiUQiMV7IwkQikUgkEuOFLEwkEolEIjFeyMJEIpFIJBLjhSxMJBKJRCIxXsjCRCLRPdm2
@@ -2745,7 +2745,7 @@ Green - DCS Server is online and ready to join.</value>
   <data name="rebuildbutton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFoAAAAXCAYAAACLbliwAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAABgNJREFUaEPtWflXVVUU9i/JeZ5wqhzLBhFUBEUBURkUBXyoqAwpKipDzqCAhTiL
+        EAAACxABrSO9dQAABgNJREFUaEPtWflXVVUU9i/JeZ5wqhzLBhFUBEUBURkUBXyoqAwpKipDzqCAhTiL
         85SKiZkrNS0rSFNzpBbLoaVZi5blr1/723he5+EjHoKt3lpvr/Wte++5+5yz93f2/e5597UA8AJeGxYf
         LTgiqBHAB49ArshZsDtOXS7EyU9wWeBuoIbhn4DWgUloO2o22o+eiw4hKeg4Jg2dQtPROfQDJ3jNdt6n
         X9tRyWgzYiZaDZ/hflzvAzn0s7mtS7JHFdxm5Cx0DElFl7AM9Ji4FL2jc9Fv6iq8GZ+PgY5CDJ71Md5K
@@ -2813,7 +2813,7 @@ Green - DCS Server is online and ready to join.</value>
   <data name="VerifyButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFoAAAAXCAYAAACLbliwAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAABZBJREFUaEPtmflTlVUcxv1LcsMFFcQ9FS1bRHYQkE1FUfZFroogIouChMimgIWm
+        EAAACxABrSO9dQAABZBJREFUaEPtmflTlVUcxv1LcsMFFcQ9FS1bRHYQkE1FUfZFroogIouChMimgIWm
         aCoqLuRSYclkpNUUZlpjmU5Dm5PRDJPjTL89fZ/v9b3zApeEKbze5r4zz9zznvfcd/mc5zzn3PeOANBP
         zy1OXiVqFfWI4NKgRFZkFmKPaa8daeQluiGyd6InyycFo/0yMDYwC+OCN2B8aDYmLM3BxPBcuIdvton7
         rOdxthsbaMEY/0yMWpJm/7zOJzL0MrPtC3lQDh4TsA4TQjdhUmQ+PJdvw/RVZZi1dheeT67F/PR6LFj3
@@ -2879,7 +2879,7 @@ Green - DCS Server is online and ready to join.</value>
   <data name="downloadButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFoAAAAXCAYAAACLbliwAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAABa1JREFUaEPtmflTlVUYx/1Lcl9QUdTUErS0EgHZZAcVUFllFVlUVmVJBURZTCBF
+        EAAACxABrSO9dQAABa1JREFUaEPtmflTlVUYx/1Lcl9QUdTUErS0EgHZZAcVUFllFVlUVmVJBURZTCBF
         U3GDTKHSMScjW2bCLGssy2mctslshhmnn7893+dy7rxcUbDw2nU4M9+57/uc8573ns95zvc9971jADyg
         55Ynx4nOivpEGNWwRFZkFjQY0wEn0shDdF00WEdDyzsF433TMdE/C5MDczAlOBdTV+VjWmgB3EK32MVz
         xlnPdhP9szHBLwPjVmwcvF/XExl6WNk6Qh5WBk9YmYmpwXmYHlGIWau3Y25cFeZvqMYLyXvhmdaIxZkH
@@ -3089,7 +3089,7 @@ Green - DCS Server is online and ready to join.</value>
   <data name="exitButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAFoAAAAXCAYAAACLbliwAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EgAACxIB0t1+/AAABSFJREFUaEPtmflTVXUYxv1LcsMFWcS9BC1b2Pd9UUD2VQFlCVmVJUUQZLGQFA0U
+        EAAACxABrSO9dQAABSFJREFUaEPtmflTVXUYxv1LcsMFWcS9BC1b2Pd9UUD2VQFlCVmVJUUQZLGQFA0U
         F8gEKpxyMrNlJsqyprKchmlxMpthxunnp/d5L/fOvXARTEXvzD0zz5xzzzn3LJ/3+T7f7zlnHoApesYz
         I1F0QTQugl2zElmRWbA1phY/ZCc30XWRtQPNLK9MLPTNxeKAPCwJ2oWlIYVYFlqM5eElcAx/1ST+5npu
         536LA/KxyG8HFnhnWz+u7YkM3czZToY8Kwcv8t+JZSFFWBFVBtete7E6sR7rUg7i2YwWuOe0Y9PON/B8
@@ -3484,7 +3484,7 @@ Green - DCS Server is online and ready to join.</value>
     <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>DCS Mod Sync 0.5</value>
+    <value>DCS Mod Sync 0.6.0.1</value>
   </data>
   <data name="&gt;&gt;toolTipFileSync.Name" xml:space="preserve">
     <value>toolTipFileSync</value>

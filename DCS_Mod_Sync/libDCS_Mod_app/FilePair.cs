@@ -27,7 +27,7 @@ namespace libDCS_Mod_app
 
             bool result = false;
 
-            var downloader = new FtpDownloader();
+            //var downloader = new FtpDownloader();
 
             var localFileInfo = new FileInfo(LocalFilename);
 

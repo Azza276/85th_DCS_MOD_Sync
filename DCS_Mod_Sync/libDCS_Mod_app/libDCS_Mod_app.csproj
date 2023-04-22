@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentFTP, Version=25.0.3.0, Culture=neutral, PublicKeyToken=f4af092b1d8df44f, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentFTP.25.0.3\lib\net45\FluentFTP.dll</HintPath>
+    <Reference Include="FluentFTP, Version=27.1.4.0, Culture=neutral, PublicKeyToken=f4af092b1d8df44f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentFTP.27.1.4\lib\net45\FluentFTP.dll</HintPath>
     </Reference>
     <Reference Include="SymbolicLinkSupport, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SymbolicLinkSupport.1.2.0\lib\net35\SymbolicLinkSupport.dll</HintPath>

@@ -85,8 +85,9 @@ namespace libDCS_Mod_app
             {
                 dlFile.Credentials = new NetworkCredential("85th_user", "85th_user");
                 dlFile.Host = "ftp://dcs.btac.pro/";
-                dlFile.Connect();
+                dlFile.Port = 221;
                 dlFile.RetryAttempts = 3;
+                dlFile.Connect();
                 dlFile.DownloadFile(pair.LocalFilename, pair.RemoteFileInfo.URL, FtpLocalExists.Overwrite, FtpVerify.Retry, progress);
 
                 if (File.Exists(pair.LocalFilename))
@@ -144,14 +145,15 @@ namespace libDCS_Mod_app
         }
         */
 
-        public List<WebFileInfo> GetFilesFromDirectoryListing(string URL)
+        public List<WebFileInfo> GetFilesFromDirectoryListing(string URL, int Port)
         {
             //gets the list of file names on the server
             List<WebFileInfo> result = new List<WebFileInfo>();
-            var streamToLines = new List<string>();
+            //var streamToLines = new List<string>();
 
             using (FtpClient conn = new FtpClient(URL))
             {
+                conn.Port = Port;
                 conn.Credentials = new NetworkCredential("85th_user", "85th_user");
                 //Seems to not be needed at this stage.
                 //conn.EncryptionMode = FtpEncryptionMode.Implicit;
@@ -175,6 +177,8 @@ namespace libDCS_Mod_app
                     //FtpListOption.Size | FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList);
                     //FtpListOption.DerefLinks | FtpListOption.Recursive | FtpListOption.ForceList);
                     FtpListOption.Recursive | FtpListOption.DerefLinks | FtpListOption.ForceList);
+                    //FtpListOption.Recursive | FtpListOption.ForceList);
+                    //FtpListOption.Recursive | FtpListOption.Auto);
 
                 foreach (FtpListItem item in list)
                 {

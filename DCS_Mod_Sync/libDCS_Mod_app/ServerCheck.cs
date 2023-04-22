@@ -14,7 +14,7 @@ namespace libDCS_Mod_app
         public bool GetServerResponse()
         {
             string ip = "14.202.251.103";
-            int port = 20308;
+            int port = 10308;
 
             bool isResponsive = false;
 
