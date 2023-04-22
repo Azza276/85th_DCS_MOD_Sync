@@ -4,7 +4,7 @@ The 85th SQN DCS Livery(Mod) Sync Application
 
 Readme!
 
-Alpha 0.6
+Alpha 0.6.0.1
 
 The 85th SQN DCS Mod Sync is intended to be used by members of the Borderline Tactical's 85th Squadron (Fictional). The Mod Sync App keeps the client’s files up to date with an FTP 
 server that may from time to time be updated with new skins and liveries. Without these skins and liveries, members will not be able to see the wonderfully crafted skins that others use.
@@ -119,7 +119,14 @@ A: Raise an issue on the GitHub https://github.com/Azza276/DCS_MOD_Sync/issues. 
 
 Version Change Notes:
 
-Alpha - 0.6
+Beta - 0.6.0.1
+
+`+` Added New Port parameter for the FTP Server (non-standard port number used).
+`=` Fixed FTP Server connection issues (related to port number above).
+`=` Other Minor code cleanup (commented out unnecessary code).
+`=` Fixed Server Online indication (incorrect port being interrogated).
+
+Beta - 0.6
 
 `+` Added new App Update Check and Download Feature (https://github.com/Azza276/85th_DCS_MOD_Sync/issues/16).
 `+` Added to Options the ability to change the Application folder directory.
