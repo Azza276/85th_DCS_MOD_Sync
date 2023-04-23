@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="ILRepacker" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+
+    <ItemGroup>
+        <InputAssemblies Include="$(OutputPath)\DCS_Mod_Sync_App.exe" />
+        <InputAssemblies Include="$(OutputPath)\FluentFTP.dll" />
+        <InputAssemblies Include="$(OutputPath)\libDCS_Mod_app.dll" />
+        <InputAssemblies Include="$(OutputPath)\Newtonsoft.Json.dll" />
+        <InputAssemblies Include="$(OutputPath)\Octokit.dll" />
+        <InputAssemblies Include="$(OutputPath)\SymbolicLinkSupport.dll" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Must be a fully qualified name -->
+      <!-- <DoNotInternalizeAssemblies Include="85th SQN DCS Mod Sync.Exe.config" /> -->
+    </ItemGroup>
+
+    <ILRepack
+        Parallel="true"
+        Internalize="true"
+        InternalizeExclude="@(DoNotInternalizeAssemblies)"
+        InputAssemblies="@(InputAssemblies)"
+        TargetKind="SameAsPrimaryAssembly"
+        OutputFile="C:\Users\azza2\Desktop\85th SQN DCS Mod Sync.Exe"
+        LogFile="C:\Users\azza2\Desktop\85th SQN DCS Mod Sync Assembly.log"
+        XmlDocumentation="false"
+    />
+
+    </Target>
+</Project>
