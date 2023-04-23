@@ -37,6 +37,9 @@
     <Reference Include="FluentFTP, Version=27.1.4.0, Culture=neutral, PublicKeyToken=f4af092b1d8df44f, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentFTP.27.1.4\lib\net45\FluentFTP.dll</HintPath>
     </Reference>
+    <Reference Include="Octokit, Version=5.0.4.0, Culture=neutral, PublicKeyToken=0be8860aee462442, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.5.0.4\lib\netstandard2.0\Octokit.dll</HintPath>
+    </Reference>
     <Reference Include="SymbolicLinkSupport, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SymbolicLinkSupport.1.2.0\lib\net35\SymbolicLinkSupport.dll</HintPath>
     </Reference>

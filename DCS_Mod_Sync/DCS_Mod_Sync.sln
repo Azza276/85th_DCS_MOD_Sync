@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29009.5
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DCS_Mod_Sync_App", "DCS_Mod_Sync_App\DCS_Mod_Sync_App.csproj", "{57F2C322-4B54-49C0-BE39-EA4E10111B50}"
 EndProject
