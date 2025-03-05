@@ -82,7 +82,6 @@
     <Compile Include="HttpsDownloader.cs" />
     <Compile Include="Unzipper.cs" />
     <Compile Include="DownloadProgressConverter.cs" />
-    <Compile Include="FtpDownloader.cs" />
     <Compile Include="Links\JunctionPoint.cs" />
     <Compile Include="Links\Providers\LinkUtility.cs" />
     <Compile Include="Links\Providers\JunctionUtility.cs" />

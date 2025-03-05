@@ -4,9 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
-using FluentFTP;
+//using FluentFTP;
 using System.Threading.Tasks;
-
 
 using System.Net.Http;
 using HtmlAgilityPack;
@@ -58,7 +57,7 @@ namespace libDCS_Mod_app
                 .ForAll(f =>
                 {
                     OnStartDownload?.Invoke(f.Pair);
-                    DownloadFile(f.Pair, f.Progress);
+                    DownloadFile(f.Pair, (IProgress<long>)f.Progress);
                     OnFinishedDownload?.Invoke(f.Pair);
                 });
 
@@ -75,25 +74,38 @@ namespace libDCS_Mod_app
         }
 
         //Downloads the files that require update.
-        public bool DownloadFile(FilePair pair, IProgress<FtpProgress> progress)
+
+        public bool DownloadFile(FilePair pair, IProgress<long> progress)
         {
             bool result = false;
 
-            using (FtpClient dlFile = new FtpClient("ftp://dcs.btac.pro/"))
+            using (var client = new HttpClient())
             {
-                dlFile.Credentials = new NetworkCredential("85th_user", "85th_user");
-                dlFile.Host = "ftp://dcs.btac.pro/";
-                dlFile.Port = 221;
-                dlFile.RetryAttempts = 3;
-                dlFile.Connect();
-                dlFile.DownloadFile(pair.LocalFilename, pair.RemoteFileInfo.FURL, FtpLocalExists.Overwrite, FtpVerify.Retry, progress);
+                client.Timeout = TimeSpan.FromMinutes(30); // Set a timeout for the download
+
+                var response = client.GetAsync(pair.RemoteFileInfo.FURL, HttpCompletionOption.ResponseHeadersRead).Result;
+                response.EnsureSuccessStatusCode();
+
+                var totalBytes = response.Content.Headers.ContentLength ?? 0L;
+                using (var contentStream = response.Content.ReadAsStreamAsync().Result)
+                using (var fileStream = new FileStream(pair.LocalFilename, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                {
+                    var buffer = new byte[8192];
+                    long totalRead = 0L;
+                    int bytesRead;
+                    while ((bytesRead = contentStream.ReadAsync(buffer, 0, buffer.Length).Result) > 0)
+                    {
+                        fileStream.WriteAsync(buffer, 0, bytesRead).Wait();
+                        totalRead += bytesRead;
+                        progress?.Report(totalRead);
+                    }
+                }
 
                 if (File.Exists(pair.LocalFilename))
                 {
                     result = true;
                 }
             }
-
 
             return result;
         }

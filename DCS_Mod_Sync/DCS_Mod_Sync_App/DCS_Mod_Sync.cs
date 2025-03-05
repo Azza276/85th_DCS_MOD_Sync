@@ -150,8 +150,8 @@ namespace DCS_Mod_Sync_App
 
                     int downloadCount = 0;
 
-                    var ftpDownloader = new FtpDownloader();
-                    ftpDownloader.OnProgressChanged += new FtpDownloader.ProgressChangedSignature((bytes) =>
+                    var HttpsDownloader = new HttpsDownloader();
+                    HttpsDownloader.OnProgressChanged += new HttpsDownloader.ProgressChangedSignature((bytes) =>
                     {
                         var kb = bytes / 1024d;
                         Invoke(new MethodInvoker(() =>
@@ -160,17 +160,17 @@ namespace DCS_Mod_Sync_App
                         }));
                     });
 
-                    ftpDownloader.OnStartDownload += new FtpDownloader.StartDownloadSignature((pair) =>
+                    HttpsDownloader.OnStartDownload += new HttpsDownloader.StartDownloadSignature((pair) =>
                     {
                         SetCurrentAction("Downloading " + Path.GetFileName(pair.LocalFilename));
                     });
 
-                    ftpDownloader.OnFinishedDownload += new FtpDownloader.FinishedDownloadSignature((pair) =>
+                    HttpsDownloader.OnFinishedDownload += new HttpsDownloader.FinishedDownloadSignature((pair) =>
                     {
                         Interlocked.Increment(ref downloadCount);
                     });
 
-                    bool allDownloadedSuccessfully = ftpDownloader.DownloadFiles(filesToDownload, settings.DownloadThreads);
+                    bool allDownloadedSuccessfully = HttpsDownloader.DownloadFiles(filesToDownload, settings.DownloadThreads);
 
                     Invoke(new MethodInvoker(() =>
                     {
@@ -180,8 +180,8 @@ namespace DCS_Mod_Sync_App
 
                     if (!allDownloadedSuccessfully)
                     {
-                        MessageBox.Show("Possible FTP Connection Problem" + Environment.NewLine + "Not all files were downloaded." + Environment.NewLine + "Please verify and try again.",
-                                        "FTP Download Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Possible HTTPS Connection Problem" + Environment.NewLine + "Not all files were downloaded." + Environment.NewLine + "Please verify and try again.",
+                                        "HTTPS Download Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                     var filesToDelete = filesThatRequireUpdate.Where(f => f.RemoteFileInfo == null).ToList();
