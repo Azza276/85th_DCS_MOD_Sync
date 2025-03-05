@@ -88,7 +88,7 @@ namespace libDCS_Mod_app
                 dlFile.Port = 221;
                 dlFile.RetryAttempts = 3;
                 dlFile.Connect();
-                dlFile.DownloadFile(pair.LocalFilename, pair.RemoteFileInfo.URL, FtpLocalExists.Overwrite, FtpVerify.Retry, progress);
+                dlFile.DownloadFile(pair.LocalFilename, pair.RemoteFileInfo.FURL, FtpLocalExists.Overwrite, FtpVerify.Retry, progress);
 
                 if (File.Exists(pair.LocalFilename))
                 {

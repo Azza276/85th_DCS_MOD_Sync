@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 using FluentFTP;
+using static libDCS_Mod_app.HttpsDownloader;
 
 // This is the code for your desktop app.
 // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
@@ -348,7 +349,7 @@ namespace DCS_Mod_Sync_App
                 filesAreInSync = false;
                 updateStatus.BackgroundImage = Properties.Resources.red_light;
 
-                string dcsModsURL = "ftp://dcs.btac.pro/";
+                string dcsModsURL = "https://dcsfile.btac.pro/";
                 int dcsModsPort = 221;
 
                 SetCurrentAction("Getting current list of files from the server...");
@@ -361,12 +362,14 @@ namespace DCS_Mod_Sync_App
                     progressBar1.MarqueeAnimationSpeed = 50;
                 }));
 
-                var FtpDownloader = new FtpDownloader();
+                var HttpsDownloader = new HttpsDownloader();
 
-                List<WebFileInfo> allFilesOnWebserver;
+                List<FileInformation> allFilesOnWebserver;
+
                 try
                 {
-                    allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL, dcsModsPort);
+                    Task<List<FileInformation>> fetchFilesTask = (Task<List<FileInformation>>)HttpsDownloader.GetFilesFromDirectoryListing(dcsModsURL);
+                    allFilesOnWebserver = fetchFilesTask.Result;
                 }
                 catch (Exception ex)
                 {
@@ -389,14 +392,14 @@ namespace DCS_Mod_Sync_App
                 List<FilePair> pairs = new List<FilePair>();
 
                 //Add the files from the web server
-                pairs.AddRange(allFilesOnWebserver.Select(webFileInfo =>
+                pairs.AddRange(allFilesOnWebserver.Select(FileInformation =>
                 {
                     //remove the working directory from the front
-                    string redactedURL = webFileInfo.URL.Replace("/" + FtpDownloader.FTP_WORKING_DIRECTORY, "");
+                    string redactedURL = FileInformation.FURL.Replace("https://dcsfile.btac.pro/85TH_Mods", "");
 
-                    string localFilename = Path.GetFullPath(ModFolder + redactedURL);
+                    var localFilename = Path.GetFullPath(ModFolder + redactedURL);
 
-                    var pair = new FilePair(webFileInfo, localFilename);
+                    var pair = new FilePair(FileInformation, localFilename);
 
                     return pair;
                 }));
