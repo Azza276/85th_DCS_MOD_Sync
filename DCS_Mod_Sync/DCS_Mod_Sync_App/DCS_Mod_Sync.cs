@@ -108,7 +108,7 @@ namespace DCS_Mod_Sync_App
         {
             if (sender != null)
             {
-                //This is a user call
+                // This is a user call
                 if (verifyTask != null && !verifyTask.IsCompleted)
                 {
                     return;
@@ -129,34 +129,33 @@ namespace DCS_Mod_Sync_App
             {
                 downloadTask = Task.Factory.StartNew((Action)(() =>
                 {
-                    //Reset the progress bar
+                    // Reset the progress bar
                     Invoke(new MethodInvoker(() =>
-                        {
-                            progressBar1.Visible = false;
-                            progressBar1.Value = 0;
-                            progressBar1.Maximum = 1;
-                        }));
+                    {
+                        progressBar1.Visible = false;
+                        progressBar1.Value = 0;
+                        progressBar1.Maximum = 100; // Set maximum to 100 for percentage
+                    }));
 
                     var filesToDownload = filesThatRequireUpdate.Where(f => f.RemoteFileInfo != null);
                     var totalFilesToDownload = filesToDownload.Count();
-                    var totalKilobytesToDownload = filesToDownload.Sum(f => f.RemoteFileInfo.Length) / 1024d;
+                    var totalBytesToDownload = filesToDownload.Sum(f => f.RemoteFileInfo.Length);
 
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Visible = true;
                         progressBar1.ForeColor = SystemColors.Highlight;
-                        progressBar1.Maximum = (int)totalKilobytesToDownload;
                     }));
 
                     int downloadCount = 0;
 
                     var HttpsDownloader = new HttpsDownloader();
-                    HttpsDownloader.OnProgressChanged += new HttpsDownloader.ProgressChangedSignature((bytes) =>
+                    HttpsDownloader.OnProgressChanged += new HttpsDownloader.ProgressChangedSignature((totalBytesDownloaded) =>
                     {
-                        var kb = bytes / 1024d;
+                        var progressPercentage = (int)((totalBytesDownloaded / (double)totalBytesToDownload) * 100);
                         Invoke(new MethodInvoker(() =>
                         {
-                            progressBar1.Value = (int)kb;
+                            progressBar1.Value = progressPercentage;
                         }));
                     });
 
@@ -177,7 +176,6 @@ namespace DCS_Mod_Sync_App
                         progressBar1.Value = progressBar1.Maximum;
                     }));
 
-
                     if (!allDownloadedSuccessfully)
                     {
                         MessageBox.Show("Possible HTTPS Connection Problem" + Environment.NewLine + "Not all files were downloaded." + Environment.NewLine + "Please verify and try again.",
@@ -196,7 +194,7 @@ namespace DCS_Mod_Sync_App
                     filesAreInSync = true;
                     updateStatus.BackgroundImage = Properties.Resources.green_light;
 
-                    //Reset the progress bar
+                    // Reset the progress bar
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Visible = false;
@@ -349,8 +347,7 @@ namespace DCS_Mod_Sync_App
                 filesAreInSync = false;
                 updateStatus.BackgroundImage = Properties.Resources.red_light;
 
-                string dcsModsURL = "https://dcsfile.btac.pro/";
-                int dcsModsPort = 221;
+                string dcsModsURL = "https://dcsfile.btac.pro/85TH_Mods/";
 
                 SetCurrentAction("Getting current list of files from the server...");
 
@@ -379,7 +376,7 @@ namespace DCS_Mod_Sync_App
                         progressBar1.Hide();
                     }));
 
-                    SetCurrentAction("Could not get a file list from the server. Please try again later." + Environment.NewLine + "Cause: " + ex.Message);
+                    SetCurrentAction("Could not get a file list from the server. Please try again later." + Environment.NewLine + "Cause: " + ex.Message + " - " + ex.InnerException.Message);
                     return;
                 }
 

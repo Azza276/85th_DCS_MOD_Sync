@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Text;
 using static libDCS_Mod_app.HttpsDownloader;
+using System.Web;
 
 namespace libDCS_Mod_app
 {
@@ -15,7 +16,7 @@ namespace libDCS_Mod_app
         public FilePair(FileInformation remoteFileInfo, string localFilename)
         {
             RemoteFileInfo = remoteFileInfo;
-            LocalFilename = localFilename.Replace('/', Path.DirectorySeparatorChar);
+            LocalFilename = HttpUtility.UrlDecode(localFilename.Replace('/', Path.DirectorySeparatorChar));
         }
 
         public bool RequiresUpdate()
@@ -35,7 +36,6 @@ namespace libDCS_Mod_app
             if (!File.Exists(LocalFilename)) result = true;
             if (File.Exists(LocalFilename) && (RemoteFileInfo.ModifiedDate > localFileInfo.LastWriteTimeUtc)) result = true;
             if (File.Exists(LocalFilename) && (RemoteFileInfo.Length != localFileInfo.Length)) result = true;
-            //if (File.Exists(LocalFilename) && (!WebFileInfo.FtpExists == true)) result = true;
 
             return result;
         }

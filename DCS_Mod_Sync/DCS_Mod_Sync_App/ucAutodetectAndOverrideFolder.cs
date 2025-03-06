@@ -26,16 +26,17 @@ namespace DCS_Mod_Sync_App
                 lblAutodetectedFolder.Text = ValueForAutodetect;
                 lblAutodetectedFolder.Show();
 
+                ucAutoDetectAndOverride1.txt.Text = ValueForAutodetect; // Ensure the text box is updated
                 ucAutoDetectAndOverride1.txt.Hide();
                 btnBrowse.Hide();
-            } else
+            }
+            else
             {
                 lblAutodetectedFolder.Hide();
 
                 ucAutoDetectAndOverride1.txt.Show();
                 btnBrowse.Show();
             }
-            
         }
 
         public bool Autodetect

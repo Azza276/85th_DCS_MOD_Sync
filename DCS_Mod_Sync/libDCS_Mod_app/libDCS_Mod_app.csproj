@@ -81,7 +81,6 @@
   <ItemGroup>
     <Compile Include="HttpsDownloader.cs" />
     <Compile Include="Unzipper.cs" />
-    <Compile Include="DownloadProgressConverter.cs" />
     <Compile Include="Links\JunctionPoint.cs" />
     <Compile Include="Links\Providers\LinkUtility.cs" />
     <Compile Include="Links\Providers\JunctionUtility.cs" />
@@ -93,7 +92,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Links\LinkManager.cs" />
-    <Compile Include="WebFileInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

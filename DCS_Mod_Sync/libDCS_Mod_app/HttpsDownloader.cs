@@ -4,9 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
-//using FluentFTP;
 using System.Threading.Tasks;
-
 using System.Net.Http;
 using HtmlAgilityPack;
 
@@ -23,32 +21,26 @@ namespace libDCS_Mod_app
         public delegate void FinishedDownloadSignature(FilePair pair);
         public FinishedDownloadSignature OnFinishedDownload;
 
-        public const string HTTPS_WORKING_DIRECTORY = "85TH_Mods";
-
         public bool DownloadFiles(IEnumerable<FilePair> files, int concurrentDownloads)
         {
             bool result = false;
 
-            var filesToDownload = files.Select(pair => new
-            {
-                Pair = pair,
-                Progress = new DownloadProgressConverter(pair)
-            })
-            .ToList();
+            var filesToDownload = files.ToList();
+            long totalBytesToDownload = filesToDownload.Sum(f => f.RemoteFileInfo.Length);
+            long totalBytesDownloaded = 0;
 
-            //Monitor the overall progress
+            // Monitor the overall progress
             var progressTaskToken = new CancellationTokenSource();
             var progressTask = Task.Factory.StartNew(() =>
             {
                 while (!progressTaskToken.IsCancellationRequested)
                 {
-                    var totalBytesDownloaded = filesToDownload.Sum(f => f.Progress.BytesDownloaded);
                     OnProgressChanged?.Invoke(totalBytesDownloaded);
                     Thread.Sleep(100);
                 }
             });
 
-            //Start downloading files
+            // Start downloading files
             try
             {
                 filesToDownload
@@ -56,16 +48,16 @@ namespace libDCS_Mod_app
                 .WithDegreeOfParallelism(concurrentDownloads)
                 .ForAll(f =>
                 {
-                    OnStartDownload?.Invoke(f.Pair);
-                    DownloadFile(f.Pair, (IProgress<long>)f.Progress);
-                    OnFinishedDownload?.Invoke(f.Pair);
+                    OnStartDownload?.Invoke(f);
+                    DownloadFile(f, ref totalBytesDownloaded);
+                    OnFinishedDownload?.Invoke(f);
                 });
 
                 result = true;
             }
             catch (AggregateException)
             {
-                //Do nothing. Would be worth logging at a later stage
+                // Do nothing. Would be worth logging at a later stage
             }
 
             progressTaskToken.Cancel();
@@ -74,8 +66,7 @@ namespace libDCS_Mod_app
         }
 
         //Downloads the files that require update.
-
-        public bool DownloadFile(FilePair pair, IProgress<long> progress)
+        public bool DownloadFile(FilePair pair, ref long totalBytesDownloaded)
         {
             bool result = false;
 
@@ -85,6 +76,14 @@ namespace libDCS_Mod_app
 
                 var response = client.GetAsync(pair.RemoteFileInfo.FURL, HttpCompletionOption.ResponseHeadersRead).Result;
                 response.EnsureSuccessStatusCode();
+
+                string directoryName = Path.GetDirectoryName(pair.LocalFilename);
+                // If path is a file name only, directory name will be an empty string
+                if (directoryName.Length > 0)
+                {
+                    // Create all directories on the path that don't already exist
+                    Directory.CreateDirectory(directoryName);
+                }
 
                 var totalBytes = response.Content.Headers.ContentLength ?? 0L;
                 using (var contentStream = response.Content.ReadAsStreamAsync().Result)
@@ -97,7 +96,8 @@ namespace libDCS_Mod_app
                     {
                         fileStream.WriteAsync(buffer, 0, bytesRead).Wait();
                         totalRead += bytesRead;
-                        progress?.Report(totalRead);
+                        Interlocked.Add(ref totalBytesDownloaded, bytesRead);
+                        OnProgressChanged?.Invoke(totalBytesDownloaded);
                     }
                 }
 
@@ -113,7 +113,7 @@ namespace libDCS_Mod_app
         public static async Task<List<FileInformation>> GetFilesFromDirectoryListing(string url)
         {
             var scraper = new WebScraper();
-            var files = await scraper.GetFilesAsync(url, 20); // Set the maximum depth to 20
+            var files = await scraper.GetFilesAsync(url, 10); // Set the maximum depth to 10
             return files;
         }
         public class FileInformation
@@ -143,6 +143,11 @@ namespace libDCS_Mod_app
 
                 processedUrls.Add(url);
 
+                var valid = await client.GetAsync(url);
+                if (!valid.IsSuccessStatusCode)
+                {
+                    throw new HttpRequestException($"Request to {url} failed with status code {valid.StatusCode}");
+                }
                 var response = await client.GetStringAsync(url);
                 var doc = new HtmlDocument();
                 doc.LoadHtml(response);
@@ -190,9 +195,6 @@ namespace libDCS_Mod_app
 
                 return fileInfo;
             }
-
-
         }
-        
     }
 }
