@@ -3,18 +3,14 @@ using libDCS_Mod_app.Links.Providers;
 using DCS_Mod_Sync_App.Config;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using FluentFTP;
 using static libDCS_Mod_app.HttpsDownloader;
 
 // This is the code for your desktop app.
@@ -626,6 +622,11 @@ namespace DCS_Mod_Sync_App
             });
 
             options.ShowDialog();
+        }
+
+        private void titlePanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
