@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("85th SQN DCS Mod Sync")]
-[assembly: AssemblyDescription("The 85th SQN DCS Mod Sync is intended to be used by members of the Borderline Tactical's 85th Squadron (Fictional). The Mod Sync App keeps the client’s files up to date with an FTP server that may from time to time be updated with new skins and liveries. Without these skins and liveries, members will not be able to see the wonderfully crafted skins that others use.")]
+[assembly: AssemblyDescription("The 85th SQN DCS Mod Sync is intended to be used by members of the Borderline Tactical's 85th Squadron (Fictional). The Mod Sync App keeps the client’s files up to date with an HTTPS server that may from time to time be updated with new skins and liveries. Without these skins and liveries, members will not be able to see the wonderfully crafted skins that others use.")]
 [assembly: AssemblyConfiguration("Debug")]
 [assembly: AssemblyCompany("Borderline Tactical")]
 [assembly: AssemblyProduct("85th SQN DCS Mod Sync")]
-[assembly: AssemblyCopyright("Copyright © Borderline Tactical 2023")]
+[assembly: AssemblyCopyright("Copyright © Borderline Tactical 2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
