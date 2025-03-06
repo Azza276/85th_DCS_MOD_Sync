@@ -250,6 +250,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="85th SQN 64.ico" />
+    <Content Include="Resources\apache.jpg" />
+    <Content Include="Resources\falcon.jpg" />
+    <Content Include="Resources\missile.jpg" />
+    <Content Include="Resources\post_hornet.jpg" />
     <None Include="Resources\options_b.png" />
     <None Include="Resources\cat1.jpg" />
     <None Include="Resources\options.png" />

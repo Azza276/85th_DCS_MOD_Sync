@@ -160,4 +160,16 @@
   <data name="options_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\options_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="apache" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\apache.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="falcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\falcon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="missile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\missile.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="post_hornet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\post_hornet.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
