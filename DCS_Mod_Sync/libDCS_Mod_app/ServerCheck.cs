@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Net.Sockets;
 
 namespace libDCS_Mod_app
 {
@@ -13,7 +6,7 @@ namespace libDCS_Mod_app
     {
         public bool GetServerResponse()
         {
-            string ip = "14.202.251.103";
+            string ip = "144.6.240.188";
             int port = 10308;
 
             bool isResponsive = false;

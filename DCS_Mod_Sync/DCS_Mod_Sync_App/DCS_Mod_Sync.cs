@@ -3,18 +3,15 @@ using libDCS_Mod_app.Links.Providers;
 using DCS_Mod_Sync_App.Config;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-using FluentFTP;
+using static libDCS_Mod_app.HttpsDownloader;
 
 // This is the code for your desktop app.
 // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
@@ -107,7 +104,7 @@ namespace DCS_Mod_Sync_App
         {
             if (sender != null)
             {
-                //This is a user call
+                // This is a user call
                 if (verifyTask != null && !verifyTask.IsCompleted)
                 {
                     return;
@@ -128,59 +125,108 @@ namespace DCS_Mod_Sync_App
             {
                 downloadTask = Task.Factory.StartNew((Action)(() =>
                 {
-                    //Reset the progress bar
+                    // Reset the progress bar
                     Invoke(new MethodInvoker(() =>
-                        {
-                            progressBar1.Visible = false;
-                            progressBar1.Value = 0;
-                            progressBar1.Maximum = 1;
-                        }));
+                    {
+                        progressBar1.Visible = false;
+                        progressBar1.Value = 0;
+                        progressBar1.Maximum = 100; // Set maximum to 100 for percentage
+                        progressBar1.Step = 1; // Set step to 1 for smooth progress
+                        progressBar1.Style = ProgressBarStyle.Continuous; // Set style to continuous for smooth progress
+                    }));
 
                     var filesToDownload = filesThatRequireUpdate.Where(f => f.RemoteFileInfo != null);
                     var totalFilesToDownload = filesToDownload.Count();
-                    var totalKilobytesToDownload = filesToDownload.Sum(f => f.RemoteFileInfo.Length) / 1024d;
+                    var totalBytesToDownload = filesToDownload.Sum(f => f.RemoteFileInfo.Length);
 
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Visible = true;
                         progressBar1.ForeColor = SystemColors.Highlight;
-                        progressBar1.Maximum = (int)totalKilobytesToDownload;
                     }));
 
                     int downloadCount = 0;
 
-                    var ftpDownloader = new FtpDownloader();
-                    ftpDownloader.OnProgressChanged += new FtpDownloader.ProgressChangedSignature((bytes) =>
+                    // Add a label to the progress bar
+                    Label downloadSpeedLabel = new Label
                     {
-                        var kb = bytes / 1024d;
-                        Invoke(new MethodInvoker(() =>
+                        AutoSize = true,
+                        BackColor = Color.Transparent,
+                        ForeColor = Color.Black,
+                        TextAlign = ContentAlignment.MiddleCenter
+                    };
+                    Invoke(new MethodInvoker(() =>
+                    {
+                        progressBar1.Controls.Add(downloadSpeedLabel);
+                        downloadSpeedLabel.Location = new Point(progressBar1.Width / 2 - downloadSpeedLabel.Width / 2, progressBar1.Height / 2 - downloadSpeedLabel.Height / 2);
+                    }));
+
+                    var HttpsDownloader = new HttpsDownloader();
+                    DateTime lastUpdateTime = DateTime.Now;
+                    long lastBytesDownloaded = 0;
+                    DateTime lastSpeedUpdateTime = DateTime.Now;
+
+                    HttpsDownloader.OnProgressChanged += new HttpsDownloader.ProgressChangedSignature((totalBytesDownloaded) =>
+                    {
+                        var progressPercentage = (int)((totalBytesDownloaded / (double)totalBytesToDownload) * 100);
+                        DateTime currentTime = DateTime.Now;
+                        TimeSpan timeSpan = currentTime - lastUpdateTime;
+                        long bytesDownloadedSinceLastUpdate = totalBytesDownloaded - lastBytesDownloaded;
+
+                        if ((currentTime - lastSpeedUpdateTime).TotalSeconds >= 1) // Update every second
                         {
-                            progressBar1.Value = (int)kb;
-                        }));
+                            double downloadSpeed = 0;
+                            if (timeSpan.TotalSeconds > 0)
+                            {
+                                downloadSpeed = bytesDownloadedSinceLastUpdate / timeSpan.TotalSeconds; // bytes per second
+                            }
+                            string downloadSpeedText = downloadSpeed > 1024 * 1024
+                                ? $"{downloadSpeed / (1024 * 1024):0.##} MB/s"
+                                : $"{downloadSpeed / 1024:0.##} KB/s";
+
+                            lastUpdateTime = currentTime;
+                            lastBytesDownloaded = totalBytesDownloaded;
+                            lastSpeedUpdateTime = currentTime;
+
+                            if (InvokeRequired)
+                            {
+                                Invoke(new MethodInvoker(() =>
+                                {
+                                    progressBar1.Value = progressPercentage;
+                                    downloadSpeedLabel.Text = downloadSpeedText;
+                                    downloadSpeedLabel.Location = new Point(progressBar1.Width / 2 - downloadSpeedLabel.Width / 2, progressBar1.Height / 2 - downloadSpeedLabel.Height / 2);
+                                }));
+                            }
+                            else
+                            {
+                                progressBar1.Value = progressPercentage;
+                                downloadSpeedLabel.Text = downloadSpeedText;
+                                downloadSpeedLabel.Location = new Point(progressBar1.Width / 2 - downloadSpeedLabel.Width / 2, progressBar1.Height / 2 - downloadSpeedLabel.Height / 2);
+                            }
+                        }
                     });
 
-                    ftpDownloader.OnStartDownload += new FtpDownloader.StartDownloadSignature((pair) =>
+                    HttpsDownloader.OnStartDownload += new HttpsDownloader.StartDownloadSignature((pair) =>
                     {
                         SetCurrentAction("Downloading " + Path.GetFileName(pair.LocalFilename));
                     });
 
-                    ftpDownloader.OnFinishedDownload += new FtpDownloader.FinishedDownloadSignature((pair) =>
+                    HttpsDownloader.OnFinishedDownload += new HttpsDownloader.FinishedDownloadSignature((pair) =>
                     {
                         Interlocked.Increment(ref downloadCount);
                     });
 
-                    bool allDownloadedSuccessfully = ftpDownloader.DownloadFiles(filesToDownload, settings.DownloadThreads);
+                    bool allDownloadedSuccessfully = HttpsDownloader.DownloadFiles(filesToDownload, settings.DownloadThreads);
 
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Value = progressBar1.Maximum;
                     }));
 
-
                     if (!allDownloadedSuccessfully)
                     {
-                        MessageBox.Show("Possible FTP Connection Problem" + Environment.NewLine + "Not all files were downloaded." + Environment.NewLine + "Please verify and try again.",
-                                        "FTP Download Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Possible HTTPS Connection Problem" + Environment.NewLine + "Not all files were downloaded." + Environment.NewLine + "Please verify and try again.",
+                                        "HTTPS Download Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                     var filesToDelete = filesThatRequireUpdate.Where(f => f.RemoteFileInfo == null).ToList();
@@ -195,11 +241,12 @@ namespace DCS_Mod_Sync_App
                     filesAreInSync = true;
                     updateStatus.BackgroundImage = Properties.Resources.green_light;
 
-                    //Reset the progress bar
+                    // Reset the progress bar
                     Invoke(new MethodInvoker(() =>
                     {
                         progressBar1.Visible = false;
                         progressBar1.Value = 0;
+                        progressBar1.Controls.Remove(downloadSpeedLabel); // Remove the label after download
                     }));
 
                     if (settings.AutomaticallyBuildLinksAfterDownload)
@@ -214,6 +261,44 @@ namespace DCS_Mod_Sync_App
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Randomly select background image
+            Random random = new Random();
+            int imageIndex = random.Next(6); // 0 to 4
+
+            switch (imageIndex)
+            {
+                case 0:
+                    mainImage.BackgroundImage = global::DCS_Mod_Sync_App.Properties.Resources.cat1;
+                    mainImage.ErrorImage = global::DCS_Mod_Sync_App.Properties.Resources.cat1;
+                    mainImage.InitialImage = global::DCS_Mod_Sync_App.Properties.Resources.cat1;
+                    break;
+                case 1:
+                    mainImage.BackgroundImage = global::DCS_Mod_Sync_App.Properties.Resources.Hornet_8;
+                    mainImage.ErrorImage = global::DCS_Mod_Sync_App.Properties.Resources.Hornet_8;
+                    mainImage.InitialImage = global::DCS_Mod_Sync_App.Properties.Resources.Hornet_8;
+                    break;
+                case 2:
+                    mainImage.BackgroundImage = global::DCS_Mod_Sync_App.Properties.Resources.apache;
+                    mainImage.ErrorImage = global::DCS_Mod_Sync_App.Properties.Resources.apache;
+                    mainImage.InitialImage = global::DCS_Mod_Sync_App.Properties.Resources.apache;
+                    break;
+                case 3:
+                    mainImage.BackgroundImage = global::DCS_Mod_Sync_App.Properties.Resources.falcon;
+                    mainImage.ErrorImage = global::DCS_Mod_Sync_App.Properties.Resources.falcon;
+                    mainImage.InitialImage = global::DCS_Mod_Sync_App.Properties.Resources.falcon;
+                    break;
+                case 4:
+                    mainImage.BackgroundImage = global::DCS_Mod_Sync_App.Properties.Resources.missile;
+                    mainImage.ErrorImage = global::DCS_Mod_Sync_App.Properties.Resources.missile;
+                    mainImage.InitialImage = global::DCS_Mod_Sync_App.Properties.Resources.missile;
+                    break;
+                case 5:
+                    mainImage.BackgroundImage = global::DCS_Mod_Sync_App.Properties.Resources.post_hornet;
+                    mainImage.ErrorImage = global::DCS_Mod_Sync_App.Properties.Resources.post_hornet;
+                    mainImage.InitialImage = global::DCS_Mod_Sync_App.Properties.Resources.post_hornet;
+                    break;
+            }
+
             //Check for updates to the App. Open Dialog if true.
             var appupdateTask = Task.Factory.StartNew((() =>
             {
@@ -226,8 +311,8 @@ namespace DCS_Mod_Sync_App
                 //Cleanup of File if still there after update.
                 string oldFilePath = Path.Combine(AppFolder, "85th SQN DCS Mod Sync_old.exe");
                 string oldReadme = Path.Combine(AppFolder, "Readme_old.txt");
-                if (File.Exists(oldFilePath)){ File.Delete(oldFilePath);}
-                if (File.Exists(oldReadme)){File.Delete(oldReadme);}
+                if (File.Exists(oldFilePath)) { File.Delete(oldFilePath); }
+                if (File.Exists(oldReadme)) { File.Delete(oldReadme); }
 
                 //Kick off Update Check.
                 _ = Invoke((MethodInvoker)delegate
@@ -348,8 +433,7 @@ namespace DCS_Mod_Sync_App
                 filesAreInSync = false;
                 updateStatus.BackgroundImage = Properties.Resources.red_light;
 
-                string dcsModsURL = "ftp://dcs.btac.pro/";
-                int dcsModsPort = 221;
+                string dcsModsURL = "https://dcsfile.btac.pro/85TH_Mods/";
 
                 SetCurrentAction("Getting current list of files from the server...");
 
@@ -361,12 +445,14 @@ namespace DCS_Mod_Sync_App
                     progressBar1.MarqueeAnimationSpeed = 50;
                 }));
 
-                var FtpDownloader = new FtpDownloader();
+                var HttpsDownloader = new HttpsDownloader();
 
-                List<WebFileInfo> allFilesOnWebserver;
+                List<FileInformation> allFilesOnWebserver;
+
                 try
                 {
-                    allFilesOnWebserver = FtpDownloader.GetFilesFromDirectoryListing(dcsModsURL, dcsModsPort);
+                    Task<List<FileInformation>> fetchFilesTask = (Task<List<FileInformation>>)HttpsDownloader.GetFilesFromDirectoryListing(dcsModsURL);
+                    allFilesOnWebserver = fetchFilesTask.Result;
                 }
                 catch (Exception ex)
                 {
@@ -376,7 +462,7 @@ namespace DCS_Mod_Sync_App
                         progressBar1.Hide();
                     }));
 
-                    SetCurrentAction("Could not get a file list from the server. Please try again later." + Environment.NewLine + "Cause: " + ex.Message);
+                    SetCurrentAction("Could not get a file list from the server. Please try again later." + Environment.NewLine + "Cause: " + ex.Message + " - " + ex.InnerException.Message);
                     return;
                 }
 
@@ -389,14 +475,14 @@ namespace DCS_Mod_Sync_App
                 List<FilePair> pairs = new List<FilePair>();
 
                 //Add the files from the web server
-                pairs.AddRange(allFilesOnWebserver.Select(webFileInfo =>
+                pairs.AddRange(allFilesOnWebserver.Select(FileInformation =>
                 {
                     //remove the working directory from the front
-                    string redactedURL = webFileInfo.URL.Replace("/" + FtpDownloader.FTP_WORKING_DIRECTORY, "");
+                    string redactedURL = FileInformation.FURL.Replace("https://dcsfile.btac.pro/85TH_Mods", "");
 
-                    string localFilename = Path.GetFullPath(ModFolder + redactedURL);
+                    var localFilename = Path.GetFullPath(ModFolder + redactedURL);
 
-                    var pair = new FilePair(webFileInfo, localFilename);
+                    var pair = new FilePair(FileInformation, localFilename);
 
                     return pair;
                 }));
@@ -536,6 +622,11 @@ namespace DCS_Mod_Sync_App
             });
 
             options.ShowDialog();
+        }
+
+        private void titlePanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

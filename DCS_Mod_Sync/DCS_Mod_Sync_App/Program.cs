@@ -1,10 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using libDCS_Mod_app;
 
 namespace DCS_Mod_Sync_App
 {

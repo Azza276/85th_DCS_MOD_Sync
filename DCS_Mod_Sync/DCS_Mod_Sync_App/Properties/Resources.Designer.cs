@@ -73,6 +73,16 @@ namespace DCS_Mod_Sync_App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap apache {
+            get {
+                object obj = ResourceManager.GetObject("apache", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cat1 {
             get {
                 object obj = ResourceManager.GetObject("cat1", resourceCulture);
@@ -103,6 +113,16 @@ namespace DCS_Mod_Sync_App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap falcon {
+            get {
+                object obj = ResourceManager.GetObject("falcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap green_light {
             get {
                 object obj = ResourceManager.GetObject("green_light", resourceCulture);
@@ -123,6 +143,16 @@ namespace DCS_Mod_Sync_App.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap missile {
+            get {
+                object obj = ResourceManager.GetObject("missile", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap options {
             get {
                 object obj = ResourceManager.GetObject("options", resourceCulture);
@@ -136,6 +166,16 @@ namespace DCS_Mod_Sync_App.Properties {
         internal static System.Drawing.Bitmap options_b {
             get {
                 object obj = ResourceManager.GetObject("options_b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap post_hornet {
+            get {
+                object obj = ResourceManager.GetObject("post_hornet", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

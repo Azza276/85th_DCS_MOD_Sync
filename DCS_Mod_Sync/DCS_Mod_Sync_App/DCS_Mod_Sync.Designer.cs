@@ -89,6 +89,7 @@ namespace DCS_Mod_Sync_App
             this.titlePanel.Controls.Add(this.logo);
             resources.ApplyResources(this.titlePanel, "titlePanel");
             this.titlePanel.Name = "titlePanel";
+            this.titlePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.titlePanel_Paint);
             // 
             // dcsServerText
             // 

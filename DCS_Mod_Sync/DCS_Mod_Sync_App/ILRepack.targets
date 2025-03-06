@@ -4,7 +4,6 @@
 
     <ItemGroup>
         <InputAssemblies Include="$(OutputPath)\DCS_Mod_Sync_App.exe" />
-        <InputAssemblies Include="$(OutputPath)\FluentFTP.dll" />
         <InputAssemblies Include="$(OutputPath)\libDCS_Mod_app.dll" />
         <InputAssemblies Include="$(OutputPath)\Newtonsoft.Json.dll" />
         <InputAssemblies Include="$(OutputPath)\Octokit.dll" />

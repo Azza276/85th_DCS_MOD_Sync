@@ -1,12 +1,12 @@
-# DCS_MOD_Sync  
+ # DCS_MOD_Sync  
   
 The 85th SQN DCS Livery(Mod) Sync Application
 
 Readme!
 
-Alpha 0.6.1.0
+Beta 0.7.0.0
 
-The 85th SQN DCS Mod Sync is intended to be used by members of the Borderline Tactical's 85th Squadron (Fictional). The Mod Sync App keeps the client’s files up to date with an FTP 
+The 85th SQN DCS Mod Sync is intended to be used by members of the Borderline Tactical's 85th Squadron (Fictional). The Mod Sync App keeps the client’s files up to date with an HTTPS 
 server that may from time to time be updated with new skins and liveries. Without these skins and liveries, members will not be able to see the wonderfully crafted skins that others use.
 
 Using Version 0.6 and later - Place the Application where desired, but do not place on the Desktop, the App will update later and create a shortcut for you.
@@ -59,7 +59,7 @@ How it Works
 When selecting the "Verify" button, the application;
 	1. Looks for and selects the Users Saved Games DCS folder.
 	2. Looks for and creates the 85th_Mods, and Liveries folder (in the default locations, or as selected in the Options menu).
-	3. Contacts the 85th SQN FTP server and obtains a list of files from the server.
+	3. Contacts the 85th SQN HTTPS server and obtains a list of files from the server.
 	4. Compares this list to the files that are loaded into the Clients DCS/85th_Mods folder
 	5. Any discrepancies are added to a list and totals displayed to the Client in the "Status" field.
 	6. Makes that list available to the Update function for action.
@@ -88,9 +88,9 @@ The "File Synchronisation Status" indicator lets you know that you haven't verif
 The "Status" Line advises the applications current/latest action and process feedback.
 
 Notes:
-During download, the application makes 4 (default, changed in options download threads) different connections to the FTP server, therefore you will be downloading 
+During download, the application makes 4 (default, changed in options download threads) different connections to the HTTP server, therefore you will be downloading 
 	4 (default) files at one time. This is to improve download speed for those with fast internet (the server maxes at about 4-8 Mb/s per connection/file.)
-Symbolic links in the liveries for should be safe. This App only deletes link to the OGN_Mods folder.
+Symbolic links in the liveries for should be safe. This App only deletes link to the 85TH_Mods folder.
 You cannot Update before verifying.
 
 Application Updates:
@@ -108,7 +108,7 @@ A: Yes, place them as you would in the DCS/Liveries folder, making sure the name
 Q: Why do I need to download if a file/folder was moved/renamed.
 A: Currently the Application cannot determine if a file is new, renamed or moved, therefore it is safer to delete the old file and download the renamed/moved file.
 
-Q: Why are the mods placed in the DCS/85th_Mods folder?
+Q: Why are the mods placed in the DCS/85TH_Mods folder?
 A: To allow the app to delete files that have been deleted from the server without (“blaket” WTF is this word) wiping everything in the Liveries folder that isn't on the server, it was necessary to place it in its own hole. That ensure you can keep your own skins from other sources and still use 85th SQN's.
 	
 Q: How Stable is the App?
@@ -118,6 +118,24 @@ Q: I've got a problem/suggestion, Who can I talk to?
 A: Raise an issue on the GitHub https://github.com/Azza276/DCS_MOD_Sync/issues. Or talk to Azza276 of Borderline Tactical
 
 Version Change Notes:
+
+Beta - 0.7
+
+`+` Added HTTPS server verification and downloading - no more FTP trouble.
+
+`+` Added Download Speed label in the progress bar when downloading.
+
+`+` Added a few more main background pictures, a random one will show on each start of the App.
+
+`-` Removed FTP verification and download methods.
+
+`-` Removed FluentFTP from depedencies.
+
+`=` Updated ILPackage.
+
+`=` Updated NewtonSoft.
+
+`=`Updated Octokit
 
 Beta - 0.6.1
 
@@ -194,4 +212,3 @@ Alpha - 0.2
 
 `=` Changed the indicator light to Xmas Theme - 'tis the season.
  
-

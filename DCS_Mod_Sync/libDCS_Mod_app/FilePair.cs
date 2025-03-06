@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
+﻿using System.IO;
+using static libDCS_Mod_app.HttpsDownloader;
+using System.Web;
 
 namespace libDCS_Mod_app
 {
     public class FilePair
     {
         public readonly string LocalFilename;
-        public WebFileInfo RemoteFileInfo;
+        public FileInformation RemoteFileInfo;
 
-        public FilePair(WebFileInfo remoteFileInfo, string localFilename)
+        public FilePair(FileInformation remoteFileInfo, string localFilename)
         {
             RemoteFileInfo = remoteFileInfo;
-            LocalFilename = localFilename.Replace('/', Path.DirectorySeparatorChar);
+            LocalFilename = HttpUtility.UrlDecode(localFilename.Replace('/', Path.DirectorySeparatorChar));
         }
 
         public bool RequiresUpdate()
@@ -32,16 +30,15 @@ namespace libDCS_Mod_app
             var localFileInfo = new FileInfo(LocalFilename);
 
             if (!File.Exists(LocalFilename)) result = true;
-            if (File.Exists(LocalFilename) && (RemoteFileInfo.ModifiedDate > localFileInfo.LastWriteTime)) result = true;
+            if (File.Exists(LocalFilename) && (RemoteFileInfo.ModifiedDate > localFileInfo.LastWriteTimeUtc)) result = true;
             if (File.Exists(LocalFilename) && (RemoteFileInfo.Length != localFileInfo.Length)) result = true;
-            //if (File.Exists(LocalFilename) && (!WebFileInfo.FtpExists == true)) result = true;
 
             return result;
         }
 
         public override string ToString()
         {
-            string result = $"{RemoteFileInfo.URL}   {LocalFilename}";
+            string result = $"{RemoteFileInfo.FURL}   {LocalFilename}";
             return result;
         }
     }
