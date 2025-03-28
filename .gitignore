@@ -259,4 +259,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+#Other
 /DCS_Mod_Sync/libDCS_Mod_Sync/Auth.cs
+/.testing
+/.vscode
